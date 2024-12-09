@@ -2,6 +2,8 @@
 import { useEffect, useRef } from "react";
 import gsap from "gsap";
 import ScrollTrigger from "gsap/ScrollTrigger";
+import Header from "@/components/header";
+import { Locate } from "lucide-react";
 
 export default function Home() {
     const sectionRef = useRef(null);
@@ -28,10 +30,18 @@ export default function Home() {
 
     return (
         <div>
-            <section className="bg-slate-300 h-[800px] flex items-center justify-center">
-                <h1 className="text-6xl text-white relative z-10">
-                    Mathias Grondziel <br /> Front end web developper
-                </h1>
+            <section className="relative w-full h-[100vh] flex flex-col bg-[url('https://images.pexels.com/photos/1299417/pexels-photo-1299417.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1')] bg-center">
+                <Header />
+
+                <div className="flex-1 flex items-end justify-between relative">
+                    {/* <span className="rotate-[-90deg] h-[30px] absolute left-[30px] bottom-[50%] lg:bottom-0 origin-left">Available</span> */}
+                    <h1 className="text-3xl lg:text-9xl text-center z-[2] text-white uppercase font-sora font-light w-full">
+                        Front end <br /> web developer
+                    </h1>
+                    <span className="rotate-[90deg] h-[30px] absolute right-[30px] bottom-[50%] lg:bottom-0 origin-right flex gap-2">
+                        <Locate /> France / Danemark
+                    </span>
+                </div>
             </section>
             <section ref={sectionRef} className="bg-slate-100 overflow-hidden">
                 <div ref={horizontalRef} className="relative w-[400vw] flex">

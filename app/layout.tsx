@@ -1,18 +1,16 @@
 import type { Metadata } from "next";
-import localFont from "next/font/local";
+import { Sora, Manrope } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "../components/theme-provider";
-import { ModeToggle } from "../components/dropdownTheme";
 
-const geistSans = localFont({
-    src: "./fonts/GeistVF.woff",
-    variable: "--font-geist-sans",
-    weight: "100 900",
+const sora = Sora({
+    subsets: ['latin'],
+    variable: '--font-sora',
 });
-const geistMono = localFont({
-    src: "./fonts/GeistMonoVF.woff",
-    variable: "--font-geist-mono",
-    weight: "100 900",
+
+const manrope = Manrope({
+    subsets: ['latin'],
+    variable: '--font-manrope',
 });
 
 export const metadata: Metadata = {
@@ -26,14 +24,11 @@ export default function RootLayout({
     children: React.ReactNode;
 }>) {
     return (
-        <html lang="en" className="light" style={{ colorScheme: "light" }}>
-            <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
-                <div>
-                    <ThemeProvider attribute="class" defaultTheme="system" enableSystem disableTransitionOnChange>
-                        <ModeToggle />
-                        {children}
-                    </ThemeProvider>
-                </div>
+        <html lang="en" suppressHydrationWarning>
+            <body className={`${sora.variable} ${manrope.variable} font-sans antialiased`}>
+                <ThemeProvider attribute="class" defaultTheme="system" enableSystem disableTransitionOnChange>
+                    {children}
+                </ThemeProvider>
             </body>
         </html>
     );
