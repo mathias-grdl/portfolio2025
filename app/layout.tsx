@@ -1,16 +1,16 @@
 import type { Metadata } from "next";
 import { Sora, Manrope } from "next/font/google";
 import "./globals.css";
-import { ThemeProvider } from "../components/theme-provider";
+import Providers from "../components/Providers";
 
 const sora = Sora({
-    subsets: ['latin'],
-    variable: '--font-sora',
+    subsets: ["latin"],
+    variable: "--font-sora",
 });
 
 const manrope = Manrope({
-    subsets: ['latin'],
-    variable: '--font-manrope',
+    subsets: ["latin"],
+    variable: "--font-manrope",
 });
 
 export const metadata: Metadata = {
@@ -26,9 +26,7 @@ export default function RootLayout({
     return (
         <html lang="en" suppressHydrationWarning>
             <body className={`${sora.variable} ${manrope.variable} font-sans antialiased`}>
-                <ThemeProvider attribute="class" defaultTheme="system" enableSystem disableTransitionOnChange>
-                    {children}
-                </ThemeProvider>
+                <Providers>{children}</Providers>
             </body>
         </html>
     );

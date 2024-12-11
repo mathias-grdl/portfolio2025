@@ -1,6 +1,7 @@
 import React from "react";
-import { ModeToggle } from "./dropdownTheme";
+// import { ModeToggle } from "./dropdownTheme";
 import Link from "next/link";
+import LanguageSelector from "./language-selector";
 
 export default function Header() {
     return (
@@ -18,6 +19,9 @@ export default function Header() {
                     {/* <li>
                         <ModeToggle />
                     </li> */}
+                    <li>
+                        <LanguageSelector />
+                    </li>
                 </ul>
             </nav>
         </header>

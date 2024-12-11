@@ -1,11 +1,13 @@
 "use client";
 import { useEffect, useRef } from "react";
+import { useTranslation } from 'react-i18next';
 import gsap from "gsap";
 import ScrollTrigger from "gsap/ScrollTrigger";
 import Header from "@/components/header";
 import { Locate } from "lucide-react";
 
 export default function Home() {
+    const { t } = useTranslation();
     const sectionRef = useRef(null);
     const horizontalRef = useRef(null);
 
@@ -34,12 +36,11 @@ export default function Home() {
                 <Header />
 
                 <div className="flex-1 flex items-end justify-between relative">
-                    {/* <span className="rotate-[-90deg] h-[30px] absolute left-[30px] bottom-[50%] lg:bottom-0 origin-left">Available</span> */}
                     <h1 className="text-3xl lg:text-9xl text-center z-[2] text-white uppercase font-sora font-light w-full">
-                        Front end <br /> web developer
+                        {t('hero.title')}
                     </h1>
-                    <span className="rotate-[90deg] h-[30px] absolute right-[30px] bottom-[50%] lg:bottom-0 origin-right flex gap-2">
-                        <Locate /> France / Danemark
+                    <span className="rotate-[90deg] h-[30px] absolute right-[30px] bottom-[40%] lg:bottom-0 origin-right flex gap-2">
+                        <Locate /> {t('hero.location')}
                     </span>
                 </div>
             </section>
@@ -47,13 +48,13 @@ export default function Home() {
                 <div ref={horizontalRef} className="relative w-[400vw] flex">
                     <div className="horizontal-section w-screen h-screen flex items-center justify-center"></div>
                     <div className="horizontal-section w-screen h-screen flex items-center justify-center bg-slate-200">
-                        <h2 className="text-4xl">Développeur</h2>
+                        <h2 className="text-4xl">{t('skills.developer')}</h2>
                     </div>
                     <div className="horizontal-section w-screen h-screen flex items-center justify-center bg-slate-300">
-                        <h2 className="text-4xl">Designer</h2>
+                        <h2 className="text-4xl">{t('skills.designer')}</h2>
                     </div>
                     <div className="horizontal-section w-screen h-screen flex items-center justify-center bg-slate-400">
-                        <h2 className="text-4xl">Créatif</h2>
+                        <h2 className="text-4xl">{t('skills.creative')}</h2>
                     </div>
                 </div>
             </section>

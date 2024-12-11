@@ -1,0 +1,15 @@
+{
+  "welcome": "Bienvenue",
+  "about": "À propos",
+  "projects": "Projets",
+  "contact": "Contact",
+  "hero": {
+    "title": "Développeur web front-end",
+    "location": "France / Danemark"
+  },
+  "skills": {
+    "developer": "Développeur",
+    "designer": "Designer",
+    "creative": "Créatif"
+  }
+}
