@@ -7,7 +7,7 @@ import i18next from "../app/i18n/client";
 export default function Providers({ children }: { children: React.ReactNode }) {
     return (
         <I18nextProvider i18n={i18next}>
-            <ThemeProvider attribute="class" defaultTheme="system" enableSystem disableTransitionOnChange>
+            <ThemeProvider attribute="class" defaultTheme="light" enableSystem disableTransitionOnChange>
                 {children}
             </ThemeProvider>
         </I18nextProvider>

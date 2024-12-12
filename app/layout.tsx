@@ -25,7 +25,7 @@ export default function RootLayout({
 }>) {
     return (
         <html lang="en" suppressHydrationWarning>
-            <body className={`${sora.variable} ${manrope.variable} font-sans antialiased`}>
+            <body className={`${sora.variable} ${manrope.variable} font-sans antialiased bg-neutral-50 dark:bg-zinc-900`}>
                 <Providers>{children}</Providers>
             </body>
         </html>

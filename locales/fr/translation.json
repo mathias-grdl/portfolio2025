@@ -1,15 +1,18 @@
 {
-  "welcome": "Bienvenue",
-  "about": "À propos",
-  "projects": "Projets",
-  "contact": "Contact",
   "hero": {
-    "title": "Développeur web front-end",
-    "location": "France / Danemark"
+    "titlePart1": "Développeur web",
+    "titlePart2": "front-end"
   },
-  "skills": {
-    "developer": "Développeur",
-    "designer": "Designer",
-    "creative": "Créatif"
+  "slides": {
+    "hobbies": "Loisirs",
+    "projects": "Projets",
+    "experiences": "Expériences",
+    "contact": "Contact"
+  },
+  "nav": {
+    "about": "À propos",
+    "experiences": "Expériences",
+    "projects": "Projets",
+    "contact": "Contact"
   }
 }

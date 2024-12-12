@@ -1,15 +1,18 @@
 {
-  "welcome": "Welcome",
-  "about": "About",
-  "projects": "Projects",
-  "contact": "Contact",
   "hero": {
-    "title": "Front-end web developer",
-    "location": "France / Denmark"
+    "titlePart1": "Front-end",
+    "titlePart2": "web developer"
   },
-  "skills": {
-    "developer": "Developer",
-    "designer": "Designer",
-    "creative": "Creative"
+  "slides": {
+    "hobbies": "Hobbies",
+    "projects": "Projects",
+    "experiences": "Experiences",
+    "contact": "Next Steps"
+  },
+  "nav": {
+    "about": "About",
+    "experiences": "Experiences",
+    "projects": "Projects",
+    "contact": "Contact"
   }
 }

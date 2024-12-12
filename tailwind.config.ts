@@ -59,7 +59,16 @@ export default {
         fontFamily: {
             sans: ['var(--font-manrope)'],
             sora: ['var(--font-sora)'],
-        }
+        },
+		 keyframes: {
+                scaleIn: {
+                    '0%': { transform: 'translate(-50%, -50%) scale(0)' },
+                    '100%': { transform: 'translate(-50%, -50%) scale(1)' }
+                }
+            },
+            animation: {
+                'scaleIn': 'scaleIn 0.5s ease-out forwards'
+            }
   	}
   },
   plugins: [require("tailwindcss-animate")],
