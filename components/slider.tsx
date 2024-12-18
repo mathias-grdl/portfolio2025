@@ -7,7 +7,7 @@ export default function Slider() {
     const { t } = useTranslation();
     const [activeIndex, setActiveIndex] = useState(2);
     const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
-    const [cursorColor, setCursorColor] = useState("rgba(255, 255, 255, 0.3)");
+    const [cursorColor, setCursorColor] = useState("rgba(255, 255, 255, 0.5)");
     const [hoveredIndex, setHoveredIndex] = useState(activeIndex);
     const [isMouseInSection, setIsMouseInSection] = useState(false);
     const [isMouseOnHeader, setIsMouseOnHeader] = useState(false);
@@ -46,10 +46,10 @@ export default function Slider() {
         },
     ];
 
-    const colors = ["rgba(255, 165, 0, 0.3)", "rgba(0, 128, 255, 0.3)", "rgba(255, 255, 255, 0.3)", "rgba(255, 192, 203, 0.5)", "rgba(144, 238, 144, 0.3)"];
+    const colors = ["rgba(255, 165, 0, 0.5)", "rgba(0, 128, 255, 0.5)", "rgba(255, 255, 255, 0.5)", "rgba(255, 192, 203, 0.5)", "rgba(144, 238, 144, 0.5)"];
 
     const getWidth = (index: number) => {
-        return activeIndex === index ? "w-[40%]" : "w-[15%]";
+        return activeIndex === index ? "md:w-[40%]" : "md:w-[15%]";
     };
 
     const getHeight = (index: number) => {
@@ -170,7 +170,8 @@ export default function Slider() {
             {slides.map((slide, index) => (
                 <div
                     key={index}
-                    className={`relative w-full md:${getWidth(index)} ${getHeight(index)} md:h-screen ${getZIndex(
+                    className={`relative w-full ${getWidth(index)} ${getHeight(index)} md:h-screen ${getZIndex(
+                        // className={`relative w-full md:${getWidth(index)} ${getHeight(index)} md:h-screen ${getZIndex(
                         index
                     )} cursor-none transition-all duration-500 ease-in-out hover:scale-105 overflow-visible`}
                     onClick={() => handleClick(index)}

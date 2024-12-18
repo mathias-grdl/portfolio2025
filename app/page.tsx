@@ -51,9 +51,18 @@ export default function Home() {
                     </div>
                 </div>
             </section> */}
-            <section id="aboutMe" className="bg-slate-100 h-screen"></section>
-            <section id="projects" className="bg-slate-200 h-screen"></section>
-            <section id="experiences" className="bg-slate-300 h-screen"></section>
+            <section id="experiences" className="bg-dark-900 h-screen">
+                Experiences
+            </section>
+            <section id="aboutme" className="bg-slate-200 h-screen">
+                About me
+            </section>
+            <section id="projects" className="bg-dark-100 h-screen">
+                Projects
+            </section>
+            <section id="hobbies" className="bg-slate-300 h-screen">
+                Hobbies
+            </section>
         </div>
     );
 }

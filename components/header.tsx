@@ -14,16 +14,16 @@ export default function Header() {
             <nav className="col-span-1 flex justify-center">
                 <ul className="flex justify-between gap-2 items-center">
                     <li>
-                        <Link href="/">{t("nav.about")}</Link>
+                        <Link href="#aboutme">{t("nav.about")}</Link>
                     </li>
                     <li>
-                        <Link href="/">{t("nav.experiences")}</Link>
+                        <Link href="#experiences">{t("nav.experiences")}</Link>
                     </li>
                     <li>
-                        <Link href="/">{t("nav.projects")}</Link>
+                        <Link href="#projects">{t("nav.projects")}</Link>
                     </li>
                     <li>
-                        <Link href="/">{t("nav.contact")}</Link>
+                        <Link href="#hobbies">{t("nav.contact")}</Link>
                     </li>
                 </ul>
             </nav>
