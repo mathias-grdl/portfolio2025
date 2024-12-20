@@ -1,7 +1,10 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useRef } from "react";
 import { useTranslation } from "react-i18next";
 import Header from "./header";
 import { ChevronLeft, ChevronRight, ChevronDown } from "lucide-react";
+import useKeyboardNavigation from "../hooks/useKeyboardNavigation";
+import useMouseMovement from "../hooks/useMouseMovement";
+import useCursorColor from "../hooks/useCursorColor";
 
 export default function Slider() {
     const { t } = useTranslation();
@@ -81,36 +84,9 @@ export default function Slider() {
         setActiveIndex(prev => (prev === slides.length - 1 ? 0 : prev + 1));
     };
 
-    useEffect(() => {
-        const handleKeyDown = (event: KeyboardEvent) => {
-            if (event.key === "ArrowLeft") {
-                handlePrevSlide();
-            } else if (event.key === "ArrowRight") {
-                handleNextSlide();
-            }
-        };
-
-        window.addEventListener("keydown", handleKeyDown);
-
-        return () => {
-            window.removeEventListener("keydown", handleKeyDown);
-        };
-    }, []);
-
-    useEffect(() => {
-        const handleMouseMove = (e: MouseEvent) => {
-            if (isMouseInSection) {
-                setMousePosition({ x: e.clientX, y: e.clientY });
-            }
-        };
-
-        window.addEventListener("mousemove", handleMouseMove);
-        return () => window.removeEventListener("mousemove", handleMouseMove);
-    }, [isMouseInSection]);
-
-    useEffect(() => {
-        setCursorColor(colors[hoveredIndex]);
-    }, [hoveredIndex]);
+    useKeyboardNavigation(handlePrevSlide, handleNextSlide);
+    useMouseMovement(isMouseInSection, setMousePosition);
+    useCursorColor(hoveredIndex, colors, setCursorColor);
 
     return (
         <section

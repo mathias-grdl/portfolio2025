@@ -1,4 +1,7 @@
 import React, { useState } from "react";
+import { Button } from "./ui/button";
+import Link from "next/link";
+import { MapPin } from "lucide-react";
 
 export default function Experiences() {
     const [visibleImage, setVisibleImage] = useState<string | null>("image1");
@@ -13,6 +16,10 @@ export default function Experiences() {
             type: "Developer",
             description:
                 "En tant que développeur ReactJS chez Radio Analyzer, j'ai travaillé sur une plateforme SaaS innovante dédiée à l'analyse des radios. Mon rôle consistait à concevoir et implémenter des interfaces dynamiques et intuitives permettant aux utilisateurs d'accéder à des données détaillées sur les musiques les plus diffusées, les tendances et d'autres métriques clés. J'ai également collaboré avec l'équipe backend pour optimiser l'intégration des API et garantir la performance de l'application.",
+            btnName: "En savoir plus",
+            btnLink: "https://radioanalyzer.com/",
+            localisation: "Aalborg, Danmark",
+            localisationLink: "https://maps.app.goo.gl/Xmw69RrVu6f7g8Gr9",
         },
         {
             id: "image2",
@@ -23,6 +30,10 @@ export default function Experiences() {
             type: "Developer",
             description:
                 "Durant ma période en freelance, j'ai conçu et développé des projets variés en WordPress et ReactJS, répondant aux besoins spécifiques de mes clients. J'ai créé des sites vitrines, des e-commerces et des applications interactives, en assurant une expérience utilisateur fluide et des performances optimales. Cette expérience m'a permis de perfectionner ma capacité à gérer des projets de bout en bout, de la conception à la mise en production, tout en m'adaptant aux demandes variées des clients.",
+            btnName: "En savoir plus",
+            btnLink: "https://fr.fiverr.com/mathias_grdl",
+            localisation: "Perpignan, France",
+            localisationLink: "https://maps.app.goo.gl/XMS3wHD4gtgjTh949",
         },
         {
             id: "image3",
@@ -33,6 +44,10 @@ export default function Experiences() {
             type: "Developer",
             description:
                 "Chez Kori, j'ai occupé le poste de développeur WordPress, où j'ai contribué à la création et à la maintenance de sites web professionnels. J'étais en charge de l'installation et de la personnalisation de thèmes, ainsi que de l'intégration de fonctionnalités spécifiques pour répondre aux besoins des utilisateurs finaux. Mon rôle impliquait également une veille technologique pour garantir que les projets respectaient les normes actuelles du web.",
+            btnName: "En savoir plus",
+            btnLink: "https://www.agence-kori.fr/",
+            localisation: "Perpignan, France",
+            localisationLink: "https://maps.app.goo.gl/XMS3wHD4gtgjTh949",
         },
         {
             id: "image4",
@@ -43,6 +58,8 @@ export default function Experiences() {
             type: "Other",
             description:
                 "En tant que vendeur polyvalent dans une jardinerie, j'étais responsable de plusieurs aspects de la gestion quotidienne. Je m'occupais de la mise en rayon des produits, de l'entretien des plantes et du conseil client, en les orientant vers les solutions adaptées à leurs besoins. Cette expérience m'a permis de développer mes compétences en relation client et en gestion de stock.",
+            localisation: "Tours, France",
+            localisationLink: "https://maps.app.goo.gl/sWHUhPvJCDXNgZuf8",
         },
         {
             id: "image5",
@@ -53,6 +70,8 @@ export default function Experiences() {
             type: "Other",
             description:
                 "En travaillant comme livreur pour Uber Eats, j'assurais la livraison rapide et efficace de repas tout en respectant les consignes de sécurité et en garantissant la satisfaction des clients. Ce poste nécessitait une bonne gestion du temps, une connaissance approfondie de la ville et une grande réactivité pour résoudre les éventuels problèmes rencontrés lors des livraisons.",
+            localisation: "Angers, France",
+            localisationLink: "https://maps.app.goo.gl/rZLxanLae3eHcG3T7",
         },
     ];
 
@@ -61,7 +80,17 @@ export default function Experiences() {
         setVisibleImage(imageId);
     };
 
-    const renderImageSection = (imageId: string, yearRange: string, title: string, imageUrl: string, description: string) => (
+    const renderImageSection = (
+        imageId: string,
+        yearRange: string,
+        title: string,
+        imageUrl: string,
+        description: string,
+        btnName?: string,
+        btnLink?: string,
+        localisation?: string,
+        localisationLink?: string
+    ) => (
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
             <div className="flex flex-col">
                 <a
@@ -74,20 +103,43 @@ export default function Experiences() {
             </div>
             <div className="flex justify-center items-center">
                 {visibleImage === imageId ? (
-                    <img src={imageUrl} alt="" className="object-cover w-full h-full h-[300px] md:h-screen md:absolute md:top-0 md:w-[220px] lg:w-[400px]" />
+                    <>
+                        <img src={imageUrl} alt="" className="object-cover w-full h-[300px] md:h-screen md:absolute md:top-0 md:w-[220px] xl:w-[400px]" />
+                    </>
                 ) : (
                     <div className="h-full md:top-0"></div>
                 )}
             </div>
-            {visibleImage === imageId && <p className="md:absolute md:top-1/2 md:right-0 md:w-[220px] lg:w-[300px]">{description}</p>}
+            {visibleImage === imageId && (
+                <>
+                    <div className="my-2 md:my-5 md:absolute md:top-0 md:right-0 ">
+                        <Link href={localisationLink} target="_blank" className="flex gap-1">
+                            <MapPin />
+                            {localisation}
+                        </Link>
+                    </div>
+                    <div className="md:absolute md:top-1/4 md:right-0 md:w-[220px] lg:w-[300px]">
+                        <p>{description}</p>
+                        {btnName && btnLink && (
+                            <div className="flex justify-center pt-5">
+                                <Button asChild>
+                                    <Link target="_blank" href={btnLink}>
+                                        {btnName}
+                                    </Link>
+                                </Button>
+                            </div>
+                        )}
+                    </div>
+                </>
+            )}
         </div>
     );
 
     const filteredExperiences = filter === "All" ? experiences : experiences.filter(exp => exp.type === filter);
 
     return (
-        <section id="experiences" className="bg-slate-100 dark:bg-black h-full md:h-screen flex flex-col my-5 container mx-auto">
-            <div className="gap-4">
+        <section id="experiences" className="bg-slate-100 dark:bg-black h-full md:h-screen flex flex-col container mx-auto">
+            <div className="gap-4 md:h-screen">
                 <div className="relative w-full pt-5">
                     <div className="flex gap-2 pt-5">
                         <button className={filter === "All" ? "active text-blue-500 border-b-2 border-b-blue-500" : ""} onClick={() => setFilter("All")}>
@@ -100,7 +152,19 @@ export default function Experiences() {
                         </button>
                     </div>
                     {filteredExperiences.map(exp => (
-                        <div key={exp.id}>{renderImageSection(exp.id, exp.yearRange, exp.title, exp.imageUrl, exp.description)}</div>
+                        <div key={exp.id}>
+                            {renderImageSection(
+                                exp.id,
+                                exp.yearRange,
+                                exp.title,
+                                exp.imageUrl,
+                                exp.description,
+                                exp.btnName,
+                                exp.btnLink,
+                                exp.localisation,
+                                exp.localisationLink
+                            )}
+                        </div>
                     ))}
                 </div>
             </div>
