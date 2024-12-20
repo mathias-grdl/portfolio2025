@@ -8,7 +8,7 @@ export default function Header() {
     const { t } = useTranslation();
 
     return (
-        <header className="relative w-screen z-[10] grid grid-cols-3 items-center pt-3 px-5">
+        <header className=" relative w-screen z-[10] grid grid-cols-3 items-center pt-3 px-5 ">
             <h1 className="col-span-1">Mathias Grondziel</h1>
 
             <nav className="col-span-1 flex justify-center">

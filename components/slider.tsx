@@ -171,7 +171,6 @@ export default function Slider() {
                 <div
                     key={index}
                     className={`relative w-full ${getWidth(index)} ${getHeight(index)} md:h-screen ${getZIndex(
-                        // className={`relative w-full md:${getWidth(index)} ${getHeight(index)} md:h-screen ${getZIndex(
                         index
                     )} cursor-none transition-all duration-500 ease-in-out hover:scale-105 overflow-visible`}
                     onClick={() => handleClick(index)}
@@ -186,11 +185,6 @@ export default function Slider() {
                             <h1 className="uppercase text-3xl md:xl:text-4xl lg:text-6xl xl:text-9xl whitespace-nowrap text-white text-center absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-20 scale-0 animate-scaleIn">
                                 {slide.title}
                             </h1>
-                            {/* <div className="absolute bottom-0 left-1/2 transform -translate-x-1/2 h-1/2 flex items-end justify-center pb-8 z-30">
-                                <div className="bg-white/20 p-2 rounded-full hover:bg-white/40 transition-all animate-bounce">
-                                    <ChevronDown className="w-8 h-8 text-white" />
-                                </div>
-                            </div> */}
                         </>
                     )}
                 </div>

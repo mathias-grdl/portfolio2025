@@ -10,8 +10,15 @@ const nextConfig = {
         protocol: 'https',
         hostname: 'plus.unsplash.com',
       },
+      {
+        protocol: 'https',
+        hostname: 'images.pexels.com',
+      },
     ],
   },
 }
 
-module.exports = nextConfig
+module.exports = {
+  ...nextConfig,
+  transpilePackages: ['gsap'],
+}
