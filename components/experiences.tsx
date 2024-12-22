@@ -1,11 +1,72 @@
-import React, { useState } from "react";
+import React, { useState, useEffect, useRef } from "react";
+import Lenis from "@studio-freight/lenis";
+import { gsap } from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { Button } from "./ui/button";
 import Link from "next/link";
 import { MapPin } from "lucide-react";
+import Section from "./Section";
 
 export default function Experiences() {
     const [visibleImage, setVisibleImage] = useState<string | null>("image1");
     const [filter, setFilter] = useState<string>("All");
+    const sectionRef = useRef(null);
+    const experiencesRef = useRef<HTMLDivElement[]>([]);
+
+    useEffect(() => {
+        gsap.registerPlugin(ScrollTrigger);
+
+        const lenis = new Lenis({
+            duration: 1.2,
+            easing: t => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+        });
+
+        function raf(time: number) {
+            lenis.raf(time);
+            requestAnimationFrame(raf);
+        }
+        requestAnimationFrame(raf);
+
+        // Récupérer le nombre d'expériences filtrées
+        const filteredLength = filter === "All" 
+            ? experiences.length 
+            : experiences.filter(exp => exp.type === filter).length;
+
+        // Configuration du pin principal avec hauteur adaptative
+        ScrollTrigger.create({
+            trigger: "#experiences",
+            start: "top top",
+            end: `+=${filteredLength * window.innerHeight}`, // Utilise la longueur filtrée
+            pin: true,
+            pinSpacing: true,
+        });
+
+        // Reset ScrollTrigger pour les éléments filtrés
+        const filteredExperiences = filter === "All" 
+            ? experiences 
+            : experiences.filter(exp => exp.type === filter);
+
+        // Configuration des triggers individuels avec des sections égales
+        filteredExperiences.forEach((exp, index) => {
+            const sectionHeight = window.innerHeight;
+            ScrollTrigger.create({
+                trigger: experiencesRef.current[experiences.findIndex(e => e.id === exp.id)],
+                start: `top+=${index * sectionHeight} center`,
+                end: `top+=${(index + 1) * sectionHeight} center`,
+                onEnter: () => setVisibleImage(exp.id),
+                onEnterBack: () => {
+                    if (index > 0) {
+                        setVisibleImage(filteredExperiences[index - 1].id);
+                    }
+                },
+            });
+        });
+
+        return () => {
+            lenis.destroy();
+            ScrollTrigger.getAll().forEach(st => st.kill());
+        };
+    }, [filter]); // Le useEffect se déclenche quand le filtre change
 
     const experiences = [
         {
@@ -113,7 +174,7 @@ export default function Experiences() {
             {visibleImage === imageId && (
                 <>
                     <div className="my-2 md:my-5 md:absolute md:top-0 md:right-0 ">
-                        <Link href={localisationLink} target="_blank" className="flex gap-1">
+                        <Link href={localisationLink ? localisationLink : ""} target="_blank" className="flex gap-1">
                             <MapPin />
                             {localisation}
                         </Link>
@@ -138,36 +199,38 @@ export default function Experiences() {
     const filteredExperiences = filter === "All" ? experiences : experiences.filter(exp => exp.type === filter);
 
     return (
-        <section id="experiences" className="bg-slate-100 dark:bg-black h-full md:h-screen flex flex-col container mx-auto">
-            <div className="gap-4 md:h-screen">
-                <div className="relative w-full pt-5">
-                    <div className="flex gap-2 pt-5">
-                        <button className={filter === "All" ? "active text-blue-500 border-b-2 border-b-blue-500" : ""} onClick={() => setFilter("All")}>
-                            All
-                        </button>
-                        <button
-                            className={filter === "Developer" ? "active text-blue-500 border-b-2 border-b-blue-500" : ""}
-                            onClick={() => setFilter("Developer")}>
-                            Developer
-                        </button>
-                    </div>
-                    {filteredExperiences.map(exp => (
-                        <div key={exp.id}>
-                            {renderImageSection(
-                                exp.id,
-                                exp.yearRange,
-                                exp.title,
-                                exp.imageUrl,
-                                exp.description,
-                                exp.btnName,
-                                exp.btnLink,
-                                exp.localisation,
-                                exp.localisationLink
-                            )}
+        <Section id="experiences" className="bg-slate-100 dark:bg-black h-[1000px]" ref={sectionRef}>
+            <div className="flex flex-col container mx-auto">
+                <div className="gap-4 ">
+                    <div className="relative w-full pt-5">
+                        <div className="flex gap-2 pt-5">
+                            <button className={filter === "All" ? "active text-blue-500 border-b-2 border-b-blue-500" : ""} onClick={() => setFilter("All")}>
+                                All
+                            </button>
+                            <button
+                                className={filter === "Developer" ? "active text-blue-500 border-b-2 border-b-blue-500" : ""}
+                                onClick={() => setFilter("Developer")}>
+                                Developer
+                            </button>
                         </div>
-                    ))}
+                        {filteredExperiences.map((exp, index) => (
+                            <div key={exp.id} ref={el => (experiencesRef.current[index] = el!)}>
+                                {renderImageSection(
+                                    exp.id,
+                                    exp.yearRange,
+                                    exp.title,
+                                    exp.imageUrl,
+                                    exp.description,
+                                    exp.btnName,
+                                    exp.btnLink,
+                                    exp.localisation,
+                                    exp.localisationLink
+                                )}
+                            </div>
+                        ))}
+                    </div>
                 </div>
             </div>
-        </section>
+        </Section>
     );
 }

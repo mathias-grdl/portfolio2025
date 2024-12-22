@@ -9,21 +9,29 @@ export default function Header() {
 
     return (
         <header className=" relative w-screen z-[10] grid grid-cols-3 items-center pt-3 px-5 ">
-            <h1 className="col-span-1">Mathias Grondziel</h1>
+            <h1 className="col-span-1 text-white">Mathias Grondziel</h1>
 
             <nav className="col-span-1 flex justify-center">
                 <ul className="flex justify-between gap-2 items-center">
                     <li>
-                        <Link href="#aboutme">{t("nav.about")}</Link>
+                        <Link href="#aboutme" className="text-white">
+                            {t("nav.about")}
+                        </Link>
                     </li>
                     <li>
-                        <Link href="#experiences">{t("nav.experiences")}</Link>
+                        <Link href="#experiences" className="text-white">
+                            {t("nav.experiences")}
+                        </Link>
                     </li>
                     <li>
-                        <Link href="#projects">{t("nav.projects")}</Link>
+                        <Link href="#projects" className="text-white">
+                            {t("nav.projects")}
+                        </Link>
                     </li>
                     <li>
-                        <Link href="#hobbies">{t("nav.contact")}</Link>
+                        <Link href="#hobbies" className="text-white">
+                            {t("nav.contact")}
+                        </Link>
                     </li>
                 </ul>
             </nav>
