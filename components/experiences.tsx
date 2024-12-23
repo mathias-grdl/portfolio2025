@@ -27,26 +27,22 @@ export default function Experiences() {
         }
         requestAnimationFrame(raf);
 
-        // Récupérer le nombre d'expériences filtrées
         const filteredLength = filter === "All" 
             ? experiences.length 
             : experiences.filter(exp => exp.type === filter).length;
 
-        // Configuration du pin principal avec hauteur adaptative
         ScrollTrigger.create({
             trigger: "#experiences",
             start: "top top",
-            end: `+=${filteredLength * window.innerHeight}`, // Utilise la longueur filtrée
+            end: `+=${filteredLength * window.innerHeight}`, 
             pin: true,
             pinSpacing: true,
         });
 
-        // Reset ScrollTrigger pour les éléments filtrés
         const filteredExperiences = filter === "All" 
             ? experiences 
             : experiences.filter(exp => exp.type === filter);
 
-        // Configuration des triggers individuels avec des sections égales
         filteredExperiences.forEach((exp, index) => {
             const sectionHeight = window.innerHeight;
             ScrollTrigger.create({
@@ -66,7 +62,7 @@ export default function Experiences() {
             lenis.destroy();
             ScrollTrigger.getAll().forEach(st => st.kill());
         };
-    }, [filter]); // Le useEffect se déclenche quand le filtre change
+    }, [filter]); 
 
     const experiences = [
         {
