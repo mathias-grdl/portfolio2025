@@ -50,7 +50,7 @@ const AboutMe = () => {
             lenis.destroy();
             ScrollTrigger.getAll().forEach(t => t.kill());
         };
-    }, []);
+    }, []); 
 
     return (
         <div ref={sectionRef} className="min-h-screen">

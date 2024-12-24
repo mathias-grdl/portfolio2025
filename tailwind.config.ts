@@ -56,31 +56,56 @@ export default {
   			md: 'calc(var(--radius) - 2px)',
   			sm: 'calc(var(--radius) - 4px)'
   		},
-        fontFamily: {
-            sans: ['var(--font-manrope)'],
-            sora: ['var(--font-sora)'],
-        },
-		 keyframes: {
-                scaleIn: {
-                    '0%': { transform: 'translate(-50%, -50%) scale(0)' },
-                    '100%': { transform: 'translate(-50%, -50%) scale(1)' }
-                }
-            },
-            animation: {
-                'scaleIn': 'scaleIn 0.5s ease-out forwards'
-            }
+  		fontFamily: {
+  			sans: [
+  				'var(--font-manrope)'
+  			],
+  			sora: [
+  				'var(--font-sora)'
+  			]
+  		},
+  		keyframes: {
+  			scaleIn: {
+  				'0%': {
+  					transform: 'translate(-50%, -50%) scale(0)'
+  				},
+  				'100%': {
+  					transform: 'translate(-50%, -50%) scale(1)'
+  				}
+  			},
+  			'accordion-down': {
+  				from: {
+  					height: '0'
+  				},
+  				to: {
+  					height: 'var(--radix-accordion-content-height)'
+  				}
+  			},
+  			'accordion-up': {
+  				from: {
+  					height: 'var(--radix-accordion-content-height)'
+  				},
+  				to: {
+  					height: '0'
+  				}
+  			}
+  		},
+  		animation: {
+  			scaleIn: 'scaleIn 0.5s ease-out forwards',
+  			'accordion-down': 'accordion-down 0.2s ease-out',
+  			'accordion-up': 'accordion-up 0.2s ease-out'
+  		}
   	},
-	  container: {
-      center: true,
-
-	  padding: {
-        DEFAULT: '1rem',
-        sm: '2rem',
-        lg: '4rem',
-        xl: '5rem',
-        '2xl': '6rem',
-      },
-    },
+  	container: {
+  		center: true,
+  		padding: {
+  			DEFAULT: '1rem',
+  			sm: '2rem',
+  			lg: '4rem',
+  			xl: '5rem',
+  			'2xl': '6rem'
+  		}
+  	}
   },
   plugins: [require("tailwindcss-animate")],
 } satisfies Config;

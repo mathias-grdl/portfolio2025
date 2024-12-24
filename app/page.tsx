@@ -2,6 +2,7 @@
 import AboutMe from "@/components/aboutme";
 import Experiences from "@/components/experiences";
 import Hobbies from "@/components/hobbies";
+import Projects from "@/components/projects";
 import Reviews from "@/components/reviews";
 import Slider from "@/components/slider";
 import SmoothScroll from "@/components/SmoothScroll";
@@ -14,10 +15,8 @@ export default function Home() {
                 <AboutMe />
                 <Experiences />
                 <Reviews />
+                <Projects />
                 <Hobbies />
-                <section id="projects" className="bg-dark-100 h-screen">
-                    Projects
-                </section>
             </div>
         </SmoothScroll>
     );
