@@ -72,7 +72,7 @@ export default function Reviews() {
     }, []);
 
     return (
-        <section ref={containerRef} className="h-screen overflow-hidden relative bg-gradient-to-b from-white to-gray-50">
+        <section ref={containerRef} className="h-full md:h-screen overflow-hidden relative bg-gradient-to-b from-white to-gray-50">
             <div className="container mx-auto px-4">
                 <div className="flex items-center justify-center py-12">
                     <h2 className="text-4xl uppercase font-bold">Ils m'ont fait confiance</h2>

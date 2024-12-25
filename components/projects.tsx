@@ -105,7 +105,7 @@ export default function Projects() {
     };
 
     return (
-        <section id="projects" className="bg-slate-100 dark:bg-black h-screen relative" onMouseMove={handleMouseMove} ref={sectionRef}>
+        <section id="projects" className="bg-slate-100 dark:bg-black h-full md:h-screen relative" onMouseMove={handleMouseMove} ref={sectionRef}>
             {hoveredProject && (
                 <div
                     className="absolute pointer-events-none"

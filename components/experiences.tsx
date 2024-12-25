@@ -27,21 +27,17 @@ export default function Experiences() {
         }
         requestAnimationFrame(raf);
 
-        const filteredLength = filter === "All" 
-            ? experiences.length 
-            : experiences.filter(exp => exp.type === filter).length;
+        const filteredLength = filter === "All" ? experiences.length : experiences.filter(exp => exp.type === filter).length;
 
         ScrollTrigger.create({
             trigger: "#experiences",
             start: "top top",
-            end: `+=${filteredLength * window.innerHeight}`, 
+            end: `+=${filteredLength * window.innerHeight}`,
             pin: true,
             pinSpacing: true,
         });
 
-        const filteredExperiences = filter === "All" 
-            ? experiences 
-            : experiences.filter(exp => exp.type === filter);
+        const filteredExperiences = filter === "All" ? experiences : experiences.filter(exp => exp.type === filter);
 
         filteredExperiences.forEach((exp, index) => {
             const sectionHeight = window.innerHeight;
@@ -62,7 +58,7 @@ export default function Experiences() {
             lenis.destroy();
             ScrollTrigger.getAll().forEach(st => st.kill());
         };
-    }, [filter]); 
+    }, [filter]);
 
     const experiences = [
         {
@@ -195,7 +191,7 @@ export default function Experiences() {
     const filteredExperiences = filter === "All" ? experiences : experiences.filter(exp => exp.type === filter);
 
     return (
-        <Section id="experiences" className="bg-slate-100 dark:bg-black h-[1000px]" ref={sectionRef}>
+        <Section id="experiences" className="bg-slate-100 dark:bg-black h-full md:h-screen" ref={sectionRef}>
             <div className="flex flex-col container mx-auto">
                 <div className="gap-4 ">
                     <div className="relative w-full pt-5">
