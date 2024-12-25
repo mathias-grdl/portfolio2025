@@ -191,38 +191,40 @@ export default function Experiences() {
     const filteredExperiences = filter === "All" ? experiences : experiences.filter(exp => exp.type === filter);
 
     return (
-        <Section id="experiences" className="bg-slate-100 dark:bg-black h-full md:h-screen" ref={sectionRef}>
-            <div className="flex flex-col container mx-auto">
-                <div className="gap-4 ">
-                    <div className="relative w-full pt-5">
-                        <div className="flex gap-2 pt-5">
-                            <button className={filter === "All" ? "active text-blue-500 border-b-2 border-b-blue-500" : ""} onClick={() => setFilter("All")}>
-                                All
-                            </button>
-                            <button
-                                className={filter === "Developer" ? "active text-blue-500 border-b-2 border-b-blue-500" : ""}
-                                onClick={() => setFilter("Developer")}>
-                                Developer
-                            </button>
-                        </div>
-                        {filteredExperiences.map((exp, index) => (
-                            <div key={exp.id} ref={el => (experiencesRef.current[index] = el!)}>
-                                {renderImageSection(
-                                    exp.id,
-                                    exp.yearRange,
-                                    exp.title,
-                                    exp.imageUrl,
-                                    exp.description,
-                                    exp.btnName,
-                                    exp.btnLink,
-                                    exp.localisation,
-                                    exp.localisationLink
-                                )}
+        <div ref={sectionRef}>
+            <Section id="experiences" className="bg-slate-100 dark:bg-black h-full md:h-screen">
+                <div className="flex flex-col container mx-auto">
+                    <div className="gap-4 ">
+                        <div className="relative w-full pt-5">
+                            <div className="flex gap-2 pt-5">
+                                <button className={filter === "All" ? "active text-blue-500 border-b-2 border-b-blue-500" : ""} onClick={() => setFilter("All")}>
+                                    All
+                                </button>
+                                <button
+                                    className={filter === "Developer" ? "active text-blue-500 border-b-2 border-b-blue-500" : ""}
+                                    onClick={() => setFilter("Developer")}>
+                                    Developer
+                                </button>
                             </div>
-                        ))}
+                            {filteredExperiences.map((exp, index) => (
+                                <div key={exp.id} ref={el => (experiencesRef.current[index] = el!)}>
+                                    {renderImageSection(
+                                        exp.id,
+                                        exp.yearRange,
+                                        exp.title,
+                                        exp.imageUrl,
+                                        exp.description,
+                                        exp.btnName,
+                                        exp.btnLink,
+                                        exp.localisation,
+                                        exp.localisationLink
+                                    )}
+                                </div>
+                            ))}
+                        </div>
                     </div>
                 </div>
-            </div>
-        </Section>
+            </Section>
+        </div>
     );
 }

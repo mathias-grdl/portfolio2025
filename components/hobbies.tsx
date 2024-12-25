@@ -50,7 +50,7 @@ const locationData = [
 export default function Hobbies() {
     const containerRef = useRef(null);
     const [activeLocation, setActiveLocation] = useState("Oslo, Norway");
-    const locationRefs = useRef<HTMLDivElement[]>([]);
+    const locationRefs = useRef<HTMLButtonElement[]>([]);
     const [isTransitioning, setIsTransitioning] = useState(false);
 
     // Préchargement des images

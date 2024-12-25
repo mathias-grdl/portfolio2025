@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import Image from "next/image";
 import ReactJs from "../public/assets/logos/reactjs.svg";
 import Bootstrap5 from "../public/assets/logos/bootstrap5.svg";

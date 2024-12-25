@@ -1,4 +1,5 @@
-import React, { useEffect, useRef, useState } from "react";
+/* eslint-disable @typescript-eslint/no-unused-vars */
+import React, { useEffect, useRef } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import Lenis from "@studio-freight/lenis";
@@ -8,7 +9,7 @@ import Review from "./review";
 export default function Reviews() {
     const containerRef = useRef(null);
     const trackRef = useRef(null);
-    const cardsRef = useRef([]);
+    const cardsRef = useRef<(HTMLDivElement | null)[]>([]);
 
     useEffect(() => {
         gsap.registerPlugin(ScrollTrigger);
@@ -37,7 +38,7 @@ export default function Reviews() {
             });
         });
 
-        const horizontalScroll = gsap.to(trackRef.current, {
+        const _horizontalScroll = gsap.to(trackRef.current, {
             xPercent: -100,
             ease: "none",
             scrollTrigger: {
@@ -75,7 +76,7 @@ export default function Reviews() {
         <section ref={containerRef} className="h-full md:h-screen overflow-hidden relative bg-gradient-to-b from-white to-gray-50">
             <div className="container mx-auto px-4">
                 <div className="flex items-center justify-center py-12">
-                    <h2 className="text-4xl uppercase font-bold">Ils m'ont fait confiance</h2>
+                    <h2 className="text-4xl uppercase font-bold">Ils m&apos;ont fait confiance</h2>
                 </div>
                 <div ref={trackRef} className="w-[300%] will-change-transform">
                     <div className="grid grid-rows-2 grid-flow-col gap-8 w-full p-8">

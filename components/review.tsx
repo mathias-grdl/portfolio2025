@@ -17,7 +17,6 @@ const Review = React.forwardRef<HTMLDivElement, ReviewProps>(({ review }, ref) =
         const red = Math.min(255, (255 * (5 - rating)) / 5);
         const green = Math.min(255, 255 * rating * 1.5) / 5; // Further increase green intensity for a lighter color
         const color = `rgb(${red}, ${green}, 0)`;
-        console.log(`Rating: ${rating}, Color: ${color}`);
         return color;
     };
 
