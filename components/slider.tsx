@@ -20,7 +20,7 @@ export default function Slider() {
         {
             url: "https://images.unsplash.com/photo-1516483638261-f4dbaf036963?q=80&w=1972&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
             subTitle: "Travel",
-            id: "travel",
+            id: "hobbies",
             title: t("slides.hobbies"),
         },
         {
@@ -33,7 +33,7 @@ export default function Slider() {
             url: "https://images.unsplash.com/photo-1441786485319-5e0f0c092803?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
             subTitle: "About Me",
             title: [t("hero.titlePart1"), <br key="break" />, t("hero.titlePart2")],
-            id: "aboutMe",
+            id: "aboutme",
         },
         {
             url: "https://images.unsplash.com/photo-1513622470522-26c3c8a854bc?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",

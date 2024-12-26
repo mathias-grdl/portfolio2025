@@ -1,5 +1,6 @@
 "use client";
 import AboutMe from "@/components/aboutme";
+import Contact from "@/components/contact";
 import Experiences from "@/components/experiences";
 import Hobbies from "@/components/hobbies";
 import Projects from "@/components/projects";
@@ -17,6 +18,7 @@ export default function Home() {
                 <Reviews />
                 <Projects />
                 <Hobbies />
+                <Contact />
             </div>
         </SmoothScroll>
     );

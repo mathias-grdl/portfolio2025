@@ -29,7 +29,7 @@ export default function Header() {
                         </Link>
                     </li>
                     <li>
-                        <Link href="#hobbies" className="text-white">
+                        <Link href="#contact" className="text-white">
                             {t("nav.contact")}
                         </Link>
                     </li>
