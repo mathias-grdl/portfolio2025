@@ -49,7 +49,7 @@ const locationData = [
 
 export default function Hobbies() {
     const containerRef = useRef(null);
-    const [activeLocation, setActiveLocation] = useState("Oslo, Norway");
+    const [activeLocation, setActiveLocation] = useState("France");
     const locationRefs = useRef<HTMLButtonElement[]>([]);
     const [isTransitioning, setIsTransitioning] = useState(false);
 
@@ -88,7 +88,8 @@ export default function Hobbies() {
     };
 
     useEffect(() => {
-        if (window.innerWidth >= 768) { // md breakpoint
+        if (window.innerWidth >= 768) {
+            // md breakpoint
             gsap.registerPlugin(ScrollTrigger);
 
             const lenis = new Lenis({

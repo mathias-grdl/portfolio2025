@@ -133,13 +133,13 @@ export default function Slider() {
 
             <button
                 onClick={handlePrevSlide}
-                className="absolute left-4 top-1/2 -translate-y-1/2 z-40 bg-white/20 p-2 rounded-full hover:bg-white/40 transition-all">
+                className="absolute left-4 top-1/2 -translate-y-1/2 z-30 bg-white/20 p-2 rounded-full hover:bg-white/40 transition-all">
                 <ChevronLeft className="w-8 h-8 text-white" />
             </button>
 
             <button
                 onClick={handleNextSlide}
-                className="absolute right-4 top-1/2 -translate-y-1/2 z-40 bg-white/20 p-2 rounded-full hover:bg-white/40 transition-all">
+                className="absolute right-4 top-1/2 -translate-y-1/2 z-30 bg-white/20 p-2 rounded-full hover:bg-white/40 transition-all">
                 <ChevronRight className="w-8 h-8 text-white" />
             </button>
 

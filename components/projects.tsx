@@ -55,32 +55,41 @@ export default function Projects() {
         {
             img: "https://mathias-grondziel.com/assets/work/obandito-home.png",
             title: "O'bandito",
-            description: "Working with useEffects and fetching with useSWR",
-            tags: ["ReactJs", "Wordpress"],
+            description:
+                "O'bandito is a web platform connecting musicians with event organizers, developed over 4 weeks as part of a professional certification project. Built collaboratively with a team of 3 developers (2 frontend, 1 backend).",
+            tags: ["ReactJs", "API GraphQL", "Figma"],
         },
         {
             img: "https://www.mouvement-metropole.fr/wp-content/uploads/2024/09/les-20-lieux-incontournables-a-visiter-en-grece-un-voyage-inoubliable-au-coeur-de-la-mediterranee_66ab3ee39a7a1-scaled.jpg",
             title: "Movies finder",
-            description: "Working with useEffects and fetching with useSWR",
+            description:
+                "A movie search platform built with React, leveraging an external API for real-time movie data. Features dynamic search, movie details display, and responsive design using useEffect and useSWR for efficient data fetching.",
             tags: ["ReactJs", "API"],
+            link: "https://movie-search-hub.netlify.app/?s=Jumanji",
+            github: "https://github.com/mathias-grdl/BeginReact-Workshop-UseEffect",
         },
         {
             img: "https://www.okvoyage.com/wp-content/uploads/2023/07/paysages-de-grece.jpg",
             title: "Maison Thishan",
-            description: "Creating an e-commerce website for an independent perfumer",
-            tags: ["E-commerce", "ReactJs"],
+            description:
+                "A fully custom WordPress e-commerce website built from scratch for an independent perfumer. Features bespoke theme development, custom product catalog, and tailored checkout process without using pre-made themes.",
+            tags: ["Wordpress", "E-commerce"],
+            link: "https://maisonthishan.com/",
         },
         {
             img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRN0mLAKZfJN3DDn-vtDmZXc_GJ0QCJvmUQUQ&s",
             title: "TP66",
             description: "Redesign of the website for the largest construction company in the Eastern Pyrenees",
-            tags: ["Construction", "Wordpress"],
+            tags: ["Wordpress"],
+            link: "https://www.travaux-publics-66.fr/",
         },
         {
             img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRN0mLAKZfJN3DDn-vtDmZXc_GJ0QCJvmUQUQ&s",
             title: "Kasa",
             description: "Kasa is my first ReactJS project aimed at showcasing different apartments",
-            tags: ["ReactJs", "Real Estate"],
+            tags: ["ReactJs"],
+            link: "https://p7-kasa-openclassrooms.netlify.app/",
+            github: "https://github.com/mathias-grdl/P7-Kasa-Openclassrooms",
         },
     ];
 
@@ -143,8 +152,20 @@ export default function Projects() {
                                         <img className="col-span-1 object-cover size-full" src={project.img} alt={project.title} />
                                     </div>
                                     <div className="col-span-1 flex gap-2 justify-end">
-                                        <Button>Link</Button>
-                                        <Button>Github</Button>
+                                        {project.link ? (
+                                            <Button asChild>
+                                                <a href={project.link} target="_blank" rel="noopener noreferrer">
+                                                    Link
+                                                </a>
+                                            </Button>
+                                        ) : null}
+                                        {project.github ? (
+                                            <Button asChild>
+                                                <a href={project.github} target="_blank" rel="noopener noreferrer">
+                                                    Github
+                                                </a>
+                                            </Button>
+                                        ) : null}
                                     </div>
                                 </div>
                             </AccordionContent>

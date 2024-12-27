@@ -10,8 +10,9 @@ import Section from "./Section";
 export default function Experiences() {
     const [visibleImage, setVisibleImage] = useState<string | null>("image1");
     const [filter, setFilter] = useState<string>("All");
-    const sectionRef = useRef(null);
+    const sectionRef = useRef<HTMLDivElement>(null);
     const experiencesRef = useRef<HTMLDivElement[]>([]);
+    const titleRefs = useRef<{ [key: string]: HTMLAnchorElement | null }>({});
 
     useEffect(() => {
         gsap.registerPlugin(ScrollTrigger);
@@ -29,13 +30,16 @@ export default function Experiences() {
 
         const filteredLength = filter === "All" ? experiences.length : experiences.filter(exp => exp.type === filter).length;
 
-        ScrollTrigger.create({
-            trigger: "#experiences",
-            start: "top top",
-            end: `+=${filteredLength * window.innerHeight}`,
-            pin: true,
-            pinSpacing: true,
-        });
+        if (window.innerWidth >= 768) {
+            // Only pin for medium screens and above
+            ScrollTrigger.create({
+                trigger: "#experiences",
+                start: "top top",
+                end: `+=${filteredLength * window.innerHeight}`,
+                pin: true,
+                pinSpacing: true,
+            });
+        }
 
         const filteredExperiences = filter === "All" ? experiences : experiences.filter(exp => exp.type === filter);
 
@@ -68,7 +72,7 @@ export default function Experiences() {
             imageUrl: "https://img.static-kl.com/images/media/14503BF4-AEAD-481C-8987FC06F3D8C704?w=1280",
             type: "Developer",
             description:
-                "En tant que développeur ReactJS chez Radio Analyzer, j'ai travaillé sur une plateforme SaaS innovante dédiée à l'analyse des radios. Mon rôle consistait à concevoir et implémenter des interfaces dynamiques et intuitives permettant aux utilisateurs d'accéder à des données détaillées sur les musiques les plus diffusées, les tendances et d'autres métriques clés. J'ai également collaboré avec l'équipe backend pour optimiser l'intégration des API et garantir la performance de l'application.",
+                "Développement de produits SaaS chez Radio Analyzer (logiciels internes et solutions clients) pour l'industrie radiophonique mondiale. Création d'interfaces ReactJS avec graphiques avancés, virtualisation de données et systèmes de filtrage complexes. Collaboration étroite avec l'équipe backend pour l'intégration API et l'amélioration continue des produits.",
             btnName: "En savoir plus",
             btnLink: "https://radioanalyzer.com/",
             localisation: "Aalborg, Danmark",
@@ -82,7 +86,8 @@ export default function Experiences() {
                 "https://images.unsplash.com/photo-1609185271997-ec976c17a0bc?q=80&w=1964&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
             type: "Developer",
             description:
-                "Durant ma période en freelance, j'ai conçu et développé des projets variés en WordPress et ReactJS, répondant aux besoins spécifiques de mes clients. J'ai créé des sites vitrines, des e-commerces et des applications interactives, en assurant une expérience utilisateur fluide et des performances optimales. Cette expérience m'a permis de perfectionner ma capacité à gérer des projets de bout en bout, de la conception à la mise en production, tout en m'adaptant aux demandes variées des clients.",
+                "En tant que freelance, développement de sites vitrines, e-commerces et applications en WordPress et ReactJS. Gestion complète des projets de la conception à la mise en production, résolution de bugs et migrations de sites. Focus sur la performance et l'expérience utilisateur.",
+
             btnName: "En savoir plus",
             btnLink: "https://fr.fiverr.com/mathias_grdl",
             localisation: "Perpignan, France",
@@ -96,7 +101,7 @@ export default function Experiences() {
                 "https://images.unsplash.com/photo-1722605267048-a5389a97b20c?q=80&w=1935&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
             type: "Developer",
             description:
-                "Chez Kori, j'ai occupé le poste de développeur WordPress, où j'ai contribué à la création et à la maintenance de sites web professionnels. J'étais en charge de l'installation et de la personnalisation de thèmes, ainsi que de l'intégration de fonctionnalités spécifiques pour répondre aux besoins des utilisateurs finaux. Mon rôle impliquait également une veille technologique pour garantir que les projets respectaient les normes actuelles du web.",
+                "Développeur WordPress chez Kori, spécialisé dans la création de sites web sur mesure. Développement de thèmes personnalisés from scratch avec intégration pixel perfect des maquettes Figma et XD. Implémentation de fonctionnalités spécifiques et maintenance de sites existants.",
             btnName: "En savoir plus",
             btnLink: "https://www.agence-kori.fr/",
             localisation: "Perpignan, France",
@@ -110,7 +115,7 @@ export default function Experiences() {
                 "https://images.unsplash.com/photo-1724599685287-299a6412b92a?q=80&w=1820&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
             type: "Other",
             description:
-                "En tant que vendeur polyvalent dans une jardinerie, j'étais responsable de plusieurs aspects de la gestion quotidienne. Je m'occupais de la mise en rayon des produits, de l'entretien des plantes et du conseil client, en les orientant vers les solutions adaptées à leurs besoins. Cette expérience m'a permis de développer mes compétences en relation client et en gestion de stock.",
+                "Vendeur polyvalent en jardinerie: mise en rayon, entretien des plantes, conseil auprès des clients et création d'animations promotionnelles.",
             localisation: "Tours, France",
             localisationLink: "https://maps.app.goo.gl/sWHUhPvJCDXNgZuf8",
         },
@@ -122,7 +127,7 @@ export default function Experiences() {
                 "https://images.unsplash.com/photo-1643549811064-adf938a5ca40?q=80&w=1935&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
             type: "Other",
             description:
-                "En travaillant comme livreur pour Uber Eats, j'assurais la livraison rapide et efficace de repas tout en respectant les consignes de sécurité et en garantissant la satisfaction des clients. Ce poste nécessitait une bonne gestion du temps, une connaissance approfondie de la ville et une grande réactivité pour résoudre les éventuels problèmes rencontrés lors des livraisons.",
+                "Livreur Uber Eats: livraison de repas dans le respect des normes de sécurité alimentaire, avec un focus sur la satisfaction client. Développement d'une excellente connaissance de la ville et capacité à gérer les imprévus.",
             localisation: "Angers, France",
             localisationLink: "https://maps.app.goo.gl/rZLxanLae3eHcG3T7",
         },
@@ -131,6 +136,11 @@ export default function Experiences() {
     const handleImageVisibility = (imageId: string, event: React.MouseEvent<HTMLAnchorElement>) => {
         event.preventDefault();
         setVisibleImage(imageId);
+        if (window.innerWidth < 768) {
+            setTimeout(() => {
+                titleRefs.current[imageId]?.scrollIntoView({ behavior: "smooth" });
+            }, 100);
+        }
     };
 
     const renderImageSection = (
@@ -144,10 +154,11 @@ export default function Experiences() {
         localisation?: string,
         localisationLink?: string
     ) => (
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 pt-2 md:pt-0">
             <div className="flex flex-col">
                 <a
                     href="#"
+                    ref={el => (titleRefs.current[imageId] = el)}
                     className={`my-2 md:my-5 ps-2 ${visibleImage === imageId ? "active text-blue-500 border-s-2 border-s-blue-500" : ""}`}
                     onClick={e => handleImageVisibility(imageId, e)}>
                     <span>{yearRange}</span>
@@ -171,7 +182,7 @@ export default function Experiences() {
                             {localisation}
                         </Link>
                     </div>
-                    <div className="md:absolute md:top-1/4 md:right-0 md:w-[220px] lg:w-[300px]">
+                    <div className="md:absolute md:top-1/4 md:right-0 md:w-[220px] lg:w-[300px] pb-5 md:pb-0">
                         <p>{description}</p>
                         {btnName && btnLink && (
                             <div className="flex justify-center pt-5">
@@ -197,7 +208,9 @@ export default function Experiences() {
                     <div className="gap-4 ">
                         <div className="relative w-full pt-5">
                             <div className="flex gap-2 pt-5">
-                                <button className={filter === "All" ? "active text-blue-500 border-b-2 border-b-blue-500" : ""} onClick={() => setFilter("All")}>
+                                <button
+                                    className={filter === "All" ? "active text-blue-500 border-b-2 border-b-blue-500" : ""}
+                                    onClick={() => setFilter("All")}>
                                     All
                                 </button>
                                 <button

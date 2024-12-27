@@ -23,11 +23,11 @@ const Review = React.forwardRef<HTMLDivElement, ReviewProps>(({ review }, ref) =
     return (
         <div
             ref={ref}
-            className="review-card w-[400px] p-6 rounded-xl transform 
+            className="review-card w-full min-w-[300px] md:w-[400px] p-2 rounded-xl transform 
                        backdrop-blur-lg bg-white/90 shadow-lg border border-gray-100
                        hover:shadow-xl transition-shadow duration-300">
-            <div className="flex items-center mb-4 justify-between">
-                <div className="flex items-center gap-3">
+            <div className="flex flex-col items-center mb-4 justify-between md:flex-row ">
+                <div className="flex flex-col items-center md:flex-row gap-3">
                     <div>
                         <img src={review.picture} alt="" width={50} height={50} className="rounded-full object-cover" />
                     </div>
@@ -56,7 +56,7 @@ const Review = React.forwardRef<HTMLDivElement, ReviewProps>(({ review }, ref) =
                     ))}
                 </div>
             </div>
-            <p className="text-sm text-black/70">{review.review}</p>
+            <p className="text-sm text-black/70 line-clamp-5 md:line-clamp-none">{review.review}</p>
         </div>
     );
 });
