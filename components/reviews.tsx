@@ -3,12 +3,13 @@ import React, { useEffect, useRef, useState } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import Lenis from "@studio-freight/lenis";
-import { reviews } from "@/data/dataReviews";
+import { getReviews } from "@/data/dataReviews";
 import Review from "./review";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/navigation";
+import { useTranslation } from "react-i18next";
 
 type ReviewType = {
     id: number;
@@ -24,18 +25,23 @@ export default function Reviews() {
     const containerRef = useRef(null);
     const trackRef = useRef(null);
     const cardsRef = useRef<(HTMLDivElement | null)[]>([]);
-    const [displayedReviews, setDisplayedReviews] = useState(reviews);
+    const { t, i18n } = useTranslation();
+    const [displayedReviews, setDisplayedReviews] = useState(getReviews(t));
     const [currentSlide, setCurrentSlide] = useState(1);
     const [isMobile, setIsMobile] = useState(false);
+
+    useEffect(() => {
+        setDisplayedReviews(getReviews(t));
+    }, [i18n.language, t]);
 
     useEffect(() => {
         // Detect screen size
         const checkMobile = () => {
             setIsMobile(window.matchMedia("(max-width: 767px)").matches);
         };
-        
+
         checkMobile();
-        window.addEventListener('resize', checkMobile);
+        window.addEventListener("resize", checkMobile);
 
         if (isMobile) return;
 
@@ -98,7 +104,7 @@ export default function Reviews() {
         });
 
         return () => {
-            window.removeEventListener('resize', checkMobile);
+            window.removeEventListener("resize", checkMobile);
             lenis.destroy();
             mm.revert();
             ScrollTrigger.getAll().forEach(t => t.kill());
@@ -109,16 +115,11 @@ export default function Reviews() {
         <section ref={containerRef} className="h-screen overflow-hidden relative bg-gradient-to-b from-white to-gray-50">
             <div className="container mx-auto px-4">
                 <div className="flex items-center justify-center py-12">
-                    <h2 className="text-center text-4xl uppercase font-bold">Ils m&apos;ont fait confiance</h2>
+                    <h2 className="text-center text-4xl uppercase font-bold">{t("reviews.title")}</h2>
                 </div>
                 {isMobile ? (
                     <div className="relative md:hidden">
-                        <Swiper 
-                            modules={[Navigation]} 
-                            navigation 
-                            onSlideChange={swiper => setCurrentSlide(swiper.activeIndex + 1)} 
-                            className="w-full"
-                        >
+                        <Swiper modules={[Navigation]} navigation onSlideChange={swiper => setCurrentSlide(swiper.activeIndex + 1)} className="w-full">
                             {displayedReviews.map(review => (
                                 <SwiperSlide key={review.id}>
                                     <Review review={review} />
@@ -126,7 +127,7 @@ export default function Reviews() {
                             ))}
                         </Swiper>
                         <div className="text-center mt-4 text-gray-600">
-                            {currentSlide} / {displayedReviews.length}
+                            {t("reviews.slideIndicator", { current: currentSlide, total: displayedReviews.length })}
                         </div>
                     </div>
                 ) : (

@@ -1,8 +1,22 @@
-export const reviews = [
+import { TFunction } from 'i18next';
+
+interface ReviewType {
+    id: number;
+    picture: string;
+    name: string;
+    flag: string;
+    country: string;
+    stars: number;
+}
+
+interface ReviewWithTranslation extends ReviewType {
+    review: string;
+}
+
+export const reviewsData: ReviewType[] = [
     {
         id: 1,
         name: "djamelfilm",
-        review: "Excellent prestataire, service rapide et résultat au delà des mes espérances. Je recommande !",
         country: "France",
         flag: "https://flagcdn.com/fr.svg",
         stars: 5,
@@ -11,7 +25,6 @@ export const reviews = [
     {
         id: 2,
         name: "djamelfilm",
-        review: "2eme fois que je fais appel à lui, et honnêtement tout est parfait.",
         country: "France",
         flag: "https://flagcdn.com/fr.svg",
         stars: 5,
@@ -20,7 +33,6 @@ export const reviews = [
     {
         id: 3,
         name: "letendre9",
-        review: "Incredible work, great communication and fixed my problem very quickly. Highly recommend!",
         country: "Canada",
         flag: "https://flagcdn.com/ca.svg",
         stars: 5,
@@ -30,7 +42,6 @@ export const reviews = [
     {
         id: 4,
         name: "souly_sam",
-        review: "Very good work, I recommend.",
         country: "Ivory Coast",
         flag: "https://flagcdn.com/ci.svg",
         stars: 5,
@@ -39,7 +50,6 @@ export const reviews = [
     {
         id: 5,
         name: "alexisalexis442",
-        review: "Mathias a vraiment assuré sur la résolution des erreurs 503 de mon site ! Il a corrigé les problèmes de manière rapide et efficace, assurant le bon fonctionnement du site sans aucun bug. La communication proactive de Mathias a été un atout majeur.",
         country: "France",
         flag: "https://flagcdn.com/fr.svg",
         stars: 5,
@@ -49,7 +59,6 @@ export const reviews = [
     {
         id: 6,
         name: "mtlp_frag",
-        review: "Un grand merci à Mathias pour sa disponibilité et sa réactivité! Professionnel et compétent, il a très rapidement et efficacement cerné l'origine du problème et a proposé des solutions. Un problème majeur résolu ! Je reviendrai travailler avec lui sur d'autres sujets de maintenance site ecom.",
         country: "France",
         flag: "https://flagcdn.com/fr.svg",
         stars: 5,
@@ -58,7 +67,6 @@ export const reviews = [
     {
         id: 7,
         name: "mtlp_frag",
-        review: "Super ! J'ai fait appel de nouveau aux compétences de Mathias. Sérieux, communicant et proactif, très agréable de travailler avec Mathias. Merci beaucoup !",
         country: "France",
         flag: "https://flagcdn.com/fr.svg",
         stars: 5,
@@ -67,7 +75,6 @@ export const reviews = [
     {
         id: 8,
         name: "alexisalexis442",
-        review: "Deuxième commande que je passe chez Mathias, et ça se déroule toujours extrêmement bien, très bonne communication, rapidité et efficacité au rendez-vous, et un résultat supérieur à mes attentes. Je vous recommande Mathias, vous ne serez pas déçu du résultat !",
         country: "France",
         flag: "https://flagcdn.com/fr.svg",
         stars: 5,
@@ -77,7 +84,6 @@ export const reviews = [
     {
         id: 9,
         name: "inos_architects",
-        review: "Good work! Mathias migrated our website to the new host very quickly. Fully recommend.",
         country: "Switzerland",
         flag: "https://flagcdn.com/ch.svg",
         stars: 5,
@@ -86,7 +92,6 @@ export const reviews = [
     {
         id: 10,
         name: "mtlp_frag",
-        review: "Encore un très bon résultat avec Mathias ! Toujours pro, proactif et 100% dans la communication et vous tiens informé des progressions, un bonheur !",
         country: "France",
         flag: "https://flagcdn.com/fr.svg",
         stars: 5,
@@ -95,25 +100,14 @@ export const reviews = [
     {
         id: 11,
         name: "octavewagner",
-        review: "Je recommande",
         country: "France",
         flag: "https://flagcdn.com/fr.svg",
         stars: 4,
         picture: "https://apps.gosite.com/hubfs/Vector-2.png",
     },
-    // {
-    //     id: 12,
-    //     name: "octavewagner",
-    //     review: "Un freelancer très réactif !",
-    //     country: "France",
-    //     flag: "https://flagcdn.com/fr.svg",
-    //     stars: 5,
-    //     picture: "https://apps.gosite.com/hubfs/Vector-2.png",
-    // },
     {
         id: 13,
         name: "lbeplm",
-        review: "j'ai eu besoin des services de Mathias, une second fois pour une création et des corrections et s'il fallait une troisième fois je le solliciterai encore les yeux fermés. Merci à lui pour son professionnalisme, sa réactivité et de se mettre à la place du client pour comprendre son problème. je vous le recommande...",
         country: "France",
         flag: "https://flagcdn.com/fr.svg",
         stars: 5,
@@ -122,7 +116,6 @@ export const reviews = [
     {
         id: 14,
         name: "lonnylonn",
-        review: "Très professionnel et super efficace. Il sera vous accompagné vers le succes. Je recommande Mathias les yeux fermés",
         country: "France",
         flag: "https://flagcdn.com/fr.svg",
         stars: 5,
@@ -132,7 +125,6 @@ export const reviews = [
     {
         id: 15,
         name: "feloagency",
-        review: "Professionnalisme au top, Matthias essaye de trouver les bugs , il très proactif ! je recommande",
         country: "France",
         flag: "https://flagcdn.com/fr.svg",
         stars: 5,
@@ -142,7 +134,6 @@ export const reviews = [
     {
         id: 16,
         name: "alisonhgas",
-        review: "top ! super réactif et compétent",
         country: "France",
         flag: "https://flagcdn.com/fr.svg",
         stars: 5,
@@ -151,7 +142,6 @@ export const reviews = [
     {
         id: 17,
         name: "charlo1013",
-        review: "Merci Mathias Top",
         country: "France",
         flag: "https://flagcdn.com/fr.svg",
         stars: 4.7,
@@ -160,7 +150,6 @@ export const reviews = [
     {
         id: 18,
         name: "clemence_wordpr",
-        review: "Je recommande Mathias qui a su répondre très rapidement à un besoin urgent de notre part. Notre site Wordpress HS est désormais fonctionnel ✅🤝",
         country: "France",
         flag: "https://flagcdn.com/fr.svg",
         stars: 5,
@@ -169,7 +158,6 @@ export const reviews = [
     {
         id: 19,
         name: "phileasfogg06",
-        review: "Parfit. Mathias est super compétent, rapide et tres professionnel. Il a fait en une heure le travail qu'OVH ne voulait pas faire !!! Je vous le recommande !",
         country: "France",
         flag: "https://flagcdn.com/fr.svg",
         stars: 5,
@@ -178,7 +166,6 @@ export const reviews = [
     {
         id: 20,
         name: "coralieh31",
-        review: "Super professionnel à l'écoute, perfectionniste, très bonne relation client",
         country: "France",
         flag: "https://flagcdn.com/fr.svg",
         stars: 4.7,
@@ -187,7 +174,6 @@ export const reviews = [
     {
         id: 21,
         name: "maximesiepiora",
-        review: "Mathias est très réactif, il s'adapte facilement à la demande je recommande 100%",
         country: "France",
         flag: "https://flagcdn.com/fr.svg",
         stars: 5,
@@ -197,7 +183,6 @@ export const reviews = [
     {
         id: 22,
         name: "topitambour",
-        review: "Mathias a été très réactif et pro pour corriger un bug de responsive sur notre site, communication parfaite, je recommande!",
         country: "France",
         flag: "https://flagcdn.com/fr.svg",
         stars: 5,
@@ -206,7 +191,6 @@ export const reviews = [
     {
         id: 23,
         name: "mtlp_frag",
-        review: "Excellent comme d'habitude. Nous avons travaillé ensemble plusieurs fois : très à l'écoute et toujours aussi expert, professionnel, rapide & proactif. Merci bcp Mathias !",
         country: "France",
         flag: "https://flagcdn.com/fr.svg",
         stars: 5,
@@ -215,7 +199,6 @@ export const reviews = [
     {
         id: 24,
         name: "massay1008",
-        review: "Excellent service. Rapide et efficace. À recommander...",
         country: "France",
         flag: "https://flagcdn.com/fr.svg",
         stars: 5,
@@ -224,7 +207,6 @@ export const reviews = [
     {
         id: 25,
         name: "lonnylonn",
-        review: "Un grand merci à Mathias qui a débloqué mon site web grâce à ses connaissances approfondies et son expertise en maintenance informatique et infrastructure réseau. Je n'hésiterai pas à le soliciter au moindre soucis. Encore merci",
         country: "France",
         flag: "https://flagcdn.com/fr.svg",
         stars: 5,
@@ -234,7 +216,6 @@ export const reviews = [
     {
         id: 26,
         name: "lbeplm",
-        review: "Merci à Mahias pour sa réactivité. Il a pris le problème tout de suite en compte . Alors que je ne savais plus quoi faire avec les différents problèmes que je rencontrais avec mon site internet. Mathias est de bon conseil et est une personne bienveillante. je vous conseille ses services sans soucis. Merci Mathias Cordialement",
         country: "France",
         flag: "https://flagcdn.com/fr.svg",
         stars: 5,
@@ -243,10 +224,16 @@ export const reviews = [
     {
         id: 27,
         name: "lbeplm",
-        review: "j'ai eu besoin des services de Mathias, une second fois pour une création et des corrections et s'il fallait une troisième fois je le solliciterai encore les yeux fermés. Merci à lui pour son professionnalisme, sa réactivité et de se mettre à la place du client pour comprendre son problème. je vous le recommande...",
         country: "France",
         flag: "https://flagcdn.com/fr.svg",
         stars: 5,
         picture: "https://apps.gosite.com/hubfs/Vector-2.png",
     },
 ];
+
+export const getReviews = (t: TFunction): ReviewWithTranslation[] => {
+    return reviewsData.map(review => ({
+        ...review,
+        review: t(`reviews.items.${review.id}`),
+    }));
+};

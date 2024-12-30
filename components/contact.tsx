@@ -4,6 +4,7 @@ import emailjs from "@emailjs/browser";
 import Section from "./Section";
 import { Form, FormItem, FormLabel, FormControl, FormMessage, FormField } from "./ui/form";
 import { User, Mail, MessageCircle } from "lucide-react";
+import { useTranslation } from "react-i18next";
 
 interface IFormInput {
     name: string;
@@ -12,6 +13,7 @@ interface IFormInput {
 }
 
 const ContactForm: React.FC = () => {
+    const { t } = useTranslation();
     const methods = useForm<IFormInput>({
         defaultValues: {
             name: "",
@@ -51,25 +53,25 @@ const ContactForm: React.FC = () => {
 
     return (
         <Section id="contact" className="bg-slate-100 container mx-auto py-12">
-            <h2 className="text-3xl md:text-4xl lg:text-6xl font-bold text-center mb-6">Let&apos;s Work Together.</h2>
-            <span className="block text-center text-gray-600 mb-8">After sending your message, you will receive a response by email within 24 hours.</span>
+            <h2 className="text-3xl md:text-4xl lg:text-6xl font-bold text-center mb-6">{t("contact.title")}</h2>
+            <span className="block text-center text-gray-600 mb-8">{t("contact.subtitle")}</span>
 
             <Form {...methods}>
                 <form onSubmit={handleSubmit(onSubmit)} className="w-full mx-auto p-8 bg-white rounded-lg shadow-lg">
-                    {successMessage && <p className="text-green-500 text-sm mb-4">{successMessage}</p>}
+                    {successMessage && <p className="text-green-500 text-sm mb-4">{t("contact.form.success")}</p>}
                     <FormField
                         name="name"
                         control={methods.control}
-                        rules={{ required: "Name is required" }}
+                        rules={{ required: t("contact.form.name.required") }}
                         render={({ field }) => (
                             <FormItem>
-                                <FormLabel>Name</FormLabel>
+                                <FormLabel>{t("contact.form.name.label")}</FormLabel>
                                 <FormControl>
                                     <div className="relative">
                                         <User className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400" />
                                         <input
                                             {...field}
-                                            placeholder="Your Name"
+                                            placeholder={t("contact.form.name.placeholder")}
                                             className="w-full pl-10 px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
                                         />
                                     </div>
@@ -81,16 +83,16 @@ const ContactForm: React.FC = () => {
                     <FormField
                         name="email"
                         control={methods.control}
-                        rules={{ required: "Email is required" }}
+                        rules={{ required: t("contact.form.email.required") }}
                         render={({ field }) => (
                             <FormItem>
-                                <FormLabel>Email</FormLabel>
+                                <FormLabel>{t("contact.form.email.label")}</FormLabel>
                                 <FormControl>
                                     <div className="relative">
                                         <Mail className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400" />
                                         <input
                                             {...field}
-                                            placeholder="Your Email"
+                                            placeholder={t("contact.form.email.placeholder")}
                                             className="w-full pl-10 px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
                                         />
                                     </div>
@@ -102,16 +104,16 @@ const ContactForm: React.FC = () => {
                     <FormField
                         name="message"
                         control={methods.control}
-                        rules={{ required: "Message is required" }}
+                        rules={{ required: t("contact.form.message.required") }}
                         render={({ field }) => (
                             <FormItem>
-                                <FormLabel>Message</FormLabel>
+                                <FormLabel>{t("contact.form.message.label")}</FormLabel>
                                 <FormControl>
                                     <div className="relative">
-                                        <MessageCircle className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400" />
+                                        <MessageCircle className="absolute left-3 top-O transform translate-y-1/2 text-gray-400" />
                                         <textarea
                                             {...field}
-                                            placeholder="Your Message"
+                                            placeholder={t("contact.form.message.placeholder")}
                                             className="w-full pl-10 px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
                                         />
                                     </div>
@@ -121,7 +123,7 @@ const ContactForm: React.FC = () => {
                         )}
                     />
                     <button type="submit" className="w-full mt-5 bg-blue-500 text-white py-3 px-4 rounded-lg hover:bg-blue-600 transition duration-300">
-                        Send
+                        {t("contact.form.submit")}
                     </button>
                 </form>
             </Form>

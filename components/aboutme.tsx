@@ -16,11 +16,13 @@ import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import TextReveal from "./animations/TextReveal";
 import ProfilPicture from "../public/assets/aboutme/mathiasBandW1.png";
+import { useTranslation } from "react-i18next";
 
 const AboutMe = () => {
     const imageRef = useRef<HTMLImageElement>(null);
     const sectionRef = useRef<HTMLDivElement>(null);
     const { canvasRef, showText, hasDrawn, resetCanvas } = useCanvas();
+    const { t } = useTranslation();
 
     useEffect(() => {
         gsap.registerPlugin(ScrollTrigger);
@@ -60,7 +62,7 @@ const AboutMe = () => {
                 <div className="flex flex-col container mx-auto">
                     <div className="m-5 text-center md:text-start">
                         <h2 className="text-3xl md:text-4xl lg:text-6xl ">Mathias Grondziel</h2>
-                        <span>Développeur ReactJS et Wordpress Since 2022</span>
+                        <span>{t("aboutme.role")}</span>
                     </div>
                     <div className="flex flex-col md:flex-row">
                         <div className="md:w-1/2 mx-5 relative border-2 border-white">
@@ -70,7 +72,7 @@ const AboutMe = () => {
                                 className={`absolute top-4 right-4 z-30 p-2 rounded-full backdrop-blur-sm transition-all ${
                                     hasDrawn ? "bg-white/10 hover:bg-white/20 cursor-pointer" : "bg-white/5 cursor-not-allowed"
                                 }`}
-                                title="Reset canvas">
+                                title={t("aboutme.resetCanvas")}>
                                 <RefreshCw className={`w-6 h-6 ${hasDrawn ? "text-white" : "text-white/50"}`} />
                             </button>
                             <img
@@ -83,24 +85,17 @@ const AboutMe = () => {
                                 ref={canvasRef}
                                 width={800}
                                 height={500}
-                                className="relative z-10 w-full h-[300px] md:h-[500px] cursor-[url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIiBzdHJva2U9IndoaXRlIiBzdHJva2Utd2lkdGg9IjIiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCI+PHBhdGggZD0ibTE0LjYyMiAxNy44OTctMTAuNjgtMi45MTMiLz48cGF0aCBkPSJNMTguMzc2IDIuNjIyYTEgMSAwIDEgMSAzLjAwMiAzLjAwMkwxNy4zNiA5LjY0M2EuNS41IDAgMCAwIDAgLjcwN2wuOTQ0Ljk0NGEyLjQxIDIuNDEgMCAwIDEgMCAzLjQwOGwtLjk0NC45NDRhLjUuNSAwIDAgMS0uNzA3IDBMOC4zNTQgNy4zNDhhLjUuNSAwIDAgMSAwLS43MDdsLjk0NC0uOTQ0YTIuNDEgMi40MSAwIDAgMSAzLjQwOCAwbC45NDQuOTQ0YS41LjUgMCAwIDAgLjcwNyAweiIvPjxwYXRoIGQ9Ik05IDhjLTEuODA0IDIuNzEtMy45NyAzLjQ2LTYuNTgzIDMuOTQ4YS41MDcuNTA3IDAgMCAwLS4zMDIuODE5bDcuMzIgOC44ODNhMSAxIDAgMCAwIDEuMTg1LjIwNEMxMi43MzUgMjAuNDA1IDE2IDE2Ljc5MiAxNiAxNSIvPjwvc3ZnPg==)_12_12,auto]"
+                                className="relative z-10 w-full h-[300px] md:h-[500px] cursor-[url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIiBzdHJva2U9IndoaXRlIiBzdHJrZS13aWR0aD0iMiIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIj48cGF0aCBkPSJtMTQuNjIyIDE3Ljg5Ny0xMC42OC0yLjkxMyIvPjxwYXRoIGQ9Ik0xOC4zNzYgMi42MjJhMSAxIDAgMSAxIDMuMDAyIDMuMDAyTDE3LjM2IDkuNjQzYS41LjUgMCAwIDAgMCAuNzA3bC45NDQuOTQ0YTIuNDEgMi40MSAwIDAgMSAwIDMuNDA4bC0uOTQ0Ljk0NGEuNS41IDAgMCAxLS43MDcgMEw4LjM1NCA3LjM0OGEuNS41IDAgMCAxIDAtLjcwN2wuOTQ0LS45NDRhMi40MSAyLjQxIDAgMCAxIDMuNDA4IDBsLjk0NC45NDRhLjUuNSAwIDAgMCAuNzA3IDB6Ii8+PHBhdGggZD0iTTkgOGMtMS44MDQgMi43MS0zLjk3IDMuNDYtNi41ODMgMy45NDhhLjUwNy41MDcgMCAwIDAtLjMwMi44MTlsNy4zMiA4Ljg4M2ExIDEgMCAwIDAgMS4xODUuMjA0QzEyLjczNSAyMC40MDUgMTYgMTYuNzkyIDE2IDE1Ii8+PC9zdmc+)_12_12,auto]"
                             />
                             {showText && (
                                 <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-20 text-white text-4xl font-bold pointer-events-none text-center">
-                                    DRAW ME
+                                    {t("aboutme.drawMe")}
                                 </div>
                             )}
                         </div>
 
                         <div className="relative md:w-1/2 m-5 flex flex-col justify-between">
-                            <TextReveal className="text-neutral-50 leading-7">
-                                Lorem ipsum dolor sit, amet consectetur adipisicing elit. Accusamus suscipit quia, voluptatibus maiores labore perspiciatis,
-                                nulla aspernatur eos dolore id saepe ratione exercitationem facere architecto sit sint culpa sed tempore. Officia, similique
-                                quia aliquam nisi quasi repellat recusandae veniam voluptas neque ipsa rem deserunt animi laborum! Architecto, iure nobis sequi
-                                magnam repellat esse sit ea rem, ut placeat corporis atque. Quos similique, soluta quae voluptate, fuga unde aliquam rerum
-                                veniam voluptatum obcaecati minus sapiente. Consectetur error ducimus eveniet hic aspernatur, nam odit placeat numquam libero ad
-                                voluptatibus, molestias similique possimus.
-                            </TextReveal>
+                            <TextReveal className="text-neutral-50 leading-7">{t("aboutme.description")}</TextReveal>
                             <div className="flex justify-between mt-5">
                                 <Image src={ReactJs} alt="logo react" width={50} height={50} />
                                 <Image src={Typescript} alt="logo react" width={50} height={50} />

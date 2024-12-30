@@ -6,8 +6,10 @@ import { Button } from "./ui/button";
 import Link from "next/link";
 import { MapPin } from "lucide-react";
 import Section from "./Section"; 
+import { useTranslation } from "react-i18next";
 
 export default function Experiences() {
+    const { t } = useTranslation();
     const [visibleImage, setVisibleImage] = useState<string | null>("image1");
     const [filter, setFilter] = useState<string>("All");
     const sectionRef = useRef<HTMLDivElement>(null);
@@ -68,12 +70,11 @@ export default function Experiences() {
         {
             id: "image1",
             yearRange: "2024 - 2025",
-            title: "Radio Analyzer",
+            title: t('experiences.items.radioAnalyzer.title'),
             imageUrl: "https://img.static-kl.com/images/media/14503BF4-AEAD-481C-8987FC06F3D8C704?w=1280",
             type: "Developer",
-            description:
-                "Développement de produits SaaS chez Radio Analyzer (logiciels internes et solutions clients) pour l'industrie radiophonique mondiale. Création d'interfaces ReactJS avec graphiques avancés, virtualisation de données et systèmes de filtrage complexes. Collaboration étroite avec l'équipe backend pour l'intégration API et l'amélioration continue des produits.",
-            btnName: "En savoir plus",
+            description: t('experiences.items.radioAnalyzer.description'),
+            btnName: t('experiences.items.radioAnalyzer.btnText'),
             btnLink: "https://radioanalyzer.com/",
             localisation: "Aalborg, Danmark",
             localisationLink: "https://maps.app.goo.gl/Xmw69RrVu6f7g8Gr9",
@@ -81,14 +82,12 @@ export default function Experiences() {
         {
             id: "image2",
             yearRange: "2023 - 2025",
-            title: "Freelance",
+            title: t('experiences.items.freelance.title'),
             imageUrl:
                 "https://images.unsplash.com/photo-1609185271997-ec976c17a0bc?q=80&w=1964&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
             type: "Developer",
-            description:
-                "En tant que freelance, développement de sites vitrines, e-commerces et applications en WordPress et ReactJS. Gestion complète des projets de la conception à la mise en production, résolution de bugs et migrations de sites. Focus sur la performance et l'expérience utilisateur.",
-
-            btnName: "En savoir plus",
+            description: t('experiences.items.freelance.description'),
+            btnName: t('experiences.items.freelance.btnText'),
             btnLink: "https://fr.fiverr.com/mathias_grdl",
             localisation: "Perpignan, France",
             localisationLink: "https://maps.app.goo.gl/XMS3wHD4gtgjTh949",
@@ -96,13 +95,12 @@ export default function Experiences() {
         {
             id: "image3",
             yearRange: "2022 - 2023",
-            title: "Kori",
+            title: t('experiences.items.kori.title'),
             imageUrl:
                 "https://images.unsplash.com/photo-1722605267048-a5389a97b20c?q=80&w=1935&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
             type: "Developer",
-            description:
-                "Développeur WordPress chez Kori, spécialisé dans la création de sites web sur mesure. Développement de thèmes personnalisés from scratch avec intégration pixel perfect des maquettes Figma et XD. Implémentation de fonctionnalités spécifiques et maintenance de sites existants.",
-            btnName: "En savoir plus",
+            description: t('experiences.items.kori.description'),
+            btnName: t('experiences.items.kori.btnText'),
             btnLink: "https://www.agence-kori.fr/",
             localisation: "Perpignan, France",
             localisationLink: "https://maps.app.goo.gl/XMS3wHD4gtgjTh949",
@@ -110,24 +108,21 @@ export default function Experiences() {
         {
             id: "image4",
             yearRange: "2021 - 2022",
-            title: "Vendeur polyvalent",
-            imageUrl:
-                "https://images.unsplash.com/photo-1724599685287-299a6412b92a?q=80&w=1820&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+            title: t('experiences.items.vendeurPolyvalent.title'),
+            imageUrl: "https://images.unsplash.com/photo-1724599685287-299a6412b92a?q=80&w=1820&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
             type: "Other",
-            description:
-                "Vendeur polyvalent en jardinerie: mise en rayon, entretien des plantes, conseil auprès des clients et création d'animations promotionnelles.",
+            description: t('experiences.items.vendeurPolyvalent.description'),
             localisation: "Tours, France",
             localisationLink: "https://maps.app.goo.gl/sWHUhPvJCDXNgZuf8",
         },
         {
             id: "image5",
             yearRange: "2018 - 2022",
-            title: "Uber Eats",
+            title: t('experiences.items.uberEats.title'),
             imageUrl:
                 "https://images.unsplash.com/photo-1643549811064-adf938a5ca40?q=80&w=1935&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
             type: "Other",
-            description:
-                "Livreur Uber Eats: livraison de repas dans le respect des normes de sécurité alimentaire, avec un focus sur la satisfaction client. Développement d'une excellente connaissance de la ville et capacité à gérer les imprévus.",
+            description: t('experiences.items.uberEats.description'),
             localisation: "Angers, France",
             localisationLink: "https://maps.app.goo.gl/rZLxanLae3eHcG3T7",
         },
@@ -211,12 +206,12 @@ export default function Experiences() {
                                 <button
                                     className={filter === "All" ? "active text-blue-500 border-b-2 border-b-blue-500" : ""}
                                     onClick={() => setFilter("All")}>
-                                    All
+                                    {t('experiences.filters.all')}
                                 </button>
                                 <button
                                     className={filter === "Developer" ? "active text-blue-500 border-b-2 border-b-blue-500" : ""}
                                     onClick={() => setFilter("Developer")}>
-                                    Developer
+                                    {t('experiences.filters.developer')}
                                 </button>
                             </div>
                             {filteredExperiences.map((exp, index) => (

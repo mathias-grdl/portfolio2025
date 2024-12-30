@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useRef } from "react";
+import { useTranslation } from "react-i18next";
 import { Button } from "./ui/button";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import Lenis from "@studio-freight/lenis";
@@ -11,6 +12,7 @@ import Kasa from "../public/assets/projects/kasa.png";
 import Tp66 from "../public/assets/projects/tp66.png";
 
 export default function Projects() {
+    const { t } = useTranslation();
     const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
     const [activeIndex, setActiveIndex] = useState(0);
     const sectionRef = useRef(null);
@@ -59,39 +61,36 @@ export default function Projects() {
     const projects = [
         {
             img: Obandito,
-            title: "O'bandito",
-            description:
-                "O'bandito is a web platform connecting musicians with event organizers, developed over 4 weeks as part of a professional certification project. Built collaboratively with a team of 3 developers (2 frontend, 1 backend).",
-            tags: ["ReactJs", "API GraphQL", "Figma"],
+            title: t("projects.items.obandito.title"),
+            description: t("projects.items.obandito.description"),
+            tags: t("projects.items.obandito.tags", { returnObjects: true }) as string[],
         },
         {
             img: MoviesFinder,
-            title: "Movies finder",
-            description:
-                "A movie search platform built with React, leveraging an external API for real-time movie data. Features dynamic search, movie details display, and responsive design using useEffect and useSWR for efficient data fetching.",
+            title: t("projects.items.moviesFinder.title"),
+            description: t("projects.items.moviesFinder.description"),
             tags: ["ReactJs", "API"],
             link: "https://movie-search-hub.netlify.app/?s=Jumanji",
             github: "https://github.com/mathias-grdl/BeginReact-Workshop-UseEffect",
         },
         {
             img: Thishan,
-            title: "Maison Thishan",
-            description:
-                "A fully custom WordPress e-commerce website built from scratch for an independent perfumer. Features bespoke theme development, custom product catalog, and tailored checkout process without using pre-made themes.",
+            title: t("projects.items.thishan.title"),
+            description: t("projects.items.thishan.description"),
             tags: ["Wordpress", "E-commerce"],
             link: "https://maisonthishan.com/",
         },
         {
             img: Tp66,
-            title: "TP66",
-            description: "Redesign of the website for the largest construction company in the Eastern Pyrenees",
+            title: t("projects.items.tp66.title"),
+            description: t("projects.items.tp66.description"),
             tags: ["Wordpress"],
             link: "https://www.travaux-publics-66.fr/",
         },
         {
             img: Kasa,
-            title: "Kasa",
-            description: "Kasa is my first ReactJS project aimed at showcasing different apartments",
+            title: t("projects.items.kasa.title"),
+            description: t("projects.items.kasa.description"),
             tags: ["ReactJs"],
             link: "https://p7-kasa-openclassrooms.netlify.app/",
             github: "https://github.com/mathias-grdl/P7-Kasa-Openclassrooms",
@@ -162,14 +161,14 @@ export default function Projects() {
                                         {project.link ? (
                                             <Button asChild>
                                                 <a href={project.link} target="_blank" rel="noopener noreferrer">
-                                                    Link
+                                                    {t("projects.link")}
                                                 </a>
                                             </Button>
                                         ) : null}
                                         {project.github ? (
                                             <Button asChild>
                                                 <a href={project.github} target="_blank" rel="noopener noreferrer">
-                                                    Github
+                                                    {t("projects.github")}
                                                 </a>
                                             </Button>
                                         ) : null}
