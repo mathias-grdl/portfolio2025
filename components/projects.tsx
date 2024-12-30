@@ -4,6 +4,11 @@ import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/
 import Lenis from "@studio-freight/lenis";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import Obandito from "../public/assets/projects/obandito.png";
+import Thishan from "../public/assets/projects/thishan.png";
+import MoviesFinder from "../public/assets/projects/moviesFinder.png";
+import Kasa from "../public/assets/projects/kasa.png";
+import Tp66 from "../public/assets/projects/tp66.png";
 
 export default function Projects() {
     const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
@@ -53,14 +58,14 @@ export default function Projects() {
 
     const projects = [
         {
-            img: "https://mathias-grondziel.com/assets/work/obandito-home.png",
+            img: Obandito,
             title: "O'bandito",
             description:
                 "O'bandito is a web platform connecting musicians with event organizers, developed over 4 weeks as part of a professional certification project. Built collaboratively with a team of 3 developers (2 frontend, 1 backend).",
             tags: ["ReactJs", "API GraphQL", "Figma"],
         },
         {
-            img: "https://www.mouvement-metropole.fr/wp-content/uploads/2024/09/les-20-lieux-incontournables-a-visiter-en-grece-un-voyage-inoubliable-au-coeur-de-la-mediterranee_66ab3ee39a7a1-scaled.jpg",
+            img: MoviesFinder,
             title: "Movies finder",
             description:
                 "A movie search platform built with React, leveraging an external API for real-time movie data. Features dynamic search, movie details display, and responsive design using useEffect and useSWR for efficient data fetching.",
@@ -69,7 +74,7 @@ export default function Projects() {
             github: "https://github.com/mathias-grdl/BeginReact-Workshop-UseEffect",
         },
         {
-            img: "https://www.okvoyage.com/wp-content/uploads/2023/07/paysages-de-grece.jpg",
+            img: Thishan,
             title: "Maison Thishan",
             description:
                 "A fully custom WordPress e-commerce website built from scratch for an independent perfumer. Features bespoke theme development, custom product catalog, and tailored checkout process without using pre-made themes.",
@@ -77,14 +82,14 @@ export default function Projects() {
             link: "https://maisonthishan.com/",
         },
         {
-            img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRN0mLAKZfJN3DDn-vtDmZXc_GJ0QCJvmUQUQ&s",
+            img: Tp66,
             title: "TP66",
             description: "Redesign of the website for the largest construction company in the Eastern Pyrenees",
             tags: ["Wordpress"],
             link: "https://www.travaux-publics-66.fr/",
         },
         {
-            img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRN0mLAKZfJN3DDn-vtDmZXc_GJ0QCJvmUQUQ&s",
+            img: Kasa,
             title: "Kasa",
             description: "Kasa is my first ReactJS project aimed at showcasing different apartments",
             tags: ["ReactJs"],
@@ -133,11 +138,13 @@ export default function Projects() {
                             key={index}
                             value={`item-${index}`}
                             ref={el => (projectsRef.current[index] = el!)}
-                            onMouseEnter={() => handleMouseEnter(project.img, index)}
+                            onMouseEnter={() => handleMouseEnter(project.img.src, index)}
                             onMouseLeave={handleMouseLeave}>
                             <AccordionTrigger>
                                 <div className="grid grid-cols-1 md:grid-cols-2 w-full gap-2 items-center">
-                                    <h3 className="col-span-1 text-3xl md:text-4xl lg:text-6xl">{project.title}</h3>
+                                    <h3 className={`col-span-1 text-3xl md:text-4xl lg:text-6xl ${activeIndex === index ? "text-blue-500" : ""} no-underline`}>
+                                        {project.title}
+                                    </h3>
                                     <div className="col-span-1 flex gap-2">
                                         {project.tags.map((tag, tagIndex) => (
                                             <span key={tagIndex}>{tag}</span>
@@ -149,7 +156,7 @@ export default function Projects() {
                                 <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mt-5 items-center">
                                     <span className="col-span-1">{project.description}</span>
                                     <div className="w-full h-[200px]">
-                                        <img className="col-span-1 object-cover size-full" src={project.img} alt={project.title} />
+                                        <img className="col-span-1 object-cover size-full" src={project.img.src} alt={project.title} />
                                     </div>
                                     <div className="col-span-1 flex gap-2 justify-end">
                                         {project.link ? (

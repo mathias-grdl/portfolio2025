@@ -15,6 +15,7 @@ import Lenis from "@studio-freight/lenis";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import TextReveal from "./animations/TextReveal";
+import ProfilPicture from "../public/assets/aboutme/mathiasBandW1.png";
 
 const AboutMe = () => {
     const imageRef = useRef<HTMLImageElement>(null);
@@ -74,7 +75,7 @@ const AboutMe = () => {
                             </button>
                             <img
                                 ref={imageRef}
-                                src="https://images.unsplash.com/flagged/photo-1595514191830-3e96a518989b?q=80&w=1887&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                                src={ProfilPicture.src}
                                 alt="profil"
                                 className="object-cover w-full h-[300px] md:h-[500px] absolute top-0 left-0"
                             />

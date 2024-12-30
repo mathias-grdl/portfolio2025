@@ -5,7 +5,7 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { Button } from "./ui/button";
 import Link from "next/link";
 import { MapPin } from "lucide-react";
-import Section from "./Section";
+import Section from "./Section"; 
 
 export default function Experiences() {
     const [visibleImage, setVisibleImage] = useState<string | null>("image1");
