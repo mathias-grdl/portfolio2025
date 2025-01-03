@@ -5,13 +5,12 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { Button } from "./ui/button";
 import Link from "next/link";
 import { MapPin } from "lucide-react";
-import Section from "./Section"; 
+import Section from "./Section";
 import { useTranslation } from "react-i18next";
 
 export default function Experiences() {
     const { t } = useTranslation();
     const [visibleImage, setVisibleImage] = useState<string | null>("image1");
-    const [filter, setFilter] = useState<string>("All");
     const sectionRef = useRef<HTMLDivElement>(null);
     const experiencesRef = useRef<HTMLDivElement[]>([]);
     const titleRefs = useRef<{ [key: string]: HTMLAnchorElement | null }>({});
@@ -30,31 +29,26 @@ export default function Experiences() {
         }
         requestAnimationFrame(raf);
 
-        const filteredLength = filter === "All" ? experiences.length : experiences.filter(exp => exp.type === filter).length;
-
         if (window.innerWidth >= 768) {
-            // Only pin for medium screens and above
             ScrollTrigger.create({
                 trigger: "#experiences",
                 start: "top top",
-                end: `+=${filteredLength * window.innerHeight}`,
+                end: `+=${experiences.length * window.innerHeight}`,
                 pin: true,
                 pinSpacing: true,
             });
         }
 
-        const filteredExperiences = filter === "All" ? experiences : experiences.filter(exp => exp.type === filter);
-
-        filteredExperiences.forEach((exp, index) => {
+        experiences.forEach((exp, index) => {
             const sectionHeight = window.innerHeight;
             ScrollTrigger.create({
-                trigger: experiencesRef.current[experiences.findIndex(e => e.id === exp.id)],
+                trigger: experiencesRef.current[index],
                 start: `top+=${index * sectionHeight} center`,
                 end: `top+=${(index + 1) * sectionHeight} center`,
                 onEnter: () => setVisibleImage(exp.id),
                 onEnterBack: () => {
                     if (index > 0) {
-                        setVisibleImage(filteredExperiences[index - 1].id);
+                        setVisibleImage(experiences[index - 1].id);
                     }
                 },
             });
@@ -64,17 +58,17 @@ export default function Experiences() {
             lenis.destroy();
             ScrollTrigger.getAll().forEach(st => st.kill());
         };
-    }, [filter]);
+    }, []);
 
     const experiences = [
         {
             id: "image1",
             yearRange: "2024 - 2025",
-            title: t('experiences.items.radioAnalyzer.title'),
+            title: t("experiences.items.radioAnalyzer.title"),
             imageUrl: "https://img.static-kl.com/images/media/14503BF4-AEAD-481C-8987FC06F3D8C704?w=1280",
             type: "Developer",
-            description: t('experiences.items.radioAnalyzer.description'),
-            btnName: t('experiences.items.radioAnalyzer.btnText'),
+            description: t("experiences.items.radioAnalyzer.description"),
+            btnName: t("experiences.items.radioAnalyzer.btnText"),
             btnLink: "https://radioanalyzer.com/",
             localisation: "Aalborg, Danmark",
             localisationLink: "https://maps.app.goo.gl/Xmw69RrVu6f7g8Gr9",
@@ -82,12 +76,12 @@ export default function Experiences() {
         {
             id: "image2",
             yearRange: "2023 - 2025",
-            title: t('experiences.items.freelance.title'),
+            title: t("experiences.items.freelance.title"),
             imageUrl:
                 "https://images.unsplash.com/photo-1609185271997-ec976c17a0bc?q=80&w=1964&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
             type: "Developer",
-            description: t('experiences.items.freelance.description'),
-            btnName: t('experiences.items.freelance.btnText'),
+            description: t("experiences.items.freelance.description"),
+            btnName: t("experiences.items.freelance.btnText"),
             btnLink: "https://fr.fiverr.com/mathias_grdl",
             localisation: "Perpignan, France",
             localisationLink: "https://maps.app.goo.gl/XMS3wHD4gtgjTh949",
@@ -95,12 +89,12 @@ export default function Experiences() {
         {
             id: "image3",
             yearRange: "2022 - 2023",
-            title: t('experiences.items.kori.title'),
+            title: t("experiences.items.kori.title"),
             imageUrl:
                 "https://images.unsplash.com/photo-1722605267048-a5389a97b20c?q=80&w=1935&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
             type: "Developer",
-            description: t('experiences.items.kori.description'),
-            btnName: t('experiences.items.kori.btnText'),
+            description: t("experiences.items.kori.description"),
+            btnName: t("experiences.items.kori.btnText"),
             btnLink: "https://www.agence-kori.fr/",
             localisation: "Perpignan, France",
             localisationLink: "https://maps.app.goo.gl/XMS3wHD4gtgjTh949",
@@ -108,21 +102,22 @@ export default function Experiences() {
         {
             id: "image4",
             yearRange: "2021 - 2022",
-            title: t('experiences.items.vendeurPolyvalent.title'),
-            imageUrl: "https://images.unsplash.com/photo-1724599685287-299a6412b92a?q=80&w=1820&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+            title: t("experiences.items.vendeurPolyvalent.title"),
+            imageUrl:
+                "https://images.unsplash.com/photo-1724599685287-299a6412b92a?q=80&w=1820&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
             type: "Other",
-            description: t('experiences.items.vendeurPolyvalent.description'),
+            description: t("experiences.items.vendeurPolyvalent.description"),
             localisation: "Tours, France",
             localisationLink: "https://maps.app.goo.gl/sWHUhPvJCDXNgZuf8",
         },
         {
             id: "image5",
             yearRange: "2018 - 2022",
-            title: t('experiences.items.uberEats.title'),
+            title: t("experiences.items.uberEats.title"),
             imageUrl:
                 "https://images.unsplash.com/photo-1643549811064-adf938a5ca40?q=80&w=1935&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
             type: "Other",
-            description: t('experiences.items.uberEats.description'),
+            description: t("experiences.items.uberEats.description"),
             localisation: "Angers, France",
             localisationLink: "https://maps.app.goo.gl/rZLxanLae3eHcG3T7",
         },
@@ -178,7 +173,7 @@ export default function Experiences() {
                         </Link>
                     </div>
                     <div className="md:absolute md:top-1/4 md:right-0 md:w-[220px] lg:w-[300px] pb-5 md:pb-0">
-                        <p>{description}</p>
+                        <p className="text-justify">{description}</p>
                         {btnName && btnLink && (
                             <div className="flex justify-center pt-5">
                                 <Button asChild>
@@ -194,27 +189,13 @@ export default function Experiences() {
         </div>
     );
 
-    const filteredExperiences = filter === "All" ? experiences : experiences.filter(exp => exp.type === filter);
-
     return (
         <div ref={sectionRef}>
             <Section id="experiences" className="bg-slate-100 dark:bg-black h-full md:h-screen">
                 <div className="flex flex-col container mx-auto">
-                    <div className="gap-4 ">
+                    <div className="gap-4">
                         <div className="relative w-full pt-5">
-                            <div className="flex gap-2 pt-5">
-                                <button
-                                    className={filter === "All" ? "active text-blue-500 border-b-2 border-b-blue-500" : ""}
-                                    onClick={() => setFilter("All")}>
-                                    {t('experiences.filters.all')}
-                                </button>
-                                <button
-                                    className={filter === "Developer" ? "active text-blue-500 border-b-2 border-b-blue-500" : ""}
-                                    onClick={() => setFilter("Developer")}>
-                                    {t('experiences.filters.developer')}
-                                </button>
-                            </div>
-                            {filteredExperiences.map((exp, index) => (
+                            {experiences.map((exp, index) => (
                                 <div key={exp.id} ref={el => (experiencesRef.current[index] = el!)}>
                                     {renderImageSection(
                                         exp.id,

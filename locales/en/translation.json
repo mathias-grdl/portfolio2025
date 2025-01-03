@@ -48,7 +48,7 @@
     "contact": "Contact"
   },
   "aboutme": {
-    "role": "ReactJS and Wordpress Developer Since 2022",
+    "role": "ReactJS and Wordpress Developer since 2022",
     "drawMe": "DRAW ME",
     "description": "During my studies, I worked in various sectors such as Uber Eats, temp work, and as a salesperson in Angers and Tours, in northern France. Then, I moved to the south, 30 minutes from Spain, to pursue a one-year web development apprenticeship. At that time, I only knew HTML and CSS, but I quickly gained complete autonomy, creating pixel-perfect WordPress sites without themes or builders. I also learned to debug WordPress-related issues, manage hosting, and perform migrations. Thanks to this experience, I was able to start freelancing, which allowed me to begin learning ReactJS. With perseverance, I joined Radio Analyzer in Aalborg, Denmark, as a ReactJS front-end developer, where I actively contribute to developing innovative solutions for their SaaS products.",
     "resetCanvas": "Reset canvas"
@@ -93,29 +93,34 @@
       "obandito": {
         "title": "O'bandito",
         "description": "O'bandito is a web platform connecting musicians with event organizers, developed over 4 weeks as part of a professional certification project. Built collaboratively with a team of 3 developers (2 frontend, 1 backend).",
-        "tags": ["ReactJs", "GraphQL API", "Figma"]
+        "tags": ["ReactJs", "GraphQL API", "Figma"],
+        "project": "O'clock Project"
       },
       "moviesFinder": {
         "title": "Movies finder",
         "description": "A movie search platform built with React, leveraging an external API for real-time movie data. Features dynamic search, movie details display, and responsive design using useEffect and useSWR for efficient data fetching.",
         "link": "View site",
-        "github": "View Github"
+        "github": "View Github",
+        "project": "Personal Project"
       },
       "thishan": {
         "title": "Maison Thishan",
         "description": "A fully custom WordPress e-commerce website built from scratch for an independent perfumer. Features bespoke theme development, custom product catalog, and tailored checkout process without using pre-made themes.",
-        "link": "View site"
+        "link": "View site",
+        "project": "Freelance Project"
       },
       "tp66": {
         "title": "TP66",
         "description": "Redesign of the website for the largest construction company in the Eastern Pyrenees",
-        "link": "View site"
+        "link": "View site",
+        "project": "Company Project"
       },
       "kasa": {
         "title": "Kasa",
         "description": "Kasa is my first ReactJS project aimed at showcasing different apartments",
         "link": "View site",
-        "github": "View Github"
+        "github": "View Github",
+        "project": "Openclassrooms Project"
       }
     },
     "link": "View site",

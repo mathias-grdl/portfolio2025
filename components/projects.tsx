@@ -64,6 +64,7 @@ export default function Projects() {
             title: t("projects.items.obandito.title"),
             description: t("projects.items.obandito.description"),
             tags: t("projects.items.obandito.tags", { returnObjects: true }) as string[],
+            project: t("projects.items.obandito.project"),
         },
         {
             img: MoviesFinder,
@@ -72,6 +73,7 @@ export default function Projects() {
             tags: ["ReactJs", "API"],
             link: "https://movie-search-hub.netlify.app/?s=Jumanji",
             github: "https://github.com/mathias-grdl/BeginReact-Workshop-UseEffect",
+            project: t("projects.items.moviesFinder.project"),
         },
         {
             img: Thishan,
@@ -79,6 +81,7 @@ export default function Projects() {
             description: t("projects.items.thishan.description"),
             tags: ["Wordpress", "E-commerce"],
             link: "https://maisonthishan.com/",
+            project: t("projects.items.thishan.project"),
         },
         {
             img: Tp66,
@@ -86,6 +89,7 @@ export default function Projects() {
             description: t("projects.items.tp66.description"),
             tags: ["Wordpress"],
             link: "https://www.travaux-publics-66.fr/",
+            project: t("projects.items.tp66.project"),
         },
         {
             img: Kasa,
@@ -94,6 +98,7 @@ export default function Projects() {
             tags: ["ReactJs"],
             link: "https://p7-kasa-openclassrooms.netlify.app/",
             github: "https://github.com/mathias-grdl/P7-Kasa-Openclassrooms",
+            project: t("projects.items.kasa.project"),
         },
     ];
 
@@ -141,7 +146,7 @@ export default function Projects() {
                             onMouseLeave={handleMouseLeave}>
                             <AccordionTrigger>
                                 <div className="grid grid-cols-1 md:grid-cols-2 w-full gap-2 items-center">
-                                    <h3 className={`col-span-1 text-3xl md:text-4xl lg:text-6xl ${activeIndex === index ? "text-blue-500" : ""} no-underline`}>
+                                    <h3 className={`col-span-1 text-3xl md:text-4xl lg:text-5xl ${activeIndex === index ? "text-blue-500" : ""} no-underline`}>
                                         {project.title}
                                     </h3>
                                     <div className="col-span-1 flex gap-2">
@@ -153,7 +158,10 @@ export default function Projects() {
                             </AccordionTrigger>
                             <AccordionContent>
                                 <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mt-5 items-center">
-                                    <span className="col-span-1">{project.description}</span>
+                                    <div>
+                                        <h4 className="text-xl bold pb-5">{project.project}</h4>
+                                        <span className="col-span-1 text-justify md:text-left">{project.description}</span>
+                                    </div>
                                     <div className="w-full h-[200px]">
                                         <img className="col-span-1 object-cover size-full" src={project.img.src} alt={project.title} />
                                     </div>

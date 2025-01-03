@@ -95,7 +95,7 @@ const AboutMe = () => {
                         </div>
 
                         <div className="relative md:w-1/2 m-5 flex flex-col justify-between">
-                            <TextReveal className="text-neutral-50 leading-7">{t("aboutme.description")}</TextReveal>
+                            <TextReveal className="text-neutral-50 leading-7 text-justify">{t("aboutme.description")}</TextReveal>
                             <div className="flex justify-between mt-5">
                                 <Image src={ReactJs} alt="logo react" width={50} height={50} />
                                 <Image src={Typescript} alt="logo react" width={50} height={50} />
@@ -105,9 +105,7 @@ const AboutMe = () => {
                             </div>
                             <div className="flex justify-center pt-5">
                                 <Button asChild>
-                                    <Link target="_blank" href="/">
-                                        contact
-                                    </Link>
+                                    <Link href="#contact">contact</Link>
                                 </Button>
                             </div>
                         </div>

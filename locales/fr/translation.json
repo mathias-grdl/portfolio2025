@@ -48,7 +48,7 @@
     }
   },
   "aboutme": {
-    "role": "Développeur ReactJS et Wordpress Since 2022",
+    "role": "Développeur ReactJS et Wordpress depuis 2022",
     "drawMe": "DESSINEZ MOI",
     "description": "Durant mes études, j'ai travaillé dans différents secteurs comme Uber Eats, l'intérim, ou encore en tant que vendeur à Angers et Tours, dans le nord de la France. Ensuite, j'ai déménagé dans le sud, à 30 minutes de l'Espagne, pour suivre une alternance d'un an en développement web. À cette époque, je ne connaissais que HTML et CSS, mais j'ai rapidement acquis une autonomie complète, créant des sites WordPress pixel perfect sans thème ni builder. J'ai également appris à déboguer les problèmes liés à WordPress, gérer l'hébergement et effectuer des migrations. Grâce à cette expérience, j'ai pu me lancer en freelance, ce qui m'a permis de commencer à apprendre ReactJS. Avec persévérance, j'ai intégré Radio Analyzer à Aalborg, au Danemark, en tant que développeur front-end ReactJS, où je contribue activement au développement de solutions innovantes pour leurs produits SaaS.",
     "resetCanvas": "Réinitialiser le canevas"
@@ -89,29 +89,34 @@
       "obandito": {
         "title": "O'bandito",
         "description": "O'bandito est une plateforme web connectant musiciens et organisateurs d'événements, développée sur 4 semaines dans le cadre d'un projet de certification professionnelle. Réalisé en collaboration avec une équipe de 3 développeurs (2 frontend, 1 backend).",
-        "tags": ["ReactJs", "API GraphQL", "Figma"]
+        "tags": ["ReactJs", "API GraphQL", "Figma"],
+        "project": "Projet O'clock"
       },
       "moviesFinder": {
         "title": "Movies finder",
         "description": "Une plateforme de recherche de films construite avec React, utilisant une API externe pour les données en temps réel. Fonctionnalités de recherche dynamique, affichage des détails des films et design responsive utilisant useEffect et useSWR pour une récupération efficace des données.",
         "link": "Voir le site",
-        "github": "Voir Github"
+        "github": "Voir Github",
+        "project": "Projet personnel"
       },
       "thishan": {
         "title": "Maison Thishan",
         "description": "Un site e-commerce WordPress entièrement personnalisé créé from scratch pour un parfumeur indépendant. Développement de thème sur mesure, catalogue de produits personnalisé et processus de paiement adapté sans utiliser de thèmes préconçus.",
-        "link": "Voir le site"
+        "link": "Voir le site",
+        "project": "Projet Freelance"
       },
       "tp66": {
         "title": "TP66",
         "description": "Refonte du site web de la plus grande entreprise de BTP des Pyrénées-Orientales",
-        "link": "Voir le site"
+        "link": "Voir le site",
+        "project": "Projet entreprise"
       },
       "kasa": {
         "title": "Kasa",
         "description": "Kasa est mon premier projet ReactJS visant à présenter différents appartements",
         "link": "Voir le site",
-        "github": "Voir Github"
+        "github": "Voir Github",
+        "project": "Projet Openclassrooms"
       }
     },
     "link": "Voir le site",

@@ -24,13 +24,14 @@ export default function Slider() {
             title: t("slides.hobbies"),
         },
         {
-            url: "https://images.unsplash.com/photo-1598903747246-f663f6fe93c0?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+            url: "https://images.unsplash.com/photo-1696761354458-c6c9727d2156?q=80&w=1954&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
             subTitle: "Projects",
             title: t("slides.projects"),
             id: "projects",
         },
         {
-            url: "https://images.unsplash.com/photo-1441786485319-5e0f0c092803?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+            url: "https://images.unsplash.com/photo-1513269762479-12fa9962d31b?q=80&w=1887&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+            // url: "https://images.unsplash.com/photo-1719952742088-9735b5ff8867?q=80&w=2035&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
             subTitle: "About Me",
             title: [t("hero.titlePart1"), <br key="break" />, t("hero.titlePart2")],
             id: "aboutme",
@@ -52,11 +53,7 @@ export default function Slider() {
     const colors = ["rgba(255, 165, 0, 0.5)", "rgba(0, 128, 255, 0.5)", "rgba(255, 255, 255, 0.5)", "rgba(255, 192, 203, 0.5)", "rgba(144, 238, 144, 0.5)"];
 
     const getWidth = (index: number) => {
-        return activeIndex === index ? "md:w-[40%]" : "md:w-[15%]";
-    };
-
-    const getHeight = (index: number) => {
-        return activeIndex === index ? "h-[40%]" : "h-[15%]";
+        return activeIndex === index ? "w-[52%] md:w-[40%]" : "w-[13%] md:w-[15%]";
     };
 
     const getOpacity = (index: number) => {
@@ -91,7 +88,7 @@ export default function Slider() {
     return (
         <section
             ref={sectionRef}
-            className="flex flex-col md:flex-row overflow-hidden h-screen relative"
+            className="flex overflow-hidden h-screen relative"
             onMouseEnter={() => setIsMouseInSection(true)}
             onMouseLeave={() => setIsMouseInSection(false)}>
             {isMouseInSection && (
@@ -146,7 +143,7 @@ export default function Slider() {
             {slides.map((slide, index) => (
                 <div
                     key={index}
-                    className={`relative w-full ${getWidth(index)} ${getHeight(index)} md:h-screen ${getZIndex(
+                    className={`relative w-full ${getWidth(index)} h-screen ${getZIndex(
                         index
                     )} cursor-none transition-all duration-500 ease-in-out hover:scale-105 overflow-visible`}
                     onClick={() => handleClick(index)}
