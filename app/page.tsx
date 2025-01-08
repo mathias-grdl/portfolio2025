@@ -2,7 +2,7 @@
 import AboutMe from "@/components/aboutme";
 import Contact from "@/components/contact";
 import Experiences from "@/components/experiences";
-// import Hobbies from "@/components/hobbies";
+import Hobbies from "@/components/hobbies";
 import Projects from "@/components/projects";
 import Reviews from "@/components/reviews";
 import Slider from "@/components/slider";
@@ -17,7 +17,7 @@ export default function Home() {
                 <Experiences />
                 <Reviews />
                 <Projects />
-                {/* <Hobbies /> */}
+                <Hobbies />
                 <Contact />
             </div>
         </SmoothScroll>

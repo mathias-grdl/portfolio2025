@@ -1,196 +1,299 @@
 "use client";
 
-import React, { useState, useEffect, useRef } from "react";
+import React, { useEffect, useRef, useState, useCallback, useMemo } from "react";
 import Section from "./Section";
 import Lenis from "@studio-freight/lenis";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import Oslo from "../public/assets/hobbies/oslo-min.jpg";
-import Paris from "../public/assets/hobbies/paris-min.png";
+import Oslo from "../public/assets/hobbies/oslo2.png";
+import Paris from "../public/assets/hobbies/paris2.png";
+import Copenhagen from "../public/assets/hobbies/copenhagen1.png";
+import Chypre from "../public/assets/hobbies/chypre1.png";
+import Finland from "../public/assets/hobbies/finland1.png";
+import Poland from "../public/assets/hobbies/poland1.png";
+import Sweden from "../public/assets/hobbies/Sweden.png";
+import { useTranslation } from "react-i18next";
 
-const locationData = [
-    {
-        images: Paris,
-        location: "France",
-        flag: "https://flagcdn.com/fr.svg",
-        description: "City of lights and romance",
-    },
-    {
-        images: Oslo,
-        location: "Norway",
-        flag: "https://flagcdn.com/no.svg",
-        description: "Capital city with stunning fjords",
-    },
-    {
-        images: Oslo,
-        location: "Denmark",
-        flag: "https://flagcdn.com/dk.svg",
-        description: "City of beautiful canals and architecture",
-    },
-    {
-        images: Oslo,
-        location: "Cyprus",
-        flag: "https://flagcdn.com/cy.svg",
-        description: "Island country in the Eastern Mediterranean",
-    },
-    {
-        images: Oslo,
-        location: "Finland",
-        flag: "https://flagcdn.com/fi.svg",
-        description: "Country of thousands of lakes and islands",
-    },
-    {
-        images: Oslo,
-        location: "Poland",
-        flag: "https://flagcdn.com/pl.svg",
-        description: "City known for its well-preserved medieval core",
-    },
-];
+interface ImageData {
+    src: string;
+}
 
-export default function Hobbies() {
-    const containerRef = useRef(null);
-    const [activeLocation, setActiveLocation] = useState("France");
-    const locationRefs = useRef<HTMLButtonElement[]>([]);
-    const [isTransitioning, setIsTransitioning] = useState(false);
+interface LocationData {
+    images: ImageData;
+    location: string;
+    cities?: string;
+    flag: string;
+    description: string;
+    lat: number;
+    lng: number;
+}
 
-    // Préchargement des images
-    useEffect(() => {
-        locationData.forEach(location => {
-            const img = new Image();
-            img.src = location.images.src;
+interface SliderProps {
+    locationData: LocationData[];
+}
+
+const LocationSlide = ({ image, location, isActive }: { image: ImageData; location: string; isActive: boolean }) => (
+    <div
+        className="location-slide absolute inset-0"
+        style={{
+            opacity: isActive ? 1 : 0,
+            visibility: "visible",
+            zIndex: 1,
+        }}>
+        <img src={image.src} alt={location} style={{ objectPosition: "50% 25%" }} className="object-cover w-full h-full" />
+        <div className="absolute inset-0 bg-black/50" />
+    </div>
+);
+
+const LocationInfo = ({ location, flag, description }: { location: string; flag: string; description: string }) => {
+    const { t } = useTranslation();
+    return (
+        <div className="flex flex-col items-center justify-center container mx-auto">
+            <div className="flex items-center gap-4 mb-2">
+                <img src={flag} alt={`${location} flag`} className="w-8 h-8" />
+                <h2 className="text-6xl font-bold">{t(`hobbies.locations.${location.toLowerCase()}.title`)}</h2>
+            </div>
+            <span className="mb-4">{t(`hobbies.locations.${location.toLowerCase()}.cities`)}</span>
+            <p className="text-xl text-center">{t(`hobbies.locations.${location.toLowerCase()}.description`)}</p>
+        </div>
+    );
+};
+
+const DesktopSlider = ({ locationData }: SliderProps) => {
+    const textRef = useRef(null);
+    const [activeIndex, setActiveIndex] = useState(0);
+    const lastIndexRef = useRef(0);
+    const slideAnimationsRef = useRef(new Map());
+
+    const handleSlideChange = useCallback((index: number) => {
+        const slides = document.querySelectorAll(".location-slide");
+        slides.forEach((slide, i) => {
+            const prevAnim = slideAnimationsRef.current.get(i);
+            if (prevAnim) prevAnim.kill();
+
+            const newAnim = gsap.to(slide, {
+                opacity: i === index ? 1 : 0,
+                duration: 0.4,
+                ease: "power2.inOut",
+                immediateRender: false,
+            });
+            slideAnimationsRef.current.set(i, newAnim);
         });
+
+        gsap.timeline({
+            onComplete: () => slideAnimationsRef.current.clear(),
+        })
+            .set(textRef.current, { opacity: 0, y: 20 })
+            .to(textRef.current, {
+                opacity: 1,
+                y: 0,
+                duration: 0.4,
+                ease: "power1.out",
+            });
     }, []);
 
-    const handleLocationChange = (newLocation: string) => {
-        if (isTransitioning || activeLocation === newLocation) return;
-        setIsTransitioning(true);
+    useEffect(() => {
+        gsap.registerPlugin(ScrollTrigger);
 
-        const timeline = gsap.timeline({
-            onComplete: () => {
-                setIsTransitioning(false);
+        const lenis = new Lenis({
+            duration: 1.2,
+            easing: t => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+            wheelMultiplier: 0.8,
+        });
+
+        const rafCallback = (time: number) => {
+            lenis.raf(time);
+            requestAnimationFrame(rafCallback);
+        };
+
+        const rafId = requestAnimationFrame(rafCallback);
+
+        const scrollTrigger = ScrollTrigger.create({
+            trigger: "#hobbies",
+            start: "top top",
+            end: "+=300%",
+            pin: true,
+            pinSpacing: true,
+            scrub: 1,
+            onUpdate: self => {
+                const newIndex = Math.floor(self.progress * (locationData.length - 1));
+                const clampedIndex = Math.min(newIndex, locationData.length - 1);
+
+                if (clampedIndex !== lastIndexRef.current) {
+                    lastIndexRef.current = clampedIndex;
+                    setActiveIndex(clampedIndex);
+                    handleSlideChange(clampedIndex);
+                }
             },
         });
 
-        timeline
-            .to(".content-transition", {
-                opacity: 0.8,
-                duration: 0.2,
-                ease: "power2.out",
-            })
-            .add(() => {
-                setActiveLocation(newLocation);
-            })
-            .to(".content-transition", {
-                opacity: 1,
-                duration: 0.3,
-                ease: "power2.in",
-            });
+        return () => {
+            cancelAnimationFrame(rafId);
+            lenis.destroy();
+            scrollTrigger.kill();
+            slideAnimationsRef.current.clear();
+        };
+    }, [handleSlideChange, locationData.length]);
+
+    return (
+        <div className="relative h-full">
+            <div className="absolute inset-0">
+                {locationData.map((location, index) => (
+                    <LocationSlide key={location.location} image={location.images} location={location.location} isActive={index === activeIndex} />
+                ))}
+            </div>
+            <div ref={textRef} className="relative z-10 flex flex-col items-center justify-center h-full text-white">
+                <LocationInfo {...locationData[activeIndex]} />
+            </div>
+        </div>
+    );
+};
+
+const MobileSlider = ({ locationData }: SliderProps) => {
+    const [activeIndex, setActiveIndex] = useState(0);
+
+    const handleMobileSlideChange = (direction: "next" | "prev") => {
+        if (direction === "next") {
+            setActiveIndex(prev => (prev + 1) % locationData.length);
+        } else {
+            setActiveIndex(prev => (prev - 1 + locationData.length) % locationData.length);
+        }
     };
 
+    return (
+        <div className="relative h-full">
+            <div className="absolute inset-0">
+                {locationData.map((location, index) => (
+                    <LocationSlide key={location.location} image={location.images} location={location.location} isActive={index === activeIndex} />
+                ))}
+            </div>
+            <div className="relative z-10 flex flex-col items-center justify-center h-full text-white">
+                <LocationInfo {...locationData[activeIndex]} />
+                <div className="absolute bottom-10 left-0 right-0 flex justify-center gap-4 z-20">
+                    <button onClick={() => handleMobileSlideChange("prev")} className="p-2 bg-white/20 rounded-full backdrop-blur-sm">
+                        <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+                        </svg>
+                    </button>
+                    <button onClick={() => handleMobileSlideChange("next")} className="p-2 bg-white/20 rounded-full backdrop-blur-sm">
+                        <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+    );
+};
+
+export default function Hobbies() {
+    const { t } = useTranslation();
+    // Mémoriser les données de localisation
+    const locationData = useMemo(
+        () => [
+            {
+                images: Paris,
+                location: "France",
+                cities: "Paris, Angers, Tours, Perpignan, ect...",
+                flag: "https://flagcdn.com/fr.svg",
+                description: "City of lights and romance",
+                lat: 48.8566,
+                lng: 2.3522,
+            },
+            {
+                images: Oslo,
+                location: "Norway",
+                cities: "Oslo",
+                flag: "https://flagcdn.com/no.svg",
+                description: "Capital city with stunning fjords",
+                lat: 59.9139,
+                lng: 10.7522,
+            },
+            {
+                images: Copenhagen,
+                location: "Denmark",
+                cities: "Aalborg, Copenhagen, aarhus, skagen, ect...",
+                flag: "https://flagcdn.com/dk.svg",
+                description: "City of beautiful canals and architecture",
+                lat: 55.6761,
+                lng: 12.5683,
+            },
+            {
+                images: Chypre,
+                location: "Cyprus",
+                cities: "Paphos, Limassol, Lanarca, ect...",
+                flag: "https://flagcdn.com/cy.svg",
+                description: "Island country in the Eastern Mediterranean",
+                lat: 35.1264,
+                lng: 33.4299,
+            },
+            {
+                images: Finland,
+                location: "Finland",
+                cities: "Helsinki, Rovaniemi",
+                flag: "https://flagcdn.com/fi.svg",
+                description: "Country of thousands of lakes and islands",
+                lat: 60.1695,
+                lng: 24.9354,
+            },
+            {
+                images: Sweden,
+                location: "Sweden",
+                cities: "Stockholm, Göteborg",
+                flag: "https://flagcdn.com/se.svg",
+                description: "Land of midnight sun, forests and Nordic culture",
+                lat: 60.128161,
+                lng: 18.643501,
+            },
+            {
+                images: Poland,
+                location: "Poland",
+                cities: "Cracovie",
+                flag: "https://flagcdn.com/pl.svg",
+                description: "City known for its well-preserved medieval core",
+                lat: 52.2297,
+                lng: 21.0122,
+            },
+        ],
+        []
+    );
+
     useEffect(() => {
-        if (window.innerWidth >= 768) {
-            // md breakpoint
-            gsap.registerPlugin(ScrollTrigger);
-
-            const lenis = new Lenis({
-                duration: 1.2,
-                easing: t => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
-            });
-
-            function raf(time: number) {
-                lenis.raf(time);
-                requestAnimationFrame(raf);
-            }
-            requestAnimationFrame(raf);
-
-            const locations = Array.from(new Set(locationData.map(item => item.location)));
-
-            ScrollTrigger.create({
-                trigger: "#hobbies",
-                start: "top top",
-                end: `+=${locations.length * window.innerHeight}`,
-                pin: true,
-                pinSpacing: true,
-            });
-
-            locations.forEach((_, index) => {
-                const sectionHeight = window.innerHeight;
-                ScrollTrigger.create({
-                    trigger: locationRefs.current[index],
-                    start: `top+=${index * sectionHeight} center`,
-                    end: `top+=${(index + 1) * sectionHeight} center`,
-                    onEnter: () => handleLocationChange(locations[index]),
-                    onEnterBack: () => handleLocationChange(locations[index]),
+        const imagesToPreload = [Paris, Oslo, Copenhagen, Chypre, Finland, Poland];
+        const preloadImages = (images: ImageData[]) => {
+            const loadPromises = images.map(image => {
+                return new Promise((resolve, reject) => {
+                    const img = new Image();
+                    img.src = image.src;
+                    img.onload = resolve;
+                    img.onerror = reject;
                 });
             });
 
-            return () => {
-                lenis.destroy();
-                ScrollTrigger.getAll().forEach(st => st.kill());
-            };
-        }
+            Promise.all(loadPromises).catch(err => console.error("Error preloading images:", err));
+        };
+        preloadImages(imagesToPreload);
     }, []);
 
     return (
-        <Section id="hobbies" className="relative h-full md:h-screen">
-            <div ref={containerRef} className="grid grid-cols-1 md:grid-cols-5 h-full container mx-auto">
-                {/* Sidebar */}
-                <div className="col-span-1 py-8 sticky top-0 z-10 bg-white/80 dark:bg-black/80 backdrop-blur-sm">
-                    <h2 className="text-4xl font-bold mb-2 select-none">Travels</h2>
-                    <span className="text-sm text-neutral-500">2023-2024</span>
-                    <div className="mt-8 space-y-2 md:hidden">
-                        <select
-                            className="w-full px-4 py-3 rounded-lg transition-all bg-neutral-100 dark:bg-neutral-800"
-                            onChange={e => handleLocationChange(e.target.value)}
-                            value={activeLocation}>
-                            {Array.from(new Set(locationData.map(item => item.location))).map(location => (
-                                <option key={location} value={location}>
-                                    {location}
-                                </option>
-                            ))}
-                        </select>
+        <Section id="hobbies" className="relative h-screen">
+            <div>
+                <div className="absolute top-0 left-1/2 transform -translate-x-1/2 text-center text-white z-20 pt-10">
+                    <h2 className="text-4xl font-bold mb-4">{t("hobbies.title")}</h2>
+                    <div className="flex gap-4">
+                        <span>{t("hobbies.subtitle.travel")}</span>
+                        <span>-</span>
+                        <span>{t("hobbies.subtitle.hike")}</span>
+                        <span>-</span>
+                        <span>{t("hobbies.subtitle.learn")}</span>
                     </div>
-                    <nav className="mt-8 space-y-2 hidden md:block">
-                        {Array.from(new Set(locationData.map(item => item.location))).map((location, index) => {
-                            const locationDataItem = locationData.find(item => item.location === location);
-                            return (
-                                <button
-                                    key={location}
-                                    ref={el => (locationRefs.current[index] = el!)}
-                                    onClick={() => handleLocationChange(location)}
-                                    className={`w-full text-left px-4 py-3 rounded-lg transition-all
-                                        ${
-                                            activeLocation === location
-                                                ? "bg-neutral-100 dark:bg-neutral-800 font-medium"
-                                                : "hover:bg-neutral-50 dark:hover:bg-neutral-900"
-                                        }`}>
-                                    <img src={locationDataItem?.flag} alt={location} className="w-4 h-4 mr-2 inline-block" />
-                                    {location}
-                                </button>
-                            );
-                        })}
-                    </nav>
                 </div>
-
-                {/* Content avec animation */}
-                <div className="col-span-4 md:px-8 flex items-center">
-                    <div className="content-transition max-w-3xl w-full space-y-8">
-                        <div className="select-none">
-                            <h3 className="text-4xl font-medium mb-3 text-neutral-900 dark:text-neutral-100">{activeLocation}</h3>
-                            <p className="text-lg text-neutral-600 dark:text-neutral-400">
-                                {locationData.find(item => item.location === activeLocation)?.description}
-                            </p>
-                        </div>
-
-                        <div className="relative aspect-[16/9] rounded-2xl overflow-hidden">
-                            <img
-                                src={locationData.find(item => item.location === activeLocation)?.images.src}
-                                alt={activeLocation}
-                                className="w-full h-full object-cover"
-                                loading="eager"
-                                decoding="async"
-                            />
-                        </div>
+                <div className="h-screen w-full">
+                    <div className="hidden lg:block h-full">
+                        <DesktopSlider locationData={locationData} />
+                    </div>
+                    <div className="lg:hidden h-full">
+                        <MobileSlider locationData={locationData} />
                     </div>
                 </div>
             </div>

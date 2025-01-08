@@ -148,5 +148,50 @@
       "submit": "Send",
       "success": "Your message has been sent successfully!"
     }
+  },
+  "hobbies": {
+    "title": "Hobbies",
+    "subtitle": {
+      "travel": "Travel",
+      "hike": "Hiking",
+      "learn": "Learning"
+    },
+    "locations": {
+      "france": {
+        "title": "France",
+        "cities": "Paris, Angers, Tours, Perpignan, etc...",
+        "description": "City of lights and romance"
+      },
+      "norway": {
+        "title": "Norway",
+        "cities": "Oslo",
+        "description": "Capital city with stunning fjords"
+      },
+      "denmark": {
+        "title": "Denmark",
+        "cities": "Aalborg, Copenhagen, Aarhus, Skagen, etc...",
+        "description": "City of beautiful canals and architecture"
+      },
+      "cyprus": {
+        "title": "Cyprus",
+        "cities": "Paphos, Limassol, Lanarca, etc...",
+        "description": "Island country in the Eastern Mediterranean"
+      },
+      "finland": {
+        "title": "Finland",
+        "cities": "Helsinki, Rovaniemi",
+        "description": "Country of thousands of lakes and islands"
+      },
+      "sweden": {
+        "title": "Sweden",
+        "cities": "Stockholm, Göteborg",
+        "description": "Land of midnight sun, forests and Nordic culture"
+      },
+      "poland": {
+        "title": "Poland",
+        "cities": "Cracovie",
+        "description": "City known for its well-preserved medieval core"
+      }
+    }
   }
 }
