@@ -9,7 +9,7 @@ import Section from "./Section";
 import { useTranslation } from "react-i18next";
 
 export default function Experiences() {
-    const { t } = useTranslation();
+    const { t, i18n } = useTranslation();
     const [visibleImage, setVisibleImage] = useState<string | null>("image1");
     const sectionRef = useRef<HTMLDivElement>(null);
     const experiencesRef = useRef<HTMLDivElement[]>([]);
@@ -58,7 +58,7 @@ export default function Experiences() {
             lenis.destroy();
             ScrollTrigger.getAll().forEach(st => st.kill());
         };
-    }, []);
+    }, [i18n.language]);
 
     const experiences = [
         {

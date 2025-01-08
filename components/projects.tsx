@@ -12,7 +12,7 @@ import Kasa from "../public/assets/projects/kasa.png";
 import Tp66 from "../public/assets/projects/tp66.png";
 
 export default function Projects() {
-    const { t } = useTranslation();
+    const { t, i18n } = useTranslation();
     const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
     const [activeIndex, setActiveIndex] = useState(0);
     const sectionRef = useRef(null);
@@ -57,7 +57,7 @@ export default function Projects() {
             lenis.destroy();
             ScrollTrigger.getAll().forEach(st => st.kill());
         };
-    }, []);
+    }, [i18n.language]);
 
     const projects = [
         {

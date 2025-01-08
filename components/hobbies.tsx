@@ -45,7 +45,7 @@ const LocationSlide = ({ image, location, isActive }: { image: ImageData; locati
     </div>
 );
 
-const LocationInfo = ({ location, flag, description }: { location: string; flag: string; description: string }) => {
+const LocationInfo = ({ location, flag }: { location: string; flag: string }) => {
     const { t } = useTranslation();
     return (
         <div className="flex flex-col items-center justify-center container mx-auto">
@@ -60,6 +60,8 @@ const LocationInfo = ({ location, flag, description }: { location: string; flag:
 };
 
 const DesktopSlider = ({ locationData }: SliderProps) => {
+    const { i18n } = useTranslation();
+
     const textRef = useRef(null);
     const [activeIndex, setActiveIndex] = useState(0);
     const lastIndexRef = useRef(0);
@@ -133,7 +135,7 @@ const DesktopSlider = ({ locationData }: SliderProps) => {
             scrollTrigger.kill();
             slideAnimationsRef.current.clear();
         };
-    }, [handleSlideChange, locationData.length]);
+    }, [handleSlideChange, locationData.length, i18n.language]);
 
     return (
         <div className="relative h-full">

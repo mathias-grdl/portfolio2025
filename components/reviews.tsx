@@ -109,7 +109,7 @@ export default function Reviews() {
             mm.revert();
             ScrollTrigger.getAll().forEach(t => t.kill());
         };
-    }, [isMobile]);
+    }, [isMobile, i18n.language]);
 
     return (
         <section ref={containerRef} className="h-screen overflow-hidden relative bg-gradient-to-b from-white to-gray-50">

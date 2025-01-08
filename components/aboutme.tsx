@@ -22,7 +22,7 @@ const AboutMe = () => {
     const imageRef = useRef<HTMLImageElement>(null);
     const sectionRef = useRef<HTMLDivElement>(null);
     const { canvasRef, showText, hasDrawn, resetCanvas } = useCanvas();
-    const { t } = useTranslation();
+    const { t, i18n } = useTranslation();
 
     useEffect(() => {
         gsap.registerPlugin(ScrollTrigger);
@@ -54,7 +54,7 @@ const AboutMe = () => {
             lenis.destroy();
             ScrollTrigger.getAll().forEach(t => t.kill());
         };
-    }, []);
+    }, [i18n.language]);
 
     return (
         <div ref={sectionRef} className="h-full md:h-screen">
