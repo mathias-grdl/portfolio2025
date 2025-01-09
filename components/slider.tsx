@@ -5,6 +5,7 @@ import { ChevronLeft, ChevronRight, ChevronDown } from "lucide-react";
 import useKeyboardNavigation from "../hooks/useKeyboardNavigation";
 import useMouseMovement from "../hooks/useMouseMovement";
 import useCursorColor from "../hooks/useCursorColor";
+import { Typography } from "./ui/typography";
 
 export default function Slider() {
     const { t } = useTranslation();
@@ -155,9 +156,11 @@ export default function Slider() {
                     <div className={`absolute inset-0 bg-black ${getOpacity(index)} transition-opacity duration-500`}></div>
                     {activeIndex === index && (
                         <>
-                            <h1 className="uppercase text-3xl md:xl:text-4xl lg:text-6xl xl:text-9xl whitespace-nowrap text-white text-center absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-20 scale-0 animate-scaleIn">
+                            <Typography
+                                variant="h1"
+                                className="text-white text-center absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-20 scale-0 animate-scaleIn">
                                 {slide.title}
-                            </h1>
+                            </Typography>
                         </>
                     )}
                 </div>

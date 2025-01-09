@@ -2,7 +2,6 @@ import React, { useState, useEffect, useRef } from "react";
 import { useTranslation } from "react-i18next";
 import { Button } from "./ui/button";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
-import Lenis from "@studio-freight/lenis";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import Obandito from "../public/assets/projects/obandito.png";
@@ -19,47 +18,6 @@ export default function Projects() {
     const sectionRef = useRef(null);
     const projectsRef = useRef<HTMLDivElement[]>([]);
     const [hoveredProject, setHoveredProject] = useState<string | null>(null);
-
-    useEffect(() => {
-        gsap.registerPlugin(ScrollTrigger);
-
-        const lenis = new Lenis({
-            duration: 1.2,
-            easing: t => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
-            wheelMultiplier: 0.8,
-        });
-
-        function raf(time: number) {
-            lenis.raf(time);
-            requestAnimationFrame(raf);
-        }
-        requestAnimationFrame(raf);
-
-        ScrollTrigger.create({
-            trigger: "#projects",
-            start: "top top",
-            end: `+=${projects.length * window.innerHeight}`,
-            pin: true,
-            pinSpacing: true,
-        });
-
-        projects.forEach((_, index) => {
-            const sectionHeight = window.innerHeight;
-            ScrollTrigger.create({
-                trigger: projectsRef.current[index],
-                start: `top+=${index * sectionHeight} center`,
-                end: `top+=${(index + 1) * sectionHeight} center`,
-                onEnter: () => setActiveIndex(index),
-                onEnterBack: () => setActiveIndex(index),
-            });
-        });
-
-        return () => {
-            lenis.destroy();
-            ScrollTrigger.getAll().forEach(st => st.kill());
-        };
-    }, [i18n.language]);
-
     const projects = [
         {
             img: Obandito,
@@ -103,6 +61,41 @@ export default function Projects() {
             project: t("projects.items.kasa.project"),
         },
     ];
+
+    useEffect(() => {
+        gsap.registerPlugin(ScrollTrigger);
+
+        const mm = gsap.matchMedia();
+
+        mm.add("(min-width: 768px)", () => {
+            const scrollTrigger = ScrollTrigger.create({
+                trigger: "#projects",
+                start: "top top",
+                end: `+=${projects.length * window.innerHeight}`,
+                pin: true,
+                pinSpacing: true,
+            });
+
+            const projectTriggers = projects.map((_, index) => {
+                return ScrollTrigger.create({
+                    trigger: projectsRef.current[index],
+                    start: `top+=${index * window.innerHeight} center`,
+                    end: `top+=${(index + 1) * window.innerHeight} center`,
+                    onEnter: () => setActiveIndex(index),
+                    onEnterBack: () => setActiveIndex(index),
+                });
+            });
+
+            return () => {
+                scrollTrigger.kill();
+                projectTriggers.forEach(trigger => trigger.kill());
+            };
+        });
+
+        return () => {
+            mm.revert();
+        };
+    }, [i18n.language, projects.length]);
 
     const handleMouseMove = (e: React.MouseEvent) => {
         setMousePosition({ x: e.clientX, y: e.clientY });

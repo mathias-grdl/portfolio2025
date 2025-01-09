@@ -28,19 +28,6 @@ const AboutMe = () => {
     useEffect(() => {
         gsap.registerPlugin(ScrollTrigger);
 
-        const lenis = new Lenis({
-            duration: 1.2,
-            smoothWheel: true,
-            syncTouch: false,
-            touchInertiaMultiplier: 0.8,
-        });
-
-        function raf(time: number) {
-            lenis.raf(time);
-            requestAnimationFrame(raf);
-        }
-        requestAnimationFrame(raf);
-
         if (sectionRef.current) {
             const sectionPin = ScrollTrigger.create({
                 trigger: sectionRef.current,
@@ -52,7 +39,6 @@ const AboutMe = () => {
         }
 
         return () => {
-            lenis.destroy();
             ScrollTrigger.getAll().forEach(t => t.kill());
         };
     }, [i18n.language]);

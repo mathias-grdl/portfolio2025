@@ -43,21 +43,15 @@ export default function Reviews() {
         checkMobile();
         window.addEventListener("resize", checkMobile);
 
+        return () => {
+            window.removeEventListener("resize", checkMobile);
+        };
+    }, []);
+
+    useEffect(() => {
         if (isMobile) return;
 
         gsap.registerPlugin(ScrollTrigger);
-
-        const lenis = new Lenis({
-            duration: 1.2,
-            easing: t => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
-            smoothWheel: true,
-        });
-
-        function raf(time: number) {
-            lenis.raf(time);
-            requestAnimationFrame(raf);
-        }
-        requestAnimationFrame(raf);
 
         gsap.set(containerRef.current, {
             perspective: 1000,
@@ -104,8 +98,6 @@ export default function Reviews() {
         });
 
         return () => {
-            window.removeEventListener("resize", checkMobile);
-            lenis.destroy();
             mm.revert();
             ScrollTrigger.getAll().forEach(t => t.kill());
         };

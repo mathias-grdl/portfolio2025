@@ -18,9 +18,9 @@ type DistributiveOmit<T, TOmitted extends PropertyKey> = T extends any ? Omit<T,
 export const typographyVariants = cva("", {
     variants: {
         variant: {
-            h1: "scroll-m-20 font-caption text-4xl font-extrabold tracking-tight lg:text-5xl",
-            h2: "scroll-m-20 font-caption text-3xl font-semibold tracking-tight transition-colors",
-            h3: "scroll-m-20 font-caption text-xl font-semibold tracking-tight",
+            h1: "scroll-m-20 font-caption text-3xl md:xl:text-4xl lg:text-6xl xl:text-9xl whitespace-nowrap tracking-tight lg:text-5xl uppercase",
+            h2: "scroll-m-20 font-caption text-3xl lg:text-6xl font-semibold tracking-tight transition-colors uppercase",
+            h3: "scroll-m-20 font-caption text-xl lg:text-4xl font-semibold tracking-tight",
             p: "leading-7 [&:not(:first-child)]:mt-6",
             default: "",
             quote: "mt-6 border-l-2 pl-6 italic",

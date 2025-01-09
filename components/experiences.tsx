@@ -1,5 +1,4 @@
 import React, { useState, useEffect, useRef } from "react";
-import Lenis from "@studio-freight/lenis";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { Button } from "./ui/button";
@@ -17,17 +16,6 @@ export default function Experiences() {
 
     useEffect(() => {
         gsap.registerPlugin(ScrollTrigger);
-
-        const lenis = new Lenis({
-            duration: 1.2,
-            easing: t => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
-        });
-
-        function raf(time: number) {
-            lenis.raf(time);
-            requestAnimationFrame(raf);
-        }
-        requestAnimationFrame(raf);
 
         if (window.innerWidth >= 768) {
             ScrollTrigger.create({
@@ -55,7 +43,6 @@ export default function Experiences() {
         });
 
         return () => {
-            lenis.destroy();
             ScrollTrigger.getAll().forEach(st => st.kill());
         };
     }, [i18n.language]);
