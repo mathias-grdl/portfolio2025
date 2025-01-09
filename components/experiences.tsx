@@ -6,6 +6,7 @@ import Link from "next/link";
 import { MapPin } from "lucide-react";
 import Section from "./Section";
 import { useTranslation } from "react-i18next";
+import { Typography } from "./ui/typography";
 
 export default function Experiences() {
     const { t, i18n } = useTranslation();
@@ -138,8 +139,10 @@ export default function Experiences() {
                     ref={el => (titleRefs.current[imageId] = el)}
                     className={`my-2 md:my-5 ps-2 ${visibleImage === imageId ? "active text-blue-500 border-s-2 border-s-blue-500" : ""}`}
                     onClick={e => handleImageVisibility(imageId, e)}>
-                    <span>{yearRange}</span>
-                    <h3 className={`text-3xl ${visibleImage === imageId ? "active text-blue-500" : ""}`}>{title}</h3>
+                    <Typography variant="small">{yearRange}</Typography>
+                    <Typography variant="h3" className={`${visibleImage === imageId ? "active text-blue-500" : ""}`}>
+                        {title}
+                    </Typography>
                 </a>
             </div>
             <div className="flex justify-center items-center">
@@ -156,11 +159,13 @@ export default function Experiences() {
                     <div className="my-2 md:my-5 md:absolute md:top-0 md:right-0 ">
                         <Link href={localisationLink ? localisationLink : ""} target="_blank" className="flex gap-1">
                             <MapPin />
-                            {localisation}
+                            <Typography variant="small">{localisation}</Typography>
                         </Link>
                     </div>
                     <div className="md:absolute md:top-1/4 md:right-0 md:w-[220px] lg:w-[300px] pb-5 md:pb-0">
-                        <p className="text-justify">{description}</p>
+                        <Typography variant="p" className="text-justify">
+                            {description}
+                        </Typography>
                         {btnName && btnLink && (
                             <div className="flex justify-center pt-5">
                                 <Button asChild>

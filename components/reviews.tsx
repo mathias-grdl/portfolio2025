@@ -10,6 +10,7 @@ import { Navigation } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/navigation";
 import { useTranslation } from "react-i18next";
+import { Typography } from "./ui/typography";
 
 type ReviewType = {
     id: number;
@@ -107,7 +108,9 @@ export default function Reviews() {
         <section ref={containerRef} className="h-screen overflow-hidden relative bg-gradient-to-b from-white to-gray-50">
             <div className="container mx-auto px-4">
                 <div className="flex items-center justify-center py-12">
-                    <h2 className="text-center text-4xl uppercase font-bold">{t("reviews.title")}</h2>
+                    <Typography variant="h2" className="text-center">
+                        {t("reviews.title")}
+                    </Typography>
                 </div>
                 {isMobile ? (
                     <div className="relative md:hidden">

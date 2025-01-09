@@ -13,6 +13,7 @@ import Poland from "../public/assets/hobbies/poland1.png";
 import Sweden from "../public/assets/hobbies/Sweden.png";
 import { useTranslation } from "react-i18next";
 import { Typography } from "./ui/typography";
+import { ChevronLeft, ChevronRight } from "lucide-react";
 
 interface ImageData {
     src: string;
@@ -100,6 +101,18 @@ export default function Hobbies() {
         },
     ];
 
+    const handlePrevSlide = () => {
+        const newIndex = activeIndex === 0 ? locationData.length - 1 : activeIndex - 1;
+        setActiveIndex(newIndex);
+        lastIndexRef.current = newIndex;
+    };
+
+    const handleNextSlide = () => {
+        const newIndex = activeIndex === locationData.length - 1 ? 0 : activeIndex + 1;
+        setActiveIndex(newIndex);
+        lastIndexRef.current = newIndex;
+    };
+
     useEffect(() => {
         gsap.registerPlugin(ScrollTrigger);
 
@@ -151,6 +164,20 @@ export default function Hobbies() {
                     </div>
                 </div>
                 <div className="relative h-screen">
+                    <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 z-30 flex gap-4 lg:hidden">
+                        <button
+                            onClick={handlePrevSlide}
+                            className="bg-white/20 p-2 rounded-full hover:bg-white/40 transition-all">
+                            <ChevronLeft className="w-8 h-8 text-white" />
+                        </button>
+
+                        <button
+                            onClick={handleNextSlide}
+                            className="bg-white/20 p-2 rounded-full hover:bg-white/40 transition-all">
+                            <ChevronRight className="w-8 h-8 text-white" />
+                        </button>
+                    </div>
+
                     <div className="absolute inset-0">
                         {locationData.map((location, index) => (
                             <div

@@ -1,12 +1,13 @@
 "use client";
-import { useSmoothScroll } from "@/hooks/useSmoothScroll";
-import { ReactNode } from "react";
+import { ReactNode } from 'react';
+import { useSmoothScroll } from '@/hooks/useSmoothScroll';
 
-interface Props {
+interface SmoothScrollProps {
     children: ReactNode;
 }
 
-export default function SmoothScroll({ children }: Props) {
+export default function SmoothScroll({ children }: SmoothScrollProps) {
     useSmoothScroll();
+    
     return <>{children}</>;
 }

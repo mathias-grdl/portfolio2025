@@ -1,4 +1,5 @@
 import React from "react";
+import { Typography } from "./ui/typography";
 
 interface ReviewProps {
     review: {
@@ -32,11 +33,11 @@ const Review = React.forwardRef<HTMLDivElement, ReviewProps>(({ review }, ref) =
                         <img src={review.picture} alt="" width={50} height={50} className="rounded-full object-cover" />
                     </div>
                     <div>
-                        <h3 className="font-semibold text-black/90">{review.name}</h3>
-                        <p className="text-sm text-black/60 flex items-center">
+                        <Typography variant="lead">{review.name}</Typography>
+                        <Typography variant="small" className="text-black/60 flex items-center">
                             <img src={review.flag} alt="" width={20} height={20} className="mr-2" />
                             {review.country}
-                        </p>
+                        </Typography>
                     </div>
                 </div>
                 <div className="flex items-center">
@@ -56,7 +57,9 @@ const Review = React.forwardRef<HTMLDivElement, ReviewProps>(({ review }, ref) =
                     ))}
                 </div>
             </div>
-            <p className="text-sm text-black/70 line-clamp-5 md:line-clamp-none text-justify md:text-left">{review.review}</p>
+            <Typography variant="p" className="text-sm text-black/70 line-clamp-5 md:line-clamp-none text-justify md:text-left">
+                {review.review}
+            </Typography>
         </div>
     );
 });

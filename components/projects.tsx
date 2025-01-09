@@ -156,7 +156,7 @@ export default function Projects() {
                             <AccordionContent>
                                 <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mt-5 items-center">
                                     <div>
-                                        <Typography variant="h3" className="text-xl bold pb-5">
+                                        <Typography variant="lead" className="pb-5">
                                             {project.project}
                                         </Typography>
                                         <Typography variant="p" className="col-span-1 text-justify md:text-left">
