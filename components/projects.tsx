@@ -10,6 +10,7 @@ import Thishan from "../public/assets/projects/thishan.png";
 import MoviesFinder from "../public/assets/projects/moviesFinder.png";
 import Kasa from "../public/assets/projects/kasa.png";
 import Tp66 from "../public/assets/projects/tp66.png";
+import { Typography } from "./ui/typography";
 
 export default function Projects() {
     const { t, i18n } = useTranslation();
@@ -147,9 +148,11 @@ export default function Projects() {
                             onMouseLeave={handleMouseLeave}>
                             <AccordionTrigger>
                                 <div className="grid grid-cols-1 md:grid-cols-2 w-full gap-2 items-center">
-                                    <h3 className={`col-span-1 text-3xl md:text-4xl lg:text-5xl ${activeIndex === index ? "text-blue-500" : ""} no-underline`}>
+                                    <Typography
+                                        variant="h3"
+                                        className={`col-span-1 text-3xl md:text-4xl lg:text-5xl ${activeIndex === index ? "text-blue-500" : ""} no-underline`}>
                                         {project.title}
-                                    </h3>
+                                    </Typography>
                                     <div className="col-span-1 flex gap-2">
                                         {project.tags.map((tag, tagIndex) => (
                                             <span key={tagIndex}>{tag}</span>
@@ -160,8 +163,12 @@ export default function Projects() {
                             <AccordionContent>
                                 <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mt-5 items-center">
                                     <div>
-                                        <h4 className="text-xl bold pb-5">{project.project}</h4>
-                                        <span className="col-span-1 text-justify md:text-left">{project.description}</span>
+                                        <Typography variant="h3" className="text-xl bold pb-5">
+                                            {project.project}
+                                        </Typography>
+                                        <Typography variant="p" className="col-span-1 text-justify md:text-left">
+                                            {project.description}
+                                        </Typography>
                                     </div>
                                     <div className="w-full h-[200px]">
                                         <img className="col-span-1 object-cover size-full" src={project.img.src} alt={project.title} />

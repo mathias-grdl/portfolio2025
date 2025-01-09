@@ -13,6 +13,7 @@ import Finland from "../public/assets/hobbies/finland1.png";
 import Poland from "../public/assets/hobbies/poland1.png";
 import Sweden from "../public/assets/hobbies/Sweden.png";
 import { useTranslation } from "react-i18next";
+import { Typography } from "./ui/typography";
 
 interface ImageData {
     src: string;
@@ -51,10 +52,14 @@ const LocationInfo = ({ location, flag }: { location: string; flag: string }) =>
         <div className="flex flex-col items-center justify-center container mx-auto">
             <div className="flex items-center gap-4 mb-2">
                 <img src={flag} alt={`${location} flag`} className="w-8 h-8" />
-                <h2 className="text-6xl font-bold">{t(`hobbies.locations.${location.toLowerCase()}.title`)}</h2>
+                <Typography variant="h2" className="text-6xl font-bold">
+                    {t(`hobbies.locations.${location.toLowerCase()}.title`)}
+                </Typography>
             </div>
             <span className="mb-4">{t(`hobbies.locations.${location.toLowerCase()}.cities`)}</span>
-            <p className="text-xl text-center">{t(`hobbies.locations.${location.toLowerCase()}.description`)}</p>
+            <Typography variant="p" className="text-xl text-center">
+                {t(`hobbies.locations.${location.toLowerCase()}.description`)}
+            </Typography>
         </div>
     );
 };
@@ -281,7 +286,9 @@ export default function Hobbies() {
         <Section id="hobbies" className="relative h-screen">
             <div>
                 <div className="absolute top-0 left-1/2 transform -translate-x-1/2 text-center text-white z-20 pt-10">
-                    <h2 className="text-4xl font-bold mb-4">{t("hobbies.title")}</h2>
+                    <Typography variant="h2" className="text-4xl font-bold mb-4">
+                        {t("hobbies.title")}
+                    </Typography>
                     <div className="flex gap-4">
                         <span>{t("hobbies.subtitle.travel")}</span>
                         <span>-</span>

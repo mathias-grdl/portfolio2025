@@ -6,7 +6,7 @@ import Hobbies from "@/components/hobbies";
 import Projects from "@/components/projects";
 import Reviews from "@/components/reviews";
 import Slider from "@/components/slider";
-import SmoothScroll from "@/components/SmoothScroll";
+import SmoothScroll from "@/components/theme/SmoothScroll";
 
 export default function Home() {
     return (

@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 // import { ModeToggle } from "./dropdownTheme";
 import Link from "next/link";
-import LanguageSelector from "./language-selector";
+import LanguageSelector from "./theme/language-selector";
 import { useTranslation } from "react-i18next";
 import { gsap } from "gsap";
 
