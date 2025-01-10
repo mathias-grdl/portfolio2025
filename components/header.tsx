@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 // import { ModeToggle } from "./dropdownTheme";
 import Link from "next/link";
 import LanguageSelector from "./theme/language-selector";
@@ -8,6 +8,21 @@ import { gsap } from "gsap";
 export default function Header() {
     const { t } = useTranslation();
     const [menuOpen, setMenuOpen] = useState(false);
+    const [visible, setVisible] = useState(true);
+    const [prevScrollPos, setPrevScrollPos] = useState(0);
+    const [isTop, setIsTop] = useState(true);
+
+    useEffect(() => {
+        const handleScroll = () => {
+            const currentScrollPos = window.scrollY;
+            setVisible(prevScrollPos > currentScrollPos || currentScrollPos < 10);
+            setPrevScrollPos(currentScrollPos);
+            setIsTop(currentScrollPos < 10);
+        };
+
+        window.addEventListener("scroll", handleScroll);
+        return () => window.removeEventListener("scroll", handleScroll);
+    }, [prevScrollPos]);
 
     const toggleMenu = () => {
         setMenuOpen(!menuOpen);
@@ -19,7 +34,10 @@ export default function Header() {
     };
 
     return (
-        <header className="relative w-screen z-[10] grid grid-cols-3 items-center pt-3 px-5">
+        <header
+            className={`fixed top-0 w-screen z-[100] grid grid-cols-3 items-center py-3 px-5 transition-all duration-100 ${
+                visible ? "translate-y-0" : "-translate-y-full"
+            } ${!isTop ? "bg-black/50 backdrop-blur-sm" : ""}`}>
             <h1 className="col-span-1 text-white">Mathias Grondziel</h1>
 
             <nav className="col-span-1 flex justify-center">
@@ -55,11 +73,11 @@ export default function Header() {
                 </button>
             </div>
 
-            <div className={`menu fixed top-0 left-0 w-full h-full bg-black transform -translate-x-full md:hidden ${menuOpen ? "block" : "hidden"} z-[20]`}>
-                <button className="absolute top-5 right-5 text-white" onClick={toggleMenu}>
+            <div className={`menu fixed top-0 left-0 w-full h-screen bg-black transform -translate-x-full md:hidden ${menuOpen ? "block" : "hidden"} z-[101]`}>
+                <button className="absolute top-5 right-5 text-white text-xl" onClick={toggleMenu}>
                     ✕
                 </button>
-                <ul className="flex flex-col items-center justify-center h-full gap-4">
+                <ul className="flex flex-col items-center justify-center h-full gap-8">
                     <li>
                         <Link href="#aboutme" className="text-white" onClick={toggleMenu}>
                             {t("nav.about")}
