@@ -7,7 +7,7 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 import Obandito from "../public/assets/projects/obandito.png";
 import Thishan from "../public/assets/projects/thishan.png";
 import MoviesFinder from "../public/assets/projects/moviesFinder.png";
-import Kasa from "../public/assets/projects/kasa.png";
+import NDA from "../public/assets/projects/NDA.png";
 import Tp66 from "../public/assets/projects/tp66.png";
 import { Typography } from "./ui/typography";
 
@@ -20,28 +20,20 @@ export default function Projects() {
     const [hoveredProject, setHoveredProject] = useState<string | null>(null);
     const projects = [
         {
+            img: NDA,
+            title: t("projects.items.radioanalyzer.title"),
+            description: t("projects.items.radioanalyzer.description"),
+            tags: ["ReactJs", "SaaS", "Figma"],
+            link: "https://radioanalyzer.com/",
+            github: "",
+            project: t("projects.items.radioanalyzer.project"),
+        },
+        {
             img: Obandito,
             title: t("projects.items.obandito.title"),
             description: t("projects.items.obandito.description"),
             tags: t("projects.items.obandito.tags", { returnObjects: true }) as string[],
             project: t("projects.items.obandito.project"),
-        },
-        {
-            img: MoviesFinder,
-            title: t("projects.items.moviesFinder.title"),
-            description: t("projects.items.moviesFinder.description"),
-            tags: ["ReactJs", "API"],
-            link: "https://movie-search-hub.netlify.app/?s=Jumanji",
-            github: "https://github.com/mathias-grdl/BeginReact-Workshop-UseEffect",
-            project: t("projects.items.moviesFinder.project"),
-        },
-        {
-            img: Thishan,
-            title: t("projects.items.thishan.title"),
-            description: t("projects.items.thishan.description"),
-            tags: ["Wordpress", "E-commerce"],
-            link: "https://maisonthishan.com/",
-            project: t("projects.items.thishan.project"),
         },
         {
             img: Tp66,
@@ -52,13 +44,21 @@ export default function Projects() {
             project: t("projects.items.tp66.project"),
         },
         {
-            img: Kasa,
-            title: t("projects.items.kasa.title"),
-            description: t("projects.items.kasa.description"),
-            tags: ["ReactJs"],
-            link: "https://p7-kasa-openclassrooms.netlify.app/",
-            github: "https://github.com/mathias-grdl/P7-Kasa-Openclassrooms",
-            project: t("projects.items.kasa.project"),
+            img: Thishan,
+            title: t("projects.items.thishan.title"),
+            description: t("projects.items.thishan.description"),
+            tags: ["Wordpress", "E-commerce"],
+            link: "https://maisonthishan.com/",
+            project: t("projects.items.thishan.project"),
+        },
+        {
+            img: MoviesFinder,
+            title: t("projects.items.moviesFinder.title"),
+            description: t("projects.items.moviesFinder.description"),
+            tags: ["ReactJs", "API"],
+            link: "https://movie-search-hub.netlify.app/?s=Jumanji",
+            github: "https://github.com/mathias-grdl/BeginReact-Workshop-UseEffect",
+            project: t("projects.items.moviesFinder.project"),
         },
     ];
 

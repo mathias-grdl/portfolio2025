@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from "react";
-// import { ModeToggle } from "./dropdownTheme";
 import Link from "next/link";
 import LanguageSelector from "./theme/language-selector";
 import { useTranslation } from "react-i18next";
 import { gsap } from "gsap";
+import { Typography } from "./ui/typography";
 
 export default function Header() {
     const { t } = useTranslation();
@@ -38,35 +38,36 @@ export default function Header() {
             className={`fixed top-0 w-screen z-[100] grid grid-cols-3 items-center py-3 px-5 transition-all duration-100 ${
                 visible ? "translate-y-0" : "-translate-y-full"
             } ${!isTop ? "bg-black/50 backdrop-blur-sm" : ""}`}>
-            <h1 className="col-span-1 text-white">Mathias Grondziel</h1>
+            <Typography variant="link" className="col-span-1 text-white whitespace-nowrap">
+                Mathias Grondziel
+            </Typography>
 
             <nav className="col-span-1 flex justify-center">
                 <ul className="hidden md:flex justify-between gap-2 items-center">
                     <li>
-                        <Link href="#aboutme" className="text-white">
+                        <Typography variant="link" as={Link} href="#aboutme" className="text-white">
                             {t("nav.about")}
-                        </Link>
+                        </Typography>
                     </li>
                     <li>
-                        <Link href="#experiences" className="text-white">
+                        <Typography variant="link" as={Link} href="#experiences" className="text-white">
                             {t("nav.experiences")}
-                        </Link>
+                        </Typography>
                     </li>
                     <li>
-                        <Link href="#projects" className="text-white">
+                        <Typography variant="link" as={Link} href="#projects" className="text-white">
                             {t("nav.projects")}
-                        </Link>
+                        </Typography>
                     </li>
                     <li>
-                        <Link href="#contact" className="text-white">
+                        <Typography variant="link" as={Link} href="#contact" className="text-white">
                             {t("nav.contact")}
-                        </Link>
+                        </Typography>
                     </li>
                 </ul>
             </nav>
 
             <div className="col-span-1 flex justify-end gap-2 items-center">
-                {/* <ModeToggle /> */}
                 <LanguageSelector />
                 <button className="md:hidden text-white" onClick={toggleMenu}>
                     ☰
@@ -79,27 +80,26 @@ export default function Header() {
                 </button>
                 <ul className="flex flex-col items-center justify-center h-full gap-8">
                     <li>
-                        <Link href="#aboutme" className="text-white" onClick={toggleMenu}>
+                        <Typography variant="link" as={Link} href="#aboutme" className="text-white" onClick={toggleMenu}>
                             {t("nav.about")}
-                        </Link>
+                        </Typography>
                     </li>
                     <li>
-                        <Link href="#experiences" className="text-white" onClick={toggleMenu}>
+                        <Typography variant="link" as={Link} href="#experiences" className="text-white" onClick={toggleMenu}>
                             {t("nav.experiences")}
-                        </Link>
+                        </Typography>
                     </li>
                     <li>
-                        <Link href="#projects" className="text-white" onClick={toggleMenu}>
+                        <Typography variant="link" as={Link} href="#projects" className="text-white" onClick={toggleMenu}>
                             {t("nav.projects")}
-                        </Link>
+                        </Typography>
                     </li>
                     <li>
-                        <Link href="#contact" className="text-white" onClick={toggleMenu}>
+                        <Typography variant="link" as={Link} href="#contact" className="text-white" onClick={toggleMenu}>
                             {t("nav.contact")}
-                        </Link>
+                        </Typography>
                     </li>
                     <li>
-                        {/* <ModeToggle /> */}
                         <LanguageSelector />
                     </li>
                 </ul>
