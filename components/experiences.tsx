@@ -14,39 +14,7 @@ export default function Experiences() {
     const sectionRef = useRef<HTMLDivElement>(null);
     const experiencesRef = useRef<HTMLDivElement[]>([]);
     const titleRefs = useRef<{ [key: string]: HTMLAnchorElement | null }>({});
-
-    useEffect(() => {
-        gsap.registerPlugin(ScrollTrigger);
-
-        if (window.innerWidth >= 768) {
-            ScrollTrigger.create({
-                trigger: "#experiences",
-                start: "top top",
-                end: `+=${experiences.length * window.innerHeight}`,
-                pin: true,
-                pinSpacing: true,
-            });
-        }
-
-        experiences.forEach((exp, index) => {
-            const sectionHeight = window.innerHeight;
-            ScrollTrigger.create({
-                trigger: experiencesRef.current[index],
-                start: `top+=${index * sectionHeight} center`,
-                end: `top+=${(index + 1) * sectionHeight} center`,
-                onEnter: () => setVisibleImage(exp.id),
-                onEnterBack: () => {
-                    if (index > 0) {
-                        setVisibleImage(experiences[index - 1].id);
-                    }
-                },
-            });
-        });
-
-        return () => {
-            ScrollTrigger.getAll().forEach(st => st.kill());
-        };
-    }, [i18n.language]);
+    const scrollTriggersRef = useRef<ScrollTrigger[]>([]);
 
     const experiences = [
         {
@@ -111,13 +79,63 @@ export default function Experiences() {
         },
     ];
 
+    useEffect(() => {
+        gsap.registerPlugin(ScrollTrigger);
+
+        const mm = gsap.matchMedia();
+
+        mm.add("(min-width: 768px)", () => {
+            // Clean up existing scroll triggers
+            scrollTriggersRef.current.forEach(trigger => trigger.kill());
+
+            const sectionHeight = window.innerHeight;
+            const totalHeight = sectionHeight * experiences.length;
+
+            const trigger = ScrollTrigger.create({
+                trigger: "#experiences",
+                start: "top top",
+                end: `+=${totalHeight}px`,
+                pin: true,
+                pinSpacing: true,
+                scrub: 1,
+                snap: {
+                    snapTo: 1 / (experiences.length - 1),
+                    duration: 0.5,
+                    delay: 0,
+                    ease: "power1.inOut",
+                },
+                onUpdate: self => {
+                    const progress = self.progress;
+                    const index = Math.floor(progress * experiences.length);
+                    const clampedIndex = Math.min(Math.max(0, index), experiences.length - 1);
+                    setVisibleImage(`image${clampedIndex + 1}`);
+                },
+            });
+
+            scrollTriggersRef.current = [trigger];
+
+            return () => trigger.kill();
+        });
+
+        return () => {
+            mm.revert();
+            scrollTriggersRef.current.forEach(trigger => trigger.kill());
+        };
+    }, [i18n.language]);
+
     const handleImageVisibility = (imageId: string, event: React.MouseEvent<HTMLAnchorElement>) => {
         event.preventDefault();
         setVisibleImage(imageId);
-        if (window.innerWidth < 768) {
-            setTimeout(() => {
-                titleRefs.current[imageId]?.scrollIntoView({ behavior: "smooth" });
-            }, 100);
+        
+        if (window.innerWidth >= 768 && scrollTriggersRef.current[0]) {
+            const index = parseInt(imageId.replace("image", "")) - 1;
+            const progress = index / (experiences.length - 1);
+            
+            // Utiliser directement le ScrollTrigger pour un contrôle plus précis
+            scrollTriggersRef.current[0].scroll(
+                scrollTriggersRef.current[0].start + 
+                (scrollTriggersRef.current[0].end - scrollTriggersRef.current[0].start) * progress
+            );
         }
     };
 

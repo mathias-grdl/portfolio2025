@@ -18,6 +18,7 @@ export default function Projects() {
     const sectionRef = useRef(null);
     const projectsRef = useRef<HTMLDivElement[]>([]);
     const [hoveredProject, setHoveredProject] = useState<string | null>(null);
+    const scrollTriggerRef = useRef<ScrollTrigger | null>(null);
     const projects = [
         {
             img: NDA,
@@ -64,35 +65,38 @@ export default function Projects() {
 
     useEffect(() => {
         gsap.registerPlugin(ScrollTrigger);
-
         const mm = gsap.matchMedia();
 
         mm.add("(min-width: 768px)", () => {
-            const scrollTrigger = ScrollTrigger.create({
+            const trigger = ScrollTrigger.create({
                 trigger: "#projects",
                 start: "top top",
                 end: `+=${projects.length * window.innerHeight}`,
                 pin: true,
                 pinSpacing: true,
+                scrub: 1,
+                snap: {
+                    snapTo: 1 / (projects.length - 1),
+                    duration: 0.5,
+                    delay: 0,
+                    ease: "power1.inOut",
+                },
+                onUpdate: self => {
+                    const progress = self.progress;
+                    const index = Math.floor(progress * projects.length);
+                    const clampedIndex = Math.min(Math.max(0, index), projects.length - 1);
+                    setActiveIndex(clampedIndex);
+                }
             });
 
-            const projectTriggers = projects.map((_, index) => {
-                return ScrollTrigger.create({
-                    trigger: projectsRef.current[index],
-                    start: `top+=${index * window.innerHeight} center`,
-                    end: `top+=${(index + 1) * window.innerHeight} center`,
-                    onEnter: () => setActiveIndex(index),
-                    onEnterBack: () => setActiveIndex(index),
-                });
-            });
-
-            return () => {
-                scrollTrigger.kill();
-                projectTriggers.forEach(trigger => trigger.kill());
-            };
+            scrollTriggerRef.current = trigger;
+            return () => trigger.kill();
         });
 
         return () => {
+            if (scrollTriggerRef.current) {
+                scrollTriggerRef.current.kill();
+            }
             mm.revert();
         };
     }, [i18n.language, projects.length]);
@@ -114,7 +118,14 @@ export default function Projects() {
     const handleAccordionChange = (value: string) => {
         const newIndex = Number(value.split("-")[1]);
         setActiveIndex(newIndex);
-        setHoveredProject(null);
+
+        if (window.innerWidth >= 768 && scrollTriggerRef.current) {
+            const progress = newIndex / (projects.length - 1);
+            scrollTriggerRef.current.scroll(
+                scrollTriggerRef.current.start + 
+                (scrollTriggerRef.current.end - scrollTriggerRef.current.start) * progress
+            );
+        }
     };
 
     return (
