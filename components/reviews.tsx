@@ -105,7 +105,7 @@ export default function Reviews() {
     }, [isMobile, i18n.language]);
 
     return (
-        <section ref={containerRef} className="h-screen overflow-hidden relative bg-gradient-to-b from-white to-gray-50">
+        <section ref={containerRef} className="h-screen overflow-hidden relative bg-gradient-to-b from-white to-gray-50 flex items-center justify-center">
             <div className="container mx-auto px-4">
                 <div className="flex items-center justify-center py-12">
                     <Typography variant="h2" className="text-center">

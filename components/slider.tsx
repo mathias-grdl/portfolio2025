@@ -7,6 +7,8 @@ import useMouseMovement from "../hooks/useMouseMovement";
 import useCursorColor from "../hooks/useCursorColor";
 import { Typography } from "./ui/typography";
 
+type MouseZone = "none" | "header" | "buttons";
+
 export default function Slider() {
     const { t } = useTranslation();
     const [activeIndex, setActiveIndex] = useState(2);
@@ -14,7 +16,7 @@ export default function Slider() {
     const [cursorColor, setCursorColor] = useState("rgba(255, 255, 255, 0.5)");
     const [hoveredIndex, setHoveredIndex] = useState(activeIndex);
     const [isMouseInSection, setIsMouseInSection] = useState(false);
-    const [isMouseOnHeader, setIsMouseOnHeader] = useState(false);
+    const [mouseZone, setMouseZone] = useState<MouseZone>("none");
     const sectionRef = useRef<HTMLElement>(null);
 
     const slides = [
@@ -92,7 +94,7 @@ export default function Slider() {
             className="flex overflow-hidden h-screen relative"
             onMouseEnter={() => setIsMouseInSection(true)}
             onMouseLeave={() => setIsMouseInSection(false)}>
-            {isMouseInSection && (
+            {isMouseInSection && mouseZone === "none" && (
                 <>
                     <div
                         style={{
@@ -109,7 +111,7 @@ export default function Slider() {
                             transition: "background-color 0.2s ease",
                         }}
                     />
-                    {!isMouseOnHeader && activeIndex === hoveredIndex && (
+                    {activeIndex === hoveredIndex && (
                         <div
                             style={{
                                 position: "fixed",
@@ -125,18 +127,22 @@ export default function Slider() {
                 </>
             )}
 
-            <div className="absolute top-0 z-30" onMouseEnter={() => setIsMouseOnHeader(true)} onMouseLeave={() => setIsMouseOnHeader(false)}>
+            <div className="absolute top-0 z-30" onMouseEnter={() => setMouseZone("header")} onMouseLeave={() => setMouseZone("none")}>
                 <Header />
             </div>
 
             <button
                 onClick={handlePrevSlide}
+                onMouseEnter={() => setMouseZone("buttons")}
+                onMouseLeave={() => setMouseZone("none")}
                 className="absolute left-4 top-1/2 -translate-y-1/2 z-30 bg-white/20 p-2 rounded-full hover:bg-white/40 transition-all">
                 <ChevronLeft className="w-8 h-8 text-white" />
             </button>
 
             <button
                 onClick={handleNextSlide}
+                onMouseEnter={() => setMouseZone("buttons")}
+                onMouseLeave={() => setMouseZone("none")}
                 className="absolute right-4 top-1/2 -translate-y-1/2 z-30 bg-white/20 p-2 rounded-full hover:bg-white/40 transition-all">
                 <ChevronRight className="w-8 h-8 text-white" />
             </button>

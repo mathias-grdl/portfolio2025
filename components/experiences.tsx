@@ -157,7 +157,7 @@ export default function Experiences() {
             {visibleImage === imageId && (
                 <>
                     <div className="my-2 md:my-5 md:absolute md:top-0 md:right-0 ">
-                        <Link href={localisationLink ? localisationLink : ""} target="_blank" className="flex gap-1">
+                        <Link href={localisationLink ? localisationLink : ""} target="_blank" className="flex items-center justify-center gap-1">
                             <MapPin />
                             <Typography variant="small">{localisation}</Typography>
                         </Link>

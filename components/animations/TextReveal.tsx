@@ -14,23 +14,23 @@ const TextReveal = ({ children, className = "" }: TextRevealProps) => {
         gsap.registerPlugin(ScrollTrigger);
 
         if (textContainerRef.current) {
-            // Check if the screen is wider than mobile breakpoint
             const isMobile = window.matchMedia("(max-width: 768px)").matches;
 
             if (isMobile) {
-                // For mobile, just set the text to be fully visible
                 gsap.set(textContainerRef.current, {
                     opacity: 1,
-                    color: "black",
                 });
                 return;
             }
 
-            const text = textContainerRef.current.textContent || "";
-            const words = text.split(" ");
-            textContainerRef.current.innerHTML = words.map(word => `<span class="word">${word}</span>`).join(" ");
+            const textElement = textContainerRef.current.querySelector("p");
+            if (!textElement) return;
 
-            const wordElements = textContainerRef.current.querySelectorAll(".word");
+            const text = textElement.textContent || "";
+            const words = text.split(" ");
+            textElement.innerHTML = words.map(word => `<span class="word">${word}</span>`).join(" ");
+
+            const wordElements = textElement.querySelectorAll(".word");
 
             gsap.set(wordElements, {
                 display: "inline-block",

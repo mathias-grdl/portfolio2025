@@ -54,7 +54,9 @@ const ContactForm: React.FC = () => {
     };
 
     return (
-        <Section id="contact" className="bg-slate-50 py-12">
+        <Section
+            id="contact"
+            className="bg-slate-50 py-12 flex items-center justify-center">
             <div className="container mx-auto">
                 <h2 className="text-3xl md:text-4xl lg:text-6xl font-bold text-center mb-6">{t("contact.title")}</h2>
                 <span className="block text-center text-gray-600 mb-8">{t("contact.subtitle")}</span>

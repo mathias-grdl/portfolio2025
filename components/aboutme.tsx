@@ -45,7 +45,9 @@ const AboutMe = () => {
 
     return (
         <div ref={sectionRef} className="h-full md:h-screen">
-            <Section id="aboutme" className="dark:bg-neutral-950">
+            <Section
+                id="aboutme"
+                className="dark:bg-neutral-950 flex items-center justify-center">
                 <div className="flex flex-col container mx-auto">
                     <div className="m-5 text-center md:text-start">
                         <Typography variant="h2">Mathias Grondziel</Typography>
