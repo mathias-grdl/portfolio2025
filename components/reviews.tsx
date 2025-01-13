@@ -106,8 +106,8 @@ export default function Reviews() {
 
     return (
         <section ref={containerRef} className="h-screen overflow-hidden relative bg-gradient-to-b from-white to-gray-50 flex items-center justify-center">
-            <div className="container mx-auto px-4">
-                <div className="flex items-center justify-center py-12">
+            <div className="container mx-auto px-4 py-5">
+                <div className="flex items-center justify-center pb-3">
                     <Typography variant="h2" className="text-center">
                         {t("reviews.title")}
                     </Typography>

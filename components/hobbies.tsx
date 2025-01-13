@@ -152,7 +152,7 @@ export default function Hobbies() {
         <Section id="hobbies" className="relative h-screen">
             <div>
                 <div className="absolute top-0 left-1/2 transform -translate-x-1/2 text-center text-white z-20 pt-10">
-                    <Typography variant="h2" className="mb-4">
+                    <Typography variant="h2" className="py-5">
                         {t("hobbies.title")}
                     </Typography>
                     <div className="flex gap-4">
@@ -165,15 +165,11 @@ export default function Hobbies() {
                 </div>
                 <div className="relative h-screen">
                     <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 z-30 flex gap-4 lg:hidden">
-                        <button
-                            onClick={handlePrevSlide}
-                            className="bg-white/20 p-2 rounded-full hover:bg-white/40 transition-all">
+                        <button onClick={handlePrevSlide} className="bg-white/20 p-2 rounded-full hover:bg-white/40 transition-all">
                             <ChevronLeft className="w-8 h-8 text-white" />
                         </button>
 
-                        <button
-                            onClick={handleNextSlide}
-                            className="bg-white/20 p-2 rounded-full hover:bg-white/40 transition-all">
+                        <button onClick={handleNextSlide} className="bg-white/20 p-2 rounded-full hover:bg-white/40 transition-all">
                             <ChevronRight className="w-8 h-8 text-white" />
                         </button>
                     </div>

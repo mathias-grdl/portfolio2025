@@ -126,15 +126,13 @@ export default function Experiences() {
     const handleImageVisibility = (imageId: string, event: React.MouseEvent<HTMLAnchorElement>) => {
         event.preventDefault();
         setVisibleImage(imageId);
-        
+
         if (window.innerWidth >= 768 && scrollTriggersRef.current[0]) {
             const index = parseInt(imageId.replace("image", "")) - 1;
             const progress = index / (experiences.length - 1);
-            
-            // Utiliser directement le ScrollTrigger pour un contrôle plus précis
+
             scrollTriggersRef.current[0].scroll(
-                scrollTriggersRef.current[0].start + 
-                (scrollTriggersRef.current[0].end - scrollTriggersRef.current[0].start) * progress
+                scrollTriggersRef.current[0].start + (scrollTriggersRef.current[0].end - scrollTriggersRef.current[0].start) * progress
             );
         }
     };
@@ -151,7 +149,7 @@ export default function Experiences() {
         localisationLink?: string
     ) => (
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4 pt-2 md:pt-0">
-            <div className="flex flex-col">
+            <div className="flex flex-col pt-5">
                 <a
                     href="#"
                     ref={el => (titleRefs.current[imageId] = el)}
@@ -173,14 +171,14 @@ export default function Experiences() {
                 )}
             </div>
             {visibleImage === imageId && (
-                <>
-                    <div className="my-2 md:my-5 md:absolute md:top-0 md:right-0 ">
+                <div>
+                    <div className="my-2 md:my-5 md:absolute md:top-[50px] md:right-0 ">
                         <Link href={localisationLink ? localisationLink : ""} target="_blank" className="flex items-center justify-center gap-1">
                             <MapPin />
                             <Typography variant="small">{localisation}</Typography>
                         </Link>
                     </div>
-                    <div className="md:absolute md:top-1/4 md:right-0 md:w-[220px] lg:w-[300px] pb-5 md:pb-0">
+                    <div className="md:absolute md:top-1/4 md:right-0 md:w-[220px] lg:w-[300px] pb-5 md:pb-0 py-5">
                         <Typography variant="p" className="text-justify">
                             {description}
                         </Typography>
@@ -194,7 +192,7 @@ export default function Experiences() {
                             </div>
                         )}
                     </div>
-                </>
+                </div>
             )}
         </div>
     );

@@ -44,18 +44,17 @@ const AboutMe = () => {
     }, [i18n.language]);
 
     return (
-        <div ref={sectionRef} className="h-full md:h-screen">
-            <Section
-                id="aboutme"
-                className="dark:bg-neutral-950 flex items-center justify-center">
-                <div className="flex flex-col container mx-auto">
+        <div ref={sectionRef} className="h-full lg:h-screen">
+            <Section id="aboutme" className="dark:bg-neutral-950 flex items-center justify-center">
+                <div className="flex flex-col container mx-auto py-5">
                     <div className="m-5 text-center md:text-start">
                         <Typography variant="h2">Mathias Grondziel</Typography>
                         <Typography variant="muted">{t("aboutme.role")}</Typography>
                     </div>
                     <div className="flex flex-col md:flex-row">
-                        <div className="md:w-1/2 mx-5 relative border-2 border-white">
-                            <button
+                        {/* <div className="md:w-1/2 mx-5 relative border-2 border-white"> */}
+                        <div className="md:w-1/2 mx-5">
+                            {/* <button
                                 onClick={resetCanvas}
                                 disabled={!hasDrawn}
                                 className={`absolute top-4 right-4 z-30 p-2 rounded-full backdrop-blur-sm transition-all ${
@@ -82,11 +81,13 @@ const AboutMe = () => {
                                         {t("aboutme.drawMe")}
                                     </Typography>
                                 </div>
-                            )}
+                            )} */}
+
+                            <img ref={imageRef} src={ProfilPicture.src} alt="profil" className="object-cover w-full h-[300px] md:h-[500px]" />
                         </div>
 
                         <div className="relative md:w-1/2 m-5 flex flex-col justify-between">
-                            <TextReveal className="text-neutral-50 leading-7 text-justify">
+                            <TextReveal className="text-neutral-950 md:text-neutral-50 leading-7 text-justify">
                                 <Typography variant="p">{t("aboutme.description")}</Typography>
                             </TextReveal>
                             <div className="flex justify-between mt-5">

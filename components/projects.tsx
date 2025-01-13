@@ -7,7 +7,7 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 import Obandito from "../public/assets/projects/obandito.png";
 import Thishan from "../public/assets/projects/thishan.png";
 import MoviesFinder from "../public/assets/projects/moviesFinder.png";
-import NDA from "../public/assets/projects/NDA.png";
+import NDA from "../public/assets/projects/Nda.png";
 import Tp66 from "../public/assets/projects/tp66.png";
 import { Typography } from "./ui/typography";
 
@@ -136,7 +136,7 @@ export default function Projects() {
             ref={sectionRef}>
             {hoveredProject && (
                 <div
-                    className="absolute pointer-events-none"
+                    className="absolute pointer-events-none hidden md:block"
                     style={{
                         top: mousePosition.y,
                         left: mousePosition.x,
