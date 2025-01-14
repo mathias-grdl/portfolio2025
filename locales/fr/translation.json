@@ -17,7 +17,10 @@
   },
   "reviews": {
     "title": "Ils m'ont fait confiance",
-    "slideIndicator": "{{current}} / {{total}}",
+    "noReviews": "Aucun avis disponible",
+    "reloadReviews": "Recharger les avis",
+    "dropToDelete": "Déposer ici pour supprimer",
+    "totalReviews": "{{count}} avis",
     "items": {
       "1": "Excellent prestataire, service rapide et résultat au delà des mes espérances. Je recommande !",
       "2": "2eme fois que je fais appel à lui, et honnêtement tout est parfait.",
@@ -118,15 +121,13 @@
         "github": "Voir Github",
         "project": "Projet Openclassrooms"
       },
-     
-  "radioanalyzer": {
-    "title": "Radio Analyzer",
-    "description": "Développement de différents outils internes pour la plateforme SaaS Radio Analyzer, ajout de fonctionnalités majeures et mineures, améliorations UX/UI, et corrections de bugs",
-    "link": "Voir le site",
-    "github": "Voir Github",
-    "project": "Projet d'entreprise"
-  
-}
+      "radioanalyzer": {
+        "title": "Radio Analyzer",
+        "description": "Développement de différents outils internes pour la plateforme SaaS Radio Analyzer, ajout de fonctionnalités majeures et mineures, améliorations UX/UI, et corrections de bugs",
+        "link": "Voir le site",
+        "github": "Voir Github",
+        "project": "Projet d'entreprise"
+      }
     },
     "link": "Voir le site",
     "github": "Voir Github"

@@ -1,19 +1,4 @@
-import { TFunction } from 'i18next';
-
-interface ReviewType {
-    id: number;
-    picture: string;
-    name: string;
-    flag: string;
-    country: string;
-    stars: number;
-}
-
-interface ReviewWithTranslation extends ReviewType {
-    review: string;
-}
-
-export const reviewsData: ReviewType[] = [
+export const baseReviews = [
     {
         id: 1,
         name: "djamelfilm",
@@ -105,6 +90,14 @@ export const reviewsData: ReviewType[] = [
         stars: 4,
         picture: "https://apps.gosite.com/hubfs/Vector-2.png",
     },
+    // {
+    //     id: 12,
+    //     name: "octavewagner",
+    //     country: "France",
+    //     flag: "https://flagcdn.com/fr.svg",
+    //     stars: 5,
+    //     picture: "https://apps.gosite.com/hubfs/Vector-2.png",
+    // },
     {
         id: 13,
         name: "lbeplm",
@@ -231,9 +224,4 @@ export const reviewsData: ReviewType[] = [
     },
 ];
 
-export const getReviews = (t: TFunction): ReviewWithTranslation[] => {
-    return reviewsData.map(review => ({
-        ...review,
-        review: t(`reviews.items.${review.id}`),
-    }));
-};
+export const getReviews = () => baseReviews;

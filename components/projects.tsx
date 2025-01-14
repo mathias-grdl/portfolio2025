@@ -4,6 +4,7 @@ import { Button } from "./ui/button";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { ScrollToPlugin } from "gsap/ScrollToPlugin";
 import Obandito from "../public/assets/projects/obandito.png";
 import Thishan from "../public/assets/projects/thishan.png";
 import MoviesFinder from "../public/assets/projects/moviesFinder.png";
@@ -64,29 +65,33 @@ export default function Projects() {
     ];
 
     useEffect(() => {
-        gsap.registerPlugin(ScrollTrigger);
+        gsap.registerPlugin(ScrollTrigger, ScrollToPlugin);
         const mm = gsap.matchMedia();
 
         mm.add("(min-width: 768px)", () => {
+            if (scrollTriggerRef.current) {
+                scrollTriggerRef.current.kill();
+            }
+
             const trigger = ScrollTrigger.create({
                 trigger: "#projects",
                 start: "top top",
-                end: `+=${projects.length * window.innerHeight}`,
+                end: `+=${projects.length * window.innerHeight}px`,
                 pin: true,
                 pinSpacing: true,
-                scrub: 1,
                 snap: {
                     snapTo: 1 / (projects.length - 1),
-                    duration: 0.5,
+                    duration: { min: 0.2, max: 0.3 },
                     delay: 0,
                     ease: "power1.inOut",
                 },
+                scrub: 0.5,
                 onUpdate: self => {
-                    const progress = self.progress;
-                    const index = Math.floor(progress * projects.length);
-                    const clampedIndex = Math.min(Math.max(0, index), projects.length - 1);
-                    setActiveIndex(clampedIndex);
-                }
+                    const snapIncrement = 1 / (projects.length - 1);
+                    const snapPosition = Math.round(self.progress / snapIncrement) * snapIncrement;
+                    const index = Math.round(snapPosition * (projects.length - 1));
+                    setActiveIndex(index);
+                },
             });
 
             scrollTriggerRef.current = trigger;
@@ -120,11 +125,19 @@ export default function Projects() {
         setActiveIndex(newIndex);
 
         if (window.innerWidth >= 768 && scrollTriggerRef.current) {
-            const progress = newIndex / (projects.length - 1);
-            scrollTriggerRef.current.scroll(
-                scrollTriggerRef.current.start + 
-                (scrollTriggerRef.current.end - scrollTriggerRef.current.start) * progress
-            );
+            const trigger = scrollTriggerRef.current;
+            const exactPosition = newIndex / (projects.length - 1);
+            const targetScroll = trigger.start + (trigger.end - trigger.start) * exactPosition;
+
+            gsap.to(window, {
+                duration: 0.5,
+                ease: "power2.inOut",
+                scrollTo: {
+                    y: targetScroll,
+                    autoKill: false
+                },
+                onComplete: () => ScrollTrigger.refresh()
+            });
         }
     };
 

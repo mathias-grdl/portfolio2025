@@ -11,7 +11,10 @@
   },
   "reviews": {
     "title": "They trusted me",
-    "slideIndicator": "{{current}} / {{total}}",
+    "noReviews": "No reviews available",
+    "reloadReviews": "Reload reviews",
+    "dropToDelete": "Drop here to delete",
+    "totalReviews": "{{count}} reviews",
     "items": {
       "1": "Excellent service provider, fast service and results beyond my expectations. I recommend!",
       "2": "Second time working with him, and honestly everything is perfect.",

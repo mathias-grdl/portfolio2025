@@ -1,5 +1,6 @@
 import React from "react";
 import { Typography } from "./ui/typography";
+import { useTranslation } from "react-i18next";
 
 interface ReviewProps {
     review: {
@@ -9,14 +10,18 @@ interface ReviewProps {
         flag: string;
         country: string;
         stars: number;
-        review: string;
+        review?: string;
     };
+    draggable?: boolean;
+    onDragStart?: (e: React.DragEvent<HTMLDivElement>) => void;
 }
 
-const Review = React.forwardRef<HTMLDivElement, ReviewProps>(({ review }, ref) => {
+const Review = React.forwardRef<HTMLDivElement, ReviewProps>(({ review, draggable, onDragStart }, ref) => {
+    const { t } = useTranslation();
+
     const getStarColor = (rating: number): string => {
         const red = Math.min(255, (255 * (5 - rating)) / 5);
-        const green = Math.min(255, 255 * rating * 1.5) / 5; // Further increase green intensity for a lighter color
+        const green = Math.min(255, 255 * rating * 1.5) / 5;
         const color = `rgb(${red}, ${green}, 0)`;
         return color;
     };
@@ -24,11 +29,14 @@ const Review = React.forwardRef<HTMLDivElement, ReviewProps>(({ review }, ref) =
     return (
         <div
             ref={ref}
-            className="review-card w-full min-w-[300px] md:w-[400px] p-3 rounded-xl transform 
+            draggable={draggable}
+            onDragStart={onDragStart}
+            className="review-card w-full p-3 rounded-xl transform 
                        backdrop-blur-lg bg-white/90 shadow-lg border border-gray-100
-                       hover:shadow-xl transition-shadow duration-300">
-            <div className="flex flex-col items-center mb-4 justify-between md:flex-row ">
-                <div className="flex flex-col items-center md:flex-row gap-3">
+                       hover:shadow-xl transition-all duration-300 hover:-translate-y-2 
+                       cursor-grab active:cursor-grabbing min-h-[350px]">
+            <div className="flex flex-col items-center mb-4">
+                <div className="flex flex-col items-center gap-3">
                     <div>
                         <img src={review.picture} alt="" width={50} height={50} className="rounded-full object-cover" />
                     </div>
@@ -57,8 +65,8 @@ const Review = React.forwardRef<HTMLDivElement, ReviewProps>(({ review }, ref) =
                     ))}
                 </div>
             </div>
-            <Typography variant="p" className="text-sm text-black/70 line-clamp-5 md:line-clamp-none text-justify md:text-left">
-                {review.review}
+            <Typography variant="p" className="text-sm text-black/70 line-clamp-5 md:line-clamp-none text-center ">
+                {t(`reviews.items.${review.id}`)}
             </Typography>
         </div>
     );
