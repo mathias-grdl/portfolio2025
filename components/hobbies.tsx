@@ -14,9 +14,11 @@ import Sweden from "../public/assets/hobbies/Sweden.png";
 import { useTranslation } from "react-i18next";
 import { Typography } from "./ui/typography";
 import { ChevronLeft, ChevronRight } from "lucide-react";
+import Image from "next/image";
+import type { StaticImageData } from "next/image";
 
 interface ImageData {
-    src: string;
+    src: StaticImageData | string;
 }
 
 interface LocationData {
@@ -28,6 +30,23 @@ interface LocationData {
     lat: number;
     lng: number;
 }
+
+const ImagePreloader = ({ images }: { images: ImageData[] }) => (
+    <div aria-hidden="true" className="hidden">
+        {images.map((image, index) => (
+            <div key={index} className="relative w-0 h-0">
+                <Image
+                    src={image.src}
+                    alt=""
+                    fill
+                    priority={true}
+                    sizes="1px"
+                    quality={85}
+                />
+            </div>
+        ))}
+    </div>
+);
 
 export default function Hobbies() {
     const { t, i18n } = useTranslation();
@@ -131,25 +150,27 @@ export default function Hobbies() {
                     lastIndexRef.current = clampedIndex;
                     setActiveIndex(clampedIndex);
 
+                    // Animation plus rapide
                     gsap.to(".location-slide", {
                         opacity: 0,
-                        duration: 0.3,
+                        duration: 0.05,
+                        ease: "none",
                     });
                     gsap.to(`.location-slide:nth-child(${clampedIndex + 1})`, {
                         opacity: 1,
-                        duration: 0.3,
+                        duration: 0.05,
+                        ease: "none",
                     });
                 }
             },
         });
 
-        return () => {
-            scrollTrigger.kill();
-        };
+        return () => scrollTrigger.kill();
     }, [locationData.length, i18n.language]);
 
     return (
         <Section id="hobbies" className="relative h-screen">
+            <ImagePreloader images={locationData.map(loc => loc.images)} />
             <div>
                 <div className="absolute top-0 left-1/2 transform -translate-x-1/2 text-center text-white z-20 pt-10">
                     <Typography variant="h2" className="py-5">
@@ -178,18 +199,25 @@ export default function Hobbies() {
                         {locationData.map((location, index) => (
                             <div
                                 key={location.location}
-                                className="location-slide absolute inset-0"
+                                className={`location-slide absolute inset-0 transition-none`}
                                 style={{
                                     opacity: index === activeIndex ? 1 : 0,
                                     visibility: "visible",
                                     zIndex: 1,
                                 }}>
-                                <img
-                                    src={location.images.src}
-                                    alt={location.location}
-                                    style={{ objectPosition: "50% 25%" }}
-                                    className="object-cover w-full h-full"
-                                />
+                                <div className="relative w-full h-full">
+                                    <Image
+                                        src={location.images.src}
+                                        alt={location.location}
+                                        fill
+                                        priority={index === activeIndex || index === ((activeIndex + 1) % locationData.length)}
+                                        quality={85}
+                                        sizes="100vw"
+                                        className="object-cover"
+                                        style={{ objectPosition: "50% 25%" }}
+                                        loading="eager"
+                                    />
+                                </div>
                                 <div className="absolute inset-0 bg-black/50" />
                             </div>
                         ))}
@@ -197,7 +225,16 @@ export default function Hobbies() {
                     <div ref={textRef} className="relative z-10 flex flex-col items-center justify-center h-full text-white">
                         <div className="flex flex-col items-center justify-center container mx-auto">
                             <div className="flex items-center gap-4 mb-2">
-                                <img src={locationData[activeIndex].flag} alt={`${locationData[activeIndex].location} flag`} className="w-8 h-8" />
+                                <div className="relative w-8 h-8">
+                                    <Image
+                                        src={locationData[activeIndex].flag}
+                                        alt={`${locationData[activeIndex].location} flag`}
+                                        fill
+                                        priority
+                                        sizes="32px"
+                                        className="object-cover"
+                                    />
+                                </div>
                                 <Typography variant="h3">{t(`hobbies.locations.${locationData[activeIndex].location.toLowerCase()}.title`)}</Typography>
                             </div>
                             <Typography variant="default" className="mb-4">

@@ -11,6 +11,25 @@ import MoviesFinder from "../public/assets/projects/moviesFinder.png";
 import NDA from "../public/assets/projects/Nda.png";
 import Tp66 from "../public/assets/projects/tp66.png";
 import { Typography } from "./ui/typography";
+import Image from "next/image";
+import type { StaticImageData } from "next/image";
+
+const ImagePreloader = ({ images }: { images: StaticImageData[] }) => (
+    <div aria-hidden="true" className="hidden">
+        {images.map((image, index) => (
+            <div key={index} className="relative w-0 h-0">
+                <Image
+                    src={image}
+                    alt=""
+                    fill
+                    priority={true}
+                    sizes="1px"
+                    quality={85}
+                />
+            </div>
+        ))}
+    </div>
+);
 
 export default function Projects() {
     const { t, i18n } = useTranslation();
@@ -147,6 +166,7 @@ export default function Projects() {
             className="bg-slate-100 dark:bg-black h-full md:h-screen relative flex items-center justify-center"
             onMouseMove={handleMouseMove}
             ref={sectionRef}>
+            <ImagePreloader images={projects.map(project => project.img)} />
             {hoveredProject && (
                 <div
                     className="absolute pointer-events-none hidden md:block"
@@ -155,7 +175,16 @@ export default function Projects() {
                         left: mousePosition.x,
                         transform: "translate(-50%, -50%)",
                     }}>
-                    <img src={hoveredProject} alt="Hovered Project" className="w-32 h-32 object-cover" />
+                    <div className="relative w-32 h-32">
+                        <Image
+                            src={hoveredProject}
+                            alt="Hovered Project Preview"
+                            fill
+                            sizes="128px"
+                            className="object-cover"
+                            priority
+                        />
+                    </div>
                 </div>
             )}
             <div className="container mx-auto">
@@ -191,8 +220,16 @@ export default function Projects() {
                                             {project.description}
                                         </Typography>
                                     </div>
-                                    <div className="w-full h-[200px]">
-                                        <img className="col-span-1 object-cover size-full" src={project.img.src} alt={project.title} />
+                                    <div className="relative w-full h-[200px]">
+                                        <Image
+                                            src={project.img}
+                                            alt={project.title}
+                                            fill
+                                            priority={index === activeIndex}
+                                            quality={85}
+                                            sizes="(max-width: 768px) 100vw, 33vw"
+                                            className="object-cover"
+                                        />
                                     </div>
                                     <div className="col-span-1 flex gap-2 justify-end">
                                         {project.link ? (

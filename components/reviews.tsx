@@ -84,7 +84,7 @@ export default function Reviews() {
 
     return (
         <div ref={sectionRef} className="h-full lg:h-screen">
-            <Section className="h-full lg:h-screen">
+            <Section className="h-full lg:h-screen flex justify-center items-center">
                 <div className="flex items-center justify-center h-[697px]">
                     <div className="flex flex-col w-full max-w-7xl container mx-auto py-5">
                         <div className="my-8 text-center">

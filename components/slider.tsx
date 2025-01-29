@@ -1,4 +1,4 @@
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import { useTranslation } from "react-i18next";
 import Header from "./header";
 import { ChevronLeft, ChevronRight, ChevronDown } from "lucide-react";
@@ -6,6 +6,9 @@ import useKeyboardNavigation from "../hooks/useKeyboardNavigation";
 import useMouseMovement from "../hooks/useMouseMovement";
 import useCursorColor from "../hooks/useCursorColor";
 import { Typography } from "./ui/typography";
+import Image from "next/image";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 type MouseZone = "none" | "header" | "buttons";
 
@@ -34,7 +37,6 @@ export default function Slider() {
         },
         {
             url: "https://images.unsplash.com/photo-1513269762479-12fa9962d31b?q=80&w=1887&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-            // url: "https://images.unsplash.com/photo-1719952742088-9735b5ff8867?q=80&w=2035&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
             subTitle: "About Me",
             title: [t("hero.titlePart1"), <br key="break" />, t("hero.titlePart2")],
             id: "aboutme",
@@ -87,6 +89,24 @@ export default function Slider() {
     useKeyboardNavigation(handlePrevSlide, handleNextSlide);
     useMouseMovement(isMouseInSection, setMousePosition);
     useCursorColor(hoveredIndex, colors, setCursorColor);
+
+    useEffect(() => {
+        gsap.registerPlugin(ScrollTrigger);
+
+        if (sectionRef.current) {
+            ScrollTrigger.create({
+                trigger: sectionRef.current,
+                pin: true,
+                start: "top top",
+                end: "+=40%",
+                pinSpacing: true,
+            });
+        }
+
+        return () => {
+            ScrollTrigger.getAll().forEach(t => t.kill());
+        };
+    }, []);
 
     return (
         <section
@@ -157,7 +177,17 @@ export default function Slider() {
                     onMouseEnter={() => setHoveredIndex(index)}
                     onMouseLeave={() => setHoveredIndex(activeIndex)}>
                     <div className="relative h-full w-full">
-                        <img src={slide.url} alt={slide.subTitle} className="object-cover size-full" />
+                        <Image
+                            src={slide.url}
+                            alt={slide.subTitle}
+                            fill
+                            priority={true}
+                            quality={85}
+                            loading="eager"
+                            sizes={`(max-width: 768px) ${index === activeIndex ? '52vw' : '13vw'}, 
+                                   (min-width: 769px) ${index === activeIndex ? '40vw' : '15vw'}`}
+                            className="object-cover"
+                        />
                     </div>
                     <div className={`absolute inset-0 bg-black ${getOpacity(index)} transition-opacity duration-500`}></div>
                     {activeIndex === index && (

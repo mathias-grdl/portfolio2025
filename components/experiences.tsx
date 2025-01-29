@@ -8,6 +8,7 @@ import { MapPin } from "lucide-react";
 import Section from "./Section";
 import { useTranslation } from "react-i18next";
 import { Typography } from "./ui/typography";
+import Image from "next/image";
 
 // Types
 interface Experience {
@@ -48,14 +49,22 @@ const ExperienceTitle = ({
     </div>
 );
 
+// Mise à jour du composant ExperienceImage pour utiliser le statut de chargement
 const ExperienceImage = ({ imageUrl, isVisible }: { imageUrl: string; isVisible: boolean }) => (
     <div className="flex justify-center items-center">
         {isVisible ? (
-            <img 
-                src={imageUrl} 
-                alt="" 
-                className="object-cover w-full h-[300px] md:h-screen md:absolute md:top-0 md:w-[220px] xl:w-[400px]" 
-            />
+            <div className="relative w-full h-[300px] md:h-screen md:absolute md:top-0 md:w-[220px] xl:w-[400px]">
+                <Image 
+                    src={imageUrl} 
+                    alt="Experience illustration"
+                    fill
+                    priority
+                    loading="eager" // Force le chargement immédiat
+                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 220px, 400px"
+                    className="object-cover"
+                    quality={85}
+                />
+            </div>
         ) : (
             <div className="h-full md:top-0" />
         )}
@@ -88,6 +97,23 @@ const ExperienceDetails = ({
                 </div>
             )}
         </div>
+    </div>
+);
+
+// Composant de préchargement modifié
+const ImagePreloader = ({ images }: { images: string[] }) => (
+    <div aria-hidden="true" className="hidden">
+        {images.map((src, index) => (
+            <div key={index} className="relative w-0 h-0">
+                <Image
+                    src={src}
+                    alt=""
+                    fill
+                    priority={true}
+                    sizes="1px"
+                />
+            </div>
+        ))}
     </div>
 );
 
@@ -231,6 +257,7 @@ export default function Experiences() {
 
     return (
         <Section id="experiences" className="bg-slate-100 dark:bg-black h-full md:h-screen">
+            <ImagePreloader images={experiences.map(exp => exp.imageUrl)} />
             <div className="flex flex-col container mx-auto">
                 <div className="relative w-full pt-5">
                     {experiences.map((exp) => (
