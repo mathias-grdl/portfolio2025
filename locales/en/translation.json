@@ -1,0 +1,207 @@
+{
+  "hero": {
+    "titlePart1": "Front-end",
+    "titlePart2": "web developer"
+  },
+  "slides": {
+    "hobbies": "Hobbies",
+    "projects": "Projects",
+    "experiences": "Experiences",
+    "contact": "Contact"
+  },
+  "reviews": {
+    "title": "They trusted me",
+    "noReviews": "No reviews available",
+    "reloadReviews": "Reload reviews",
+    "dropToDelete": "Drop here to delete",
+    "totalReviews": "{{count}} reviews",
+    "items": {
+      "1": "Excellent service provider, fast service and results beyond my expectations. I recommend!",
+      "2": "Second time working with him, and honestly everything is perfect.",
+      "3": "Incredible work, great communication and fixed my problem very quickly. Highly recommend!",
+      "4": "Very good work, I recommend.",
+      "5": "Mathias did a great job fixing the 503 errors on my site! He corrected the issues quickly and efficiently, ensuring the site works properly without any bugs. Mathias's proactive communication was a major asset.",
+      "6": "Many thanks to Mathias for his availability and responsiveness! Professional and competent, he quickly and efficiently identified the source of the problem and proposed solutions. A major problem solved! I will work with him again on other ecommerce site maintenance issues.",
+      "7": "Great! I called on Mathias's skills again. Serious, communicative and proactive, very pleasant to work with Mathias. Thank you very much!",
+      "8": "Second order I place with Mathias, and it always goes extremely well, very good communication, speed and efficiency, and a result beyond my expectations. I recommend Mathias, you will not be disappointed with the result!",
+      "9": "Good work! Mathias migrated our website to the new host very quickly. Fully recommend.",
+      "10": "Another great result with Mathias! Always professional, proactive and 100% communicative, keeping you informed of progress, a pleasure!",
+      "11": "I recommend",
+      "13": "I needed Mathias's services a second time for creation and corrections, and if I needed a third time, I would hire him again without hesitation. Thanks to him for his professionalism, responsiveness, and ability to put himself in the client's shoes to understand their problem. I highly recommend him...",
+      "14": "Very professional and super efficient. He will accompany you to success. I recommend Mathias with my eyes closed",
+      "15": "Top professionalism, Matthias tries to find the bugs, he is very proactive! I recommend",
+      "16": "Top! super responsive and competent",
+      "17": "Thank you Mathias Top",
+      "18": "I recommend Mathias who was able to respond very quickly to an urgent need on our part. Our Wordpress site is now functional ✅🤝",
+      "19": "Perfect. Mathias is super competent, fast and very professional. He did in an hour what OVH didn't want to do!!! I recommend him!",
+      "20": "Super professional, attentive, perfectionist, very good customer relationship",
+      "21": "Mathias is very responsive, he easily adapts to the request I recommend 100%",
+      "22": "Mathias was very responsive and professional in fixing a responsive bug on our site, perfect communication, I recommend!",
+      "23": "Excellent as usual. We have worked together several times: very attentive and always as expert, professional, fast & proactive. Thank you very much Mathias!",
+      "24": "Excellent service. Fast and efficient. Highly recommend...",
+      "25": "Many thanks to Mathias who unlocked my website thanks to his in-depth knowledge and expertise in IT maintenance and network infrastructure. I will not hesitate to call on him at the slightest problem. Thanks again",
+      "26": "Thanks to Mathias for his responsiveness. He took the problem into account immediately. While I didn't know what to do with the various problems I was having with my website. Mathias is a good advisor and a caring person. I recommend his services without hesitation. Thank you Mathias. Best regards",
+      "27": "I needed Mathias's services a second time for creation and corrections, and if I needed a third time, I would hire him again without hesitation. Thanks to him for his professionalism, responsiveness, and ability to put himself in the client's shoes to understand their problem. I highly recommend him..."
+    }
+  },
+  "nav": {
+    "about": "About",
+    "experiences": "Experiences",
+    "projects": "Projects",
+    "contact": "Contact"
+  },
+  "aboutme": {
+    "role": "ReactJS and Wordpress Developer since 2022",
+    "drawMe": "DRAW ME",
+    "description": "During my studies, I worked in various sectors such as Uber Eats, temp work, and as a salesperson in Angers and Tours, in northern France. Then, I moved to the south, 30 minutes from Spain, to pursue a one-year web development apprenticeship. At that time, I only knew HTML and CSS, but I quickly gained complete autonomy, creating pixel-perfect WordPress sites without themes or builders. I also learned to debug WordPress-related issues, manage hosting, and perform migrations. Thanks to this experience, I was able to start freelancing, which allowed me to begin learning ReactJS. With perseverance, I joined Radio Analyzer in Aalborg, Denmark, as a ReactJS front-end developer, where I actively contribute to developing innovative solutions for their SaaS products.",
+    "resetCanvas": "Reset canvas"
+  },
+  "experiences": {
+    "filters": {
+      "all": "All",
+      "developer": "Developer"
+    },
+    "items": {
+      "radioAnalyzer": {
+        "title": "Radio Analyzer",
+        "description": "SaaS product development at Radio Analyzer (internal software and client solutions) for the global radio industry. Creation of ReactJS interfaces with advanced charts, data virtualization, and complex filtering systems. Close collaboration with the backend team for API integration and continuous product improvement.",
+        "btnText": "Learn more"
+      },
+      "freelance": {
+        "title": "Freelance",
+        "description": "As a freelancer, development of showcase websites, e-commerce sites, and applications using WordPress and ReactJS. Complete project management from design to production, bug fixing, and site migrations. Focus on performance and user experience.",
+        "btnText": "Learn more"
+      },
+      "kori": {
+        "title": "Kori",
+        "description": "WordPress Developer at Kori, specialized in custom website creation. Development of custom themes from scratch with pixel-perfect integration of Figma and XD designs. Implementation of specific features and maintenance of existing sites.",
+        "btnText": "Learn more"
+      },
+      "vendeur": {
+        "title": "Sales Associate",
+        "description": "Multi-skilled sales associate in a garden center: shelf stocking, plant maintenance, customer advice, and creation of promotional displays."
+      },
+      "vendeurPolyvalent": {
+        "title": "Sales Associate",
+        "description": "Multi-skilled sales associate in a garden center: shelf stocking, plant maintenance, customer advice, and creation of promotional displays."
+      },
+      "uberEats": {
+        "title": "Uber Eats",
+        "description": "Uber Eats delivery driver: food delivery in compliance with food safety standards, with a focus on customer satisfaction. Development of excellent city knowledge and ability to handle unexpected situations."
+      }
+    }
+  },
+  "projects": {
+    "items": {
+      "obandito": {
+        "title": "O'bandito",
+        "description": "O'bandito is a web platform connecting musicians with event organizers, developed over 4 weeks as part of a professional certification project. Built collaboratively with a team of 3 developers (2 frontend, 1 backend).",
+        "tags": ["ReactJs", "GraphQL API", "Figma"],
+        "project": "O'clock Project"
+      },
+      "moviesFinder": {
+        "title": "Movies finder",
+        "description": "A movie search platform built with React, leveraging an external API for real-time movie data. Features dynamic search, movie details display, and responsive design using useEffect and useSWR for efficient data fetching.",
+        "link": "View site",
+        "github": "View Github",
+        "project": "Personal Project"
+      },
+      "thishan": {
+        "title": "Maison Thishan",
+        "description": "A fully custom WordPress e-commerce website built from scratch for an independent perfumer. Features bespoke theme development, custom product catalog, and tailored checkout process without using pre-made themes.",
+        "link": "View site",
+        "project": "Freelance Project"
+      },
+      "tp66": {
+        "title": "TP66",
+        "description": "Redesign of the website for the largest construction company in the Eastern Pyrenees",
+        "link": "View site",
+        "project": "Company Project"
+      },
+      "kasa": {
+        "title": "Kasa",
+        "description": "Kasa is my first ReactJS project aimed at showcasing different apartments",
+        "link": "View site",
+        "github": "View Github",
+        "project": "Openclassrooms Project"
+      },
+         "radioanalyzer": {
+    "title": "Radio Analyzer",
+    "description": "Development of various internal tools for Radio Analyzer SaaS platform, addition of major and minor features, UX/UI improvements, and bug fixes",
+    "link": "View site",
+    "github": "View Github",
+    "project": "Company Project"
+  }
+    },
+    "link": "View site",
+    "github": "View Github"
+  },
+  "contact": {
+    "title": "Let's Work Together.",
+    "subtitle": "After sending your message, you will receive a response by email within 24 hours.",
+    "form": {
+      "name": {
+        "label": "Name",
+        "placeholder": "Your Name",
+        "required": "Name is required"
+      },
+      "email": {
+        "label": "Email",
+        "placeholder": "Your Email",
+        "required": "Email is required"
+      },
+      "message": {
+        "label": "Message",
+        "placeholder": "Your Message",
+        "required": "Message is required"
+      },
+      "submit": "Send",
+      "success": "Your message has been sent successfully!"
+    }
+  },
+  "hobbies": {
+    "title": "Hobbies",
+    "subtitle": {
+      "travel": "Travel",
+      "hike": "Hiking",
+      "learn": "Learning"
+    },
+    "locations": {
+      "france": {
+        "title": "France",
+        "cities": "Paris, Angers, Tours, Perpignan, etc...",
+        "description": "City of lights and romance"
+      },
+      "norway": {
+        "title": "Norway",
+        "cities": "Oslo",
+        "description": "Capital city with stunning fjords"
+      },
+      "denmark": {
+        "title": "Denmark",
+        "cities": "Aalborg, Copenhagen, Aarhus, Skagen, etc...",
+        "description": "City of beautiful canals and architecture"
+      },
+      "cyprus": {
+        "title": "Cyprus",
+        "cities": "Paphos, Limassol, Lanarca, etc...",
+        "description": "Island country in the Eastern Mediterranean"
+      },
+      "finland": {
+        "title": "Finland",
+        "cities": "Helsinki, Rovaniemi",
+        "description": "Country of thousands of lakes and islands"
+      },
+      "sweden": {
+        "title": "Sweden",
+        "cities": "Stockholm, Göteborg",
+        "description": "Land of midnight sun, forests and Nordic culture"
+      },
+      "poland": {
+        "title": "Poland",
+        "cities": "Cracovie",
+        "description": "City known for its well-preserved medieval core"
+      }
+    }
+  }
+}

@@ -1,0 +1,203 @@
+{
+  "hero": {
+    "titlePart1": "Développeur web",
+    "titlePart2": "front-end"
+  },
+  "slides": {
+    "hobbies": "Loisirs",
+    "projects": "Projets",
+    "experiences": "Expériences",
+    "contact": "Contact"
+  },
+  "nav": {
+    "about": "À propos",
+    "experiences": "Expériences",
+    "projects": "Projets",
+    "contact": "Contact"
+  },
+  "reviews": {
+    "title": "Ils m'ont fait confiance",
+    "noReviews": "Aucun avis disponible",
+    "reloadReviews": "Recharger les avis",
+    "dropToDelete": "Déposer ici pour supprimer",
+    "totalReviews": "{{count}} avis",
+    "items": {
+      "1": "Excellent prestataire, service rapide et résultat au delà des mes espérances. Je recommande !",
+      "2": "2eme fois que je fais appel à lui, et honnêtement tout est parfait.",
+      "3": "Travail incroyable, excellente communication et a résolu mon problème très rapidement. Je recommande fortement !",
+      "4": "Très bon travail, je recommande.",
+      "5": "Mathias a vraiment assuré sur la résolution des erreurs 503 de mon site ! Il a corrigé les problèmes de manière rapide et efficace, assurant le bon fonctionnement du site sans aucun bug. La communication proactive de Mathias a été un atout majeur.",
+      "6": "Un grand merci à Mathias pour sa disponibilité et sa réactivité! Professionnel et compétent, il a très rapidement et efficacement cerné l'origine du problème et a proposé des solutions. Un problème majeur résolu ! Je reviendrai travailler avec lui sur d'autres sujets de maintenance site ecom.",
+      "7": "Super ! J'ai fait appel de nouveau aux compétences de Mathias. Sérieux, communicant et proactif, très agréable de travailler avec Mathias. Merci beaucoup !",
+      "8": "Deuxième commande que je passe chez Mathias, et ça se déroule toujours extrêmement bien, très bonne communication, rapidité et efficacité au rendez-vous, et un résultat supérieur à mes attentes. Je vous recommande Mathias, vous ne serez pas déçu du résultat !",
+      "9": "Good work! Mathias migrated our website to the new host very quickly. Fully recommend.",
+      "10": "Encore un très bon résultat avec Mathias ! Toujours pro, proactif et 100% dans la communication et vous tiens informé des progressions, un bonheur !",
+      "11": "Je recommande",
+      "13": "j'ai eu besoin des services de Mathias, une second fois pour une création et des corrections et s'il fallait une troisième fois je le solliciterai encore les yeux fermés. Merci à lui pour son professionnalisme, sa réactivité et de se mettre à la place du client pour comprendre son problème. je vous le recommande...",
+      "14": "Très professionnel et super efficace. Il sera vous accompagné vers le succes. Je recommande Mathias les yeux fermés",
+      "15": "Professionnalisme au top, Matthias essaye de trouver les bugs , il très proactif ! je recommande",
+      "16": "top ! super réactif et compétent",
+      "17": "Merci Mathias Top",
+      "18": "Je recommande Mathias qui a su répondre très rapidement à un besoin urgent de notre part. Notre site Wordpress HS est désormais fonctionnel ✅🤝",
+      "19": "Parfit. Mathias est super compétent, rapide et tres professionnel. Il a fait en une heure le travail qu'OVH ne voulait pas faire !!! Je vous le recommande !",
+      "20": "Super professionnel à l'écoute, perfectionniste, très bonne relation client",
+      "21": "Mathias est très réactif, il s'adapte facilement à la demande je recommande 100%",
+      "22": "Mathias a été très réactif et pro pour corriger un bug de responsive sur notre site, communication parfaite, je recommande!",
+      "23": "Excellent comme d'habitude. Nous avons travaillé ensemble plusieurs fois : très à l'écoute et toujours aussi expert, professionnel, rapide & proactif. Merci bcp Mathias !",
+      "24": "Excellent service. Rapide et efficace. À recommander...",
+      "25": "Un grand merci à Mathias qui a débloqué mon site web grâce à ses connaissances approfondies et son expertise en maintenance informatique et infrastructure réseau. Je n'hésiterai pas à le soliciter au moindre soucis. Encore merci",
+      "26": "Merci à Mahias pour sa réactivité. Il a pris le problème tout de suite en compte . Alors que je ne savais plus quoi faire avec les différents problèmes que je rencontrais avec mon site internet. Mathias est de bon conseil et est une personne bienveillante. je vous conseille ses services sans soucis. Merci Mathias Cordialement",
+      "27": "j'ai eu besoin des services de Mathias, une second fois pour une création et des corrections et s'il fallait une troisième fois je le solliciterai encore les yeux fermés. Merci à lui pour son professionnalisme, sa réactivité et de se mettre à la place du client pour comprendre son problème. je vous le recommande..."
+    }
+  },
+  "aboutme": {
+    "role": "Développeur ReactJS et Wordpress depuis 2022",
+    "drawMe": "DESSINEZ MOI",
+    "description": "Durant mes études, j\u0027ai travaillé dans différents secteurs comme Uber Eats, l\u0027intérim, ou encore en tant que vendeur à Angers et Tours, dans le nord de la France. Ensuite, j\u0027ai déménagé dans le sud, à 30 minutes de l\u0027Espagne, pour suivre une alternance d\u0027un an en développement web. À cette époque, je ne connaissais que HTML et CSS, mais j\u0027ai rapidement acquis une autonomie complète, créant des sites WordPress pixel perfect sans thème ni builder. J\u0027ai également appris à déboguer les problèmes liés à WordPress, gérer l\u0027hébergement et effectuer des migrations. Grâce à cette expérience, j\u0027ai pu me lancer en freelance, ce qui m\u0027a permis de commencer à apprendre ReactJS. Avec persévérance, j\u0027ai intégré Radio Analyzer à Aalborg, au Danemark, en tant que développeur front-end ReactJS, où je contribue activement au développement de solutions innovantes pour leurs produits SaaS.",
+    "resetCanvas": "Réinitialiser le canevas"
+  },
+  "experiences": {
+    "filters": {
+      "all": "Tout",
+      "developer": "Développeur"
+    },
+    "items": {
+      "radioAnalyzer": {
+        "title": "Radio Analyzer",
+        "description": "Développement de produits SaaS chez Radio Analyzer (logiciels internes et solutions clients) pour l'industrie radiophonique mondiale. Création d'interfaces ReactJS avec graphiques avancés, virtualisation de données et systèmes de filtrage complexes. Collaboration étroite avec l'équipe backend pour l'intégration API et l'amélioration continue des produits.",
+        "btnText": "En savoir plus"
+      },
+      "freelance": {
+        "title": "Freelance",
+        "description": "En tant que freelance, développement de sites vitrines, e-commerces et applications en WordPress et ReactJS. Gestion complète des projets de la conception à la mise en production, résolution de bugs et migrations de sites. Focus sur la performance et l'expérience utilisateur.",
+        "btnText": "En savoir plus"
+      },
+      "kori": {
+        "title": "Kori",
+        "description": "Développeur WordPress chez Kori, spécialisé dans la création de sites web sur mesure. Développement de thèmes personnalisés from scratch avec intégration pixel perfect des maquettes Figma et XD. Implémentation de fonctionnalités spécifiques et maintenance de sites existants.",
+        "btnText": "En savoir plus"
+      },
+      "vendeurPolyvalent": {
+        "title": "Vendeur polyvalent",
+        "description": "Vendeur polyvalent en jardinerie: mise en rayon, entretien des plantes, conseil auprès des clients et création d'animations promotionnelles."
+      },
+      "uberEats": {
+        "title": "Uber Eats",
+        "description": "Livreur Uber Eats: livraison de repas dans le respect des normes de sécurité alimentaire, avec un focus sur la satisfaction client. Développement d'une excellente connaissance de la ville et capacité à gérer les imprévus."
+      }
+    }
+  },
+  "projects": {
+    "items": {
+      "obandito": {
+        "title": "O'bandito",
+        "description": "O'bandito est une plateforme web connectant musiciens et organisateurs d'événements, développée sur 4 semaines dans le cadre d'un projet de certification professionnelle. Réalisé en collaboration avec une équipe de 3 développeurs (2 frontend, 1 backend).",
+        "tags": ["ReactJs", "API GraphQL", "Figma"],
+        "project": "Projet O'clock"
+      },
+      "moviesFinder": {
+        "title": "Movies finder",
+        "description": "Une plateforme de recherche de films construite avec React, utilisant une API externe pour les données en temps réel. Fonctionnalités de recherche dynamique, affichage des détails des films et design responsive utilisant useEffect et useSWR pour une récupération efficace des données.",
+        "link": "Voir le site",
+        "github": "Voir Github",
+        "project": "Projet personnel"
+      },
+      "thishan": {
+        "title": "Maison Thishan",
+        "description": "Un site e-commerce WordPress entièrement personnalisé créé from scratch pour un parfumeur indépendant. Développement de thème sur mesure, catalogue de produits personnalisé et processus de paiement adapté sans utiliser de thèmes préconçus.",
+        "link": "Voir le site",
+        "project": "Projet Freelance"
+      },
+      "tp66": {
+        "title": "TP66",
+        "description": "Refonte du site web de la plus grande entreprise de BTP des Pyrénées-Orientales",
+        "link": "Voir le site",
+        "project": "Projet entreprise"
+      },
+      "kasa": {
+        "title": "Kasa",
+        "description": "Kasa est mon premier projet ReactJS visant à présenter différents appartements",
+        "link": "Voir le site",
+        "github": "Voir Github",
+        "project": "Projet Openclassrooms"
+      },
+      "radioanalyzer": {
+        "title": "Radio Analyzer",
+        "description": "Développement de différents outils internes pour la plateforme SaaS Radio Analyzer, ajout de fonctionnalités majeures et mineures, améliorations UX/UI, et corrections de bugs",
+        "link": "Voir le site",
+        "github": "Voir Github",
+        "project": "Projet d'entreprise"
+      }
+    },
+    "link": "Voir le site",
+    "github": "Voir Github"
+  },
+  "contact": {
+    "title": "Travaillons ensemble.",
+    "subtitle": "Après l'envoi de votre message, vous recevrez une réponse par email sous 24 heures.",
+    "form": {
+      "name": {
+        "label": "Nom",
+        "placeholder": "Votre nom",
+        "required": "Le nom est requis"
+      },
+      "email": {
+        "label": "Email",
+        "placeholder": "Votre email",
+        "required": "L'email est requis"
+      },
+      "message": {
+        "label": "Message",
+        "placeholder": "Votre message",
+        "required": "Le message est requis"
+      },
+      "submit": "Envoyer",
+      "success": "Votre message a été envoyé avec succès!"
+    }
+  },
+  "hobbies": {
+    "title": "Loisirs",
+    "subtitle": {
+      "travel": "Voyager",
+      "hike": "Randonner",
+      "learn": "Apprendre"
+    },
+    "locations": {
+      "france": {
+        "title": "France",
+        "cities": "Paris, Angers, Tours, Perpignan, etc...",
+        "description": "Ville des lumières et de la romance"
+      },
+      "norway": {
+        "title": "Norvège",
+        "cities": "Oslo",
+        "description": "Capitale aux fjords époustouflants"
+      },
+      "denmark": {
+        "title": "Danemark",
+        "cities": "Aalborg, Copenhague, Aarhus, Skagen, etc...",
+        "description": "Ville aux beaux canaux et à l'architecture remarquable"
+      },
+      "cyprus": {
+        "title": "Chypre",
+        "cities": "Paphos, Limassol, Lanarca, etc...",
+        "description": "Île pays en Méditerranée orientale"
+      },
+      "finland": {
+        "title": "Finlande",
+        "cities": "Helsinki, Rovaniemi",
+        "description": "Pays aux milliers de lacs et d'îles"
+      },
+      "sweden": {
+        "title": "Suède",
+        "cities": "Stockholm, Göteborg",
+        "description": "Terre du soleil de minuit, des forêts et de la culture nordique"
+      },
+      "poland": {
+        "title": "Pologne",
+        "cities": "Cracovie",
+        "description": "Ville connue pour son centre médiéval bien préservé"
+      }
+    }
+  }
+}
