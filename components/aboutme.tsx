@@ -15,7 +15,7 @@ import Lenis from "@studio-freight/lenis";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import TextReveal from "./animations/TextReveal";
-import ProfilPicture from "../public/assets/aboutme/mathiasBandW1.png";
+import ProfilPicture from "../public/assets/aboutme/mathias.jpg";
 import { useTranslation } from "react-i18next";
 import { Typography } from "./ui/typography";
 

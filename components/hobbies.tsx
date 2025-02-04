@@ -195,7 +195,7 @@ export default function Hobbies() {
                         </button>
                     </div>
 
-                    <div className="absolute inset-0">
+                    <div>
                         {locationData.map((location, index) => (
                             <div
                                 key={location.location}
