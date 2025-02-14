@@ -8,7 +8,7 @@ import { ScrollToPlugin } from "gsap/ScrollToPlugin";
 import Obandito from "../public/assets/projects/obandito.png";
 import Thishan from "../public/assets/projects/thishan.png";
 import MoviesFinder from "../public/assets/projects/moviesFinder.png";
-import NDA from "../public/assets/projects/Nda.png";
+import Nda from '@/public/assets/projects/NDA.png';
 import Tp66 from "../public/assets/projects/tp66.png";
 import { Typography } from "./ui/typography";
 import Image from "next/image";
@@ -41,7 +41,7 @@ export default function Projects() {
     const scrollTriggerRef = useRef<ScrollTrigger | null>(null);
     const projects = [
         {
-            img: NDA,
+            img: Nda,
             title: t("projects.items.radioanalyzer.title"),
             description: t("projects.items.radioanalyzer.description"),
             tags: ["ReactJs", "SaaS", "Figma"],

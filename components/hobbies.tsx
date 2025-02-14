@@ -5,12 +5,12 @@ import Section from "./Section";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import Oslo from "../public/assets/hobbies/oslo2.png";
-import Paris from "../public/assets/hobbies/paris2.png";
+import paris2 from '@/public/assets/hobbies/Paris2.png';
 import Copenhagen from "../public/assets/hobbies/copenhagen1.png";
 import Chypre from "../public/assets/hobbies/chypre1.png";
 import Finland from "../public/assets/hobbies/finland1.png";
 import Poland from "../public/assets/hobbies/poland1.png";
-import Sweden from "../public/assets/hobbies/Sweden.png";
+import Sweden from '@/public/assets/hobbies/sweden.png';
 import { useTranslation } from "react-i18next";
 import { Typography } from "./ui/typography";
 import { ChevronLeft, ChevronRight } from "lucide-react";
@@ -56,7 +56,7 @@ export default function Hobbies() {
 
     const locationData: LocationData[] = [
         {
-            images: Paris,
+            images: paris2,
             location: "France",
             cities: "Paris, Angers, Tours, Perpignan, ect...",
             flag: "https://flagcdn.com/fr.svg",
