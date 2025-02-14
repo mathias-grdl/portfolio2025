@@ -10,6 +10,13 @@ import Image from "next/image";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
+import Hobbies from "../public/assets/slider/hobbies.png";
+import Projects from "../public/assets/slider/projects.png";
+import AboutMe from "../public/assets/slider/webdeveloper.png";
+import Experiences from "../public/assets/slider/experiences.png";
+import Contact from "../public/assets/slider/contact.png";
+
+
 type MouseZone = "none" | "header" | "buttons";
 
 export default function Slider() {
@@ -24,31 +31,31 @@ export default function Slider() {
 
     const slides = [
         {
-            url: "https://images.unsplash.com/photo-1516483638261-f4dbaf036963?q=80&w=1972&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+            url: Hobbies,
             subTitle: "Travel",
             id: "hobbies",
             title: t("slides.hobbies"),
         },
         {
-            url: "https://images.unsplash.com/photo-1696761354458-c6c9727d2156?q=80&w=1954&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+            url: Projects,
             subTitle: "Projects",
             title: t("slides.projects"),
             id: "projects",
         },
         {
-            url: "https://images.unsplash.com/photo-1513269762479-12fa9962d31b?q=80&w=1887&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+            url: AboutMe,
             subTitle: "About Me",
             title: [t("hero.titlePart1"), <br key="break" />, t("hero.titlePart2")],
             id: "aboutme",
         },
         {
-            url: "https://images.unsplash.com/photo-1513622470522-26c3c8a854bc?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+            url: Experiences,
             subTitle: "Experiences",
             id: "experiences",
             title: t("slides.experiences"),
         },
         {
-            url: "https://images.unsplash.com/photo-1639153697189-04bc5d043f64?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+            url: Contact,
             title: t("slides.contact"),
             subTitle: "Contact",
             id: "contact",

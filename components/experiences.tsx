@@ -8,14 +8,22 @@ import { MapPin } from "lucide-react";
 import Section from "./Section";
 import { useTranslation } from "react-i18next";
 import { Typography } from "./ui/typography";
-import Image from "next/image";
+import Image, { StaticImageData } from "next/image";
+
+import Aalborg from "../public/assets/experiences/aalborg.jpg";
+import Angers from "../public/assets/experiences/angers.jpg";
+import Collioure from "../public/assets/experiences/collioure.jpg";
+import Perpignan from "../public/assets/experiences/perpignan.jpg";
+import Tours from "../public/assets/experiences/tours.jpg";
+
+
 
 // Types
 interface Experience {
     id: string;
     yearRange: string;
     title: string;
-    imageUrl: string;
+    imageUrl: StaticImageData;
     type: string;
     description: string;
     btnName?: string;
@@ -25,21 +33,20 @@ interface Experience {
 }
 
 // Sous-composants
-const ExperienceTitle = ({ 
-    yearRange, 
-    title, 
-    isVisible, 
-    onClick 
-}: { 
-    yearRange: string; 
-    title: string; 
-    isVisible: boolean; 
-    onClick: () => void; 
+const ExperienceTitle = ({
+    yearRange,
+    title,
+    isVisible,
+    onClick
+}: {
+    yearRange: string;
+    title: string;
+    isVisible: boolean;
+    onClick: () => void;
 }) => (
     <div
-        className={`my-2 md:my-5 ps-2 cursor-pointer ${
-            isVisible ? "active text-blue-500 border-s-2 border-s-blue-500" : ""
-        }`}
+        className={`my-2 md:my-5 ps-2 cursor-pointer ${isVisible ? "active text-blue-500 border-s-2 border-s-blue-500" : ""
+            }`}
         onClick={onClick}
     >
         <Typography variant="small">{yearRange}</Typography>
@@ -49,17 +56,16 @@ const ExperienceTitle = ({
     </div>
 );
 
-// Mise à jour du composant ExperienceImage pour utiliser le statut de chargement
-const ExperienceImage = ({ imageUrl, isVisible }: { imageUrl: string; isVisible: boolean }) => (
+const ExperienceImage = ({ imageUrl, isVisible }: { imageUrl: StaticImageData; isVisible: boolean }) => (
     <div className="flex justify-center items-center">
         {isVisible ? (
             <div className="relative w-full h-[300px] md:h-screen md:absolute md:top-0 md:w-[220px] xl:w-[400px]">
-                <Image 
-                    src={imageUrl} 
+                <Image
+                    src={imageUrl}
                     alt="Experience illustration"
                     fill
                     priority
-                    loading="eager" // Force le chargement immédiat
+                    loading="eager"
                     sizes="(max-width: 768px) 100vw, (max-width: 1200px) 220px, 400px"
                     className="object-cover"
                     quality={85}
@@ -101,7 +107,7 @@ const ExperienceDetails = ({
 );
 
 // Composant de préchargement modifié
-const ImagePreloader = ({ images }: { images: string[] }) => (
+const ImagePreloader = ({ images }: { images: StaticImageData[] }) => (
     <div aria-hidden="true" className="hidden">
         {images.map((src, index) => (
             <div key={index} className="relative w-0 h-0">
@@ -127,7 +133,7 @@ export default function Experiences() {
             id: "image1",
             yearRange: "2024 - 2025",
             title: t("experiences.items.radioAnalyzer.title"),
-            imageUrl: "https://img.static-kl.com/images/media/14503BF4-AEAD-481C-8987FC06F3D8C704?w=1280",
+            imageUrl: Aalborg,
             type: "Developer",
             description: t("experiences.items.radioAnalyzer.description"),
             btnName: t("experiences.items.radioAnalyzer.btnText"),
@@ -140,7 +146,7 @@ export default function Experiences() {
             yearRange: "2023 - 2025",
             title: t("experiences.items.freelance.title"),
             imageUrl:
-                "https://images.unsplash.com/photo-1609185271997-ec976c17a0bc?q=80&w=1964&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+                Collioure,
             type: "Developer",
             description: t("experiences.items.freelance.description"),
             btnName: t("experiences.items.freelance.btnText"),
@@ -153,7 +159,7 @@ export default function Experiences() {
             yearRange: "2022 - 2023",
             title: t("experiences.items.kori.title"),
             imageUrl:
-                "https://images.unsplash.com/photo-1722605267048-a5389a97b20c?q=80&w=1935&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+                Perpignan,
             type: "Developer",
             description: t("experiences.items.kori.description"),
             btnName: t("experiences.items.kori.btnText"),
@@ -166,7 +172,7 @@ export default function Experiences() {
             yearRange: "2021 - 2022",
             title: t("experiences.items.vendeurPolyvalent.title"),
             imageUrl:
-                "https://images.unsplash.com/photo-1724599685287-299a6412b92a?q=80&w=1820&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+                Tours,
             type: "Other",
             description: t("experiences.items.vendeurPolyvalent.description"),
             localisation: "Tours, France",
@@ -177,7 +183,7 @@ export default function Experiences() {
             yearRange: "2018 - 2022",
             title: t("experiences.items.uberEats.title"),
             imageUrl:
-                "https://images.unsplash.com/photo-1643549811064-adf938a5ca40?q=80&w=1935&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+                Angers,
             type: "Other",
             description: t("experiences.items.uberEats.description"),
             localisation: "Angers, France",
