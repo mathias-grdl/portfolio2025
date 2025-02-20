@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Sora, Manrope } from "next/font/google";
 import "./globals.css";
 import Providers from "../components/Providers";
+import LoadingScreen from "@/components/LoadingScreen";
 
 const sora = Sora({
     subsets: ["latin"],
@@ -26,7 +27,10 @@ export default function RootLayout({
     return (
         <html lang="en" suppressHydrationWarning>
             <body className={`${sora.variable} ${manrope.variable} font-sans antialiased bg-neutral-50 dark:bg-zinc-900`}>
-                <Providers>{children}</Providers>
+                <Providers>
+                    <LoadingScreen />
+                    {children}
+                </Providers>
             </body>
         </html>
     );
