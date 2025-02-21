@@ -96,7 +96,11 @@
       "obandito": {
         "title": "O'bandito",
         "description": "O'bandito is a web platform connecting musicians with event organizers, developed over 4 weeks as part of a professional certification project. Built collaboratively with a team of 3 developers (2 frontend, 1 backend).",
-        "tags": ["ReactJs", "GraphQL API", "Figma"],
+        "tags": [
+          "ReactJs",
+          "GraphQL API",
+          "Figma"
+        ],
         "project": "O'clock Project"
       },
       "moviesFinder": {
@@ -125,13 +129,13 @@
         "github": "View Github",
         "project": "Openclassrooms Project"
       },
-         "radioanalyzer": {
-    "title": "Radio Analyzer",
-    "description": "Development of various internal tools for Radio Analyzer SaaS platform, addition of major and minor features, UX/UI improvements, and bug fixes",
-    "link": "View site",
-    "github": "View Github",
-    "project": "Company Project"
-  }
+      "radioanalyzer": {
+        "title": "Radio Analyzer",
+        "description": "Development of various internal tools for Radio Analyzer SaaS platform, addition of major and minor features, UX/UI improvements, and bug fixes",
+        "link": "View site",
+        "github": "View Github",
+        "project": "Company Project"
+      }
     },
     "link": "View site",
     "github": "View Github"
@@ -170,38 +174,47 @@
       "france": {
         "title": "France",
         "cities": "Paris, Angers, Tours, Perpignan, etc...",
-        "description": "City of lights and romance"
+        "description": "Land of fine cuisine, art, and diverse landscapes from Alps to Riviera"
       },
       "norway": {
         "title": "Norway",
         "cities": "Oslo",
-        "description": "Capital city with stunning fjords"
+        "description": "Kingdom of dramatic fjords, northern lights, and scenic beauty"
       },
       "denmark": {
         "title": "Denmark",
         "cities": "Aalborg, Copenhagen, Aarhus, Skagen, etc...",
-        "description": "City of beautiful canals and architecture"
+        "description": "Nordic paradise of hygge, design innovation, and coastal charm"
       },
       "cyprus": {
         "title": "Cyprus",
-        "cities": "Paphos, Limassol, Lanarca, etc...",
-        "description": "Island country in the Eastern Mediterranean"
+        "cities": "Paphos, Limassol, Larnaca, etc...",
+        "description": "Mediterranean jewel with ancient history and crystal-clear waters"
       },
       "finland": {
         "title": "Finland",
         "cities": "Helsinki, Rovaniemi",
-        "description": "Country of thousands of lakes and islands"
+        "description": "Land of midnight sun, countless lakes, and Santa's homeland"
       },
       "sweden": {
         "title": "Sweden",
-        "cities": "Stockholm, Göteborg",
-        "description": "Land of midnight sun, forests and Nordic culture"
+        "cities": "Stockholm, Gothenburg",
+        "description": "Scandinavian wonder of innovation, nature, and sustainable living"
       },
       "poland": {
         "title": "Poland",
-        "cities": "Cracovie",
-        "description": "City known for its well-preserved medieval core"
+        "cities": "Krakow",
+        "description": "Rich cultural heritage blending medieval charm with modern vitality"
       }
+    }
+  },
+  "loader": {
+    "title": "Mathias Grondziel",
+    "subtitle": "Your experience is loading...",
+    "tags": {
+      "react": "REACTJS",
+      "next": "NEXTJS",
+      "typescript": "TYPESCRIPT"
     }
   }
 }

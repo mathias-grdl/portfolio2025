@@ -92,7 +92,11 @@
       "obandito": {
         "title": "O'bandito",
         "description": "O'bandito est une plateforme web connectant musiciens et organisateurs d'événements, développée sur 4 semaines dans le cadre d'un projet de certification professionnelle. Réalisé en collaboration avec une équipe de 3 développeurs (2 frontend, 1 backend).",
-        "tags": ["ReactJs", "API GraphQL", "Figma"],
+        "tags": [
+          "ReactJs",
+          "API GraphQL",
+          "Figma"
+        ],
         "project": "Projet O'clock"
       },
       "moviesFinder": {
@@ -166,38 +170,47 @@
       "france": {
         "title": "France",
         "cities": "Paris, Angers, Tours, Perpignan, etc...",
-        "description": "Ville des lumières et de la romance"
+        "description": "Pays de l'art de vivre, de la gastronomie et des paysages variés"
       },
       "norway": {
         "title": "Norvège",
         "cities": "Oslo",
-        "description": "Capitale aux fjords époustouflants"
+        "description": "Terre des fjords majestueux et des aurores boréales"
       },
       "denmark": {
         "title": "Danemark",
         "cities": "Aalborg, Copenhague, Aarhus, Skagen, etc...",
-        "description": "Ville aux beaux canaux et à l'architecture remarquable"
+        "description": "Royaume scandinave connu pour son design et son bonheur"
       },
       "cyprus": {
         "title": "Chypre",
         "cities": "Paphos, Limassol, Lanarca, etc...",
-        "description": "Île pays en Méditerranée orientale"
+        "description": "Île méditerranéenne riche en histoire et en plages cristallines"
       },
       "finland": {
         "title": "Finlande",
         "cities": "Helsinki, Rovaniemi",
-        "description": "Pays aux milliers de lacs et d'îles"
+        "description": "Pays des mille lacs, des aurores boréales et du Père Noël"
       },
       "sweden": {
         "title": "Suède",
         "cities": "Stockholm, Göteborg",
-        "description": "Terre du soleil de minuit, des forêts et de la culture nordique"
+        "description": "Pays scandinave aux vastes forêts et à la culture innovante"
       },
       "poland": {
         "title": "Pologne",
         "cities": "Cracovie",
-        "description": "Ville connue pour son centre médiéval bien préservé"
+        "description": "Pays riche en histoire, entre tradition et modernité"
       }
+    }
+  },
+  "loader": {
+    "title": "Mathias Grondziel",
+    "subtitle": "Votre expérience est en cours de chargement...",
+    "tags": {
+      "react": "REACTJS",
+      "next": "NEXTJS",
+      "typescript": "TYPESCRIPT"
     }
   }
 }

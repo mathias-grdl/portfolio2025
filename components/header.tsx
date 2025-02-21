@@ -67,9 +67,8 @@ export default function Header() {
         <header
             onMouseEnter={handleMouseEnter}
             onMouseLeave={handleMouseLeave}
-            className={`fixed top-0 w-screen grid grid-cols-3 items-center py-3 px-5 transition-all duration-100 ${
-                visible ? "translate-y-0" : "-translate-y-full"
-            } ${!isTop ? "bg-black/50 backdrop-blur-sm" : ""}`}>
+            className={`fixed top-0 w-full grid grid-cols-3 items-center py-3 px-5 transition-all duration-100 ${visible ? "translate-y-0" : "-translate-y-full"
+                } ${!isTop ? "bg-black/50 backdrop-blur-sm" : ""}`}>
             <Typography variant="link" className="col-span-1 text-white whitespace-nowrap">
                 Mathias Grondziel
             </Typography>
@@ -105,17 +104,14 @@ export default function Header() {
                 </div>
                 <button className="md:hidden w-6 h-6 relative focus:outline-none" onClick={toggleMenu}>
                     <span
-                        className={`absolute h-0.5 w-6 bg-white transform transition-all duration-300 ease-in-out ${
-                            menuOpen ? "rotate-45 translate-y-0" : "-translate-y-2"
-                        }`}></span>
+                        className={`absolute h-0.5 w-6 bg-white transform transition-all duration-300 ease-in-out ${menuOpen ? "rotate-45 translate-y-0" : "-translate-y-2"
+                            }`}></span>
                     <span
-                        className={`absolute h-0.5 w-6 bg-white transform transition-all duration-300 ease-in-out ${
-                            menuOpen ? "opacity-0" : "opacity-100"
-                        }`}></span>
+                        className={`absolute h-0.5 w-6 bg-white transform transition-all duration-300 ease-in-out ${menuOpen ? "opacity-0" : "opacity-100"
+                            }`}></span>
                     <span
-                        className={`absolute h-0.5 w-6 bg-white transform transition-all duration-300 ease-in-out ${
-                            menuOpen ? "-rotate-45 translate-y-0" : "translate-y-2"
-                        }`}></span>
+                        className={`absolute h-0.5 w-6 bg-white transform transition-all duration-300 ease-in-out ${menuOpen ? "-rotate-45 translate-y-0" : "translate-y-2"
+                            }`}></span>
                 </button>
             </div>
 

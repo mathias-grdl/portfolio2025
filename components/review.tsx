@@ -65,7 +65,7 @@ const Review = React.forwardRef<HTMLDivElement, ReviewProps>(({ review, draggabl
                     ))}
                 </div>
             </div>
-            <Typography variant="p" className="text-sm text-black/70 line-clamp-5 md:line-clamp-none text-center ">
+            <Typography variant="p" className="text-sm text-black/70 line-clamp-5 lg:line-clamp-none text-center">
                 {t(`reviews.items.${review.id}`)}
             </Typography>
         </div>
