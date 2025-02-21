@@ -1,31 +1,30 @@
 'use client';
 import { useEffect, useState } from 'react';
 import gsap from 'gsap';
+import { useTranslation } from 'react-i18next';
+import LanguageSelector from './theme/language-selector';
 
 export default function LoadingScreen() {
     const [progress, setProgress] = useState(0);
     const [isLoading, setIsLoading] = useState(true);
+    const { t } = useTranslation();
 
     useEffect(() => {
-        // gsap.from('.loading-text', {
-        //     y: 50,
-        //     opacity: 0,
-        //     duration: 0.5,
-        //     stagger: 0.2
-        // });
-
         const timer = setInterval(() => {
             setProgress(prev => {
-                if (prev >= 100) {
+                const next = Math.min(prev + Math.random() * 15, 100);
+                if (next === 100) {
                     clearInterval(timer);
-                    gsap.to('.loading-screen', {
-                        opacity: 0,
-                        duration: 0.3,
-                        onComplete: () => setIsLoading(false)
-                    });
-                    return 100;
+                    // Attendre que la barre soit à 100% avant de démarrer l'animation de sortie
+                    setTimeout(() => {
+                        gsap.to('.loading-screen', {
+                            opacity: 0,
+                            duration: 0.5,
+                            onComplete: () => setIsLoading(false)
+                        });
+                    }, 300); // Petit délai pour voir le 100%
                 }
-                return Math.min(prev + Math.random() * 10, 100);
+                return next;
             });
         }, 100);
 
@@ -36,13 +35,16 @@ export default function LoadingScreen() {
 
     return (
         <div className="loading-screen fixed inset-0 z-50 bg-white dark:bg-zinc-900 flex items-center justify-center">
-            <div className="relative flex flex-col items-center w-full max-w-xl px-4">
+            <div className="flex flex-col items-center w-full max-w-xl px-4">
+                <div className="absolute top-0 right-0 py-3 px-5">
+                    <LanguageSelector />
+                </div>
                 <div className="space-y-4 text-center w-full">
                     <h1 className="loading-text text-6xl font-bold tracking-tight text-zinc-900 dark:text-white">
-                        Mathias Grondziel
+                        {t('loader.title')}
                     </h1>
                     <p className="loading-text text-xl text-zinc-600 dark:text-zinc-400">
-                        Votre expérience est en cours de chargement...
+                        {t('loader.subtitle')}
                     </p>
                 </div>
 
@@ -61,9 +63,9 @@ export default function LoadingScreen() {
                 </div>
 
                 <div className="loading-text mt-16 flex gap-6 text-sm tracking-wider">
-                    <span className="text-zinc-400">REACTJS</span>
-                    <span className="text-zinc-400">NEXTJS</span>
-                    <span className="text-zinc-400">TYPESCRIPT</span>
+                    <span className="text-zinc-400">{t('loader.tags.react')}</span>
+                    <span className="text-zinc-400">{t('loader.tags.next')}</span>
+                    <span className="text-zinc-400">{t('loader.tags.typescript')}</span>
                 </div>
             </div>
         </div>
