@@ -6,10 +6,10 @@ import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { ScrollToPlugin } from "gsap/ScrollToPlugin";
 import Obandito from "../public/assets/projects/obandito.png";
-import Thishan from "../public/assets/projects/thishan.png";
-import MoviesFinder from "../public/assets/projects/moviesFinder.png";
 import Nda from '@/public/assets/projects/NDA.png';
 import Tp66 from "../public/assets/projects/tp66.png";
+import Lotostats from "@/public/assets/projects/lotostats.png";
+import VehiclesApi from "@/public/assets/projects/vehicles-api.png";
 import { Typography } from "./ui/typography";
 import Image from "next/image";
 import type { StaticImageData } from "next/image";
@@ -60,26 +60,26 @@ export default function Projects() {
             img: Tp66,
             title: t("projects.items.tp66.title"),
             description: t("projects.items.tp66.description"),
-            tags: ["Wordpress"],
+            tags: ["Wordpress", "Bootstrap"],
             link: "https://www.travaux-publics-66.fr/",
             project: t("projects.items.tp66.project"),
         },
         {
-            img: Thishan,
-            title: t("projects.items.thishan.title"),
-            description: t("projects.items.thishan.description"),
-            tags: ["Wordpress", "E-commerce"],
-            link: "https://maisonthishan.com/",
-            project: t("projects.items.thishan.project"),
+            img: Lotostats,
+            title: t("projects.items.lotostats.title"),
+            description: t("projects.items.lotostats.description"),
+            tags: ["NextJS", "TypeScript", "NeonDB", "Tailwind CSS"],
+            link: "https://rosaliablake.com/",
+            project: t("projects.items.lotostats.project"),
         },
         {
-            img: MoviesFinder,
-            title: t("projects.items.moviesFinder.title"),
-            description: t("projects.items.moviesFinder.description"),
-            tags: ["ReactJs", "API"],
-            link: "https://movie-search-hub.netlify.app/?s=Jumanji",
-            github: "https://github.com/mathias-grdl/BeginReact-Workshop-UseEffect",
-            project: t("projects.items.moviesFinder.project"),
+            img: VehiclesApi,
+            title: t("projects.items.vehiclesApi.title"),
+            description: t("projects.items.vehiclesApi.description"),
+            tags: ["NodeJS", "Express", "Jest"],
+            link: "https://api-vehicles-nodejs.netlify.app/api-docs",
+            github: "https://github.com/mathias-grdl/api-Vehicles-NodeJS",
+            project: t("projects.items.vehiclesApi.project"),
         },
     ];
 
