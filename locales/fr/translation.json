@@ -131,6 +131,19 @@
         "link": "Voir le site",
         "github": "Voir Github",
         "project": "Projet d'entreprise"
+      },
+      "lotostats": {
+        "title": "Lotostats",
+        "description": "Développement d'une plateforme dédiée aux statistiques de la loterie française. Le site propose des analyses de données, des statistiques historiques et des outils de prédiction personnalisés.",
+        "link": "Voir le site",
+        "project": "Projet Personnel (en dev)"
+      },
+      "vehiclesApi": {
+        "title": "Vehicles API",
+        "description": "Développement d'une API RESTful pour la gestion de données de véhicules, avec des opérations CRUD complètes. Construite avec Node.js et Express, l'API inclut des tests unitaires complets avec Jest et une documentation Swagger détaillée.",
+        "link": "Voir l'API docs",
+        "github": "Voir Github",
+        "project": "Projet Personnel (en dev)"
       }
     },
     "link": "Voir le site",

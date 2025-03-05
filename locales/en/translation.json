@@ -116,6 +116,12 @@
         "link": "View site",
         "project": "Freelance Project"
       },
+      "lotostats": {
+        "title": "Lotostats",
+        "description": "Development of a platform dedicated to French lottery statistics. The site offers data analysis, historical statistics, and customized prediction tools.",
+        "link": "View site",
+        "project": "Personal Project (in dev)"
+      },
       "tp66": {
         "title": "TP66",
         "description": "Redesign of the website for the largest construction company in the Eastern Pyrenees",
@@ -135,6 +141,13 @@
         "link": "View site",
         "github": "View Github",
         "project": "Company Project"
+      },
+      "vehiclesApi": {
+        "title": "Vehicles API",
+        "description": "Development of a RESTful API for managing vehicle data, featuring complete CRUD operations. Built with Node.js and Express, the API includes comprehensive unit testing with Jest and detailed Swagger documentation.",
+        "link": "View API docs",
+        "github": "View Github",
+        "project": "Personal Project (in dev)"
       }
     },
     "link": "View site",
