@@ -89,6 +89,39 @@
   },
   "projects": {
     "items": {
+      "radioanalyzer": {
+        "title": "Radio Analyzer",
+        "description": "Développement de différents outils internes pour la plateforme SaaS Radio Analyzer, ajout de fonctionnalités majeures et mineures, améliorations UX/UI, et corrections de bugs",
+        "link": "Voir le site",
+        "github": "Voir Github",
+        "project": "Projet d'entreprise"
+      },
+      "lynkry": {
+        "title": "Lynkry",
+        "description": "Une plateforme SaaS de gestion de liens et d'analytics, construite avec Next.js et intégrée avec Stripe pour les paiements. Interface moderne avec Tailwind CSS et design responsive.",
+        "link": "Voir le site",
+        "github": "Voir Github",
+        "project": "Projet personnel"
+      },
+      "tp66": {
+        "title": "TP66",
+        "description": "Refonte du site web de la plus grande entreprise de BTP des Pyrénées-Orientales",
+        "link": "Voir le site",
+        "project": "Projet entreprise"
+      },
+      "lotostats": {
+        "title": "Lotostats",
+        "description": "Développement d'une plateforme dédiée aux statistiques de la loterie française. Le site propose des analyses de données, des statistiques historiques et des outils de prédiction personnalisés.",
+        "link": "Voir le site",
+        "project": "Projet Personnel (en dev)"
+      },
+      "vehiclesApi": {
+        "title": "Vehicles API",
+        "description": "Développement d'une API RESTful pour la gestion de données de véhicules, avec des opérations CRUD complètes. Construite avec Node.js et Express, l'API inclut des tests unitaires complets avec Jest et une documentation Swagger détaillée.",
+        "link": "Voir l'API docs",
+        "github": "Voir Github",
+        "project": "Projet Personnel (en dev)"
+      },
       "obandito": {
         "title": "O'bandito",
         "description": "O'bandito est une plateforme web connectant musiciens et organisateurs d'événements, développée sur 4 semaines dans le cadre d'un projet de certification professionnelle. Réalisé en collaboration avec une équipe de 3 développeurs (2 frontend, 1 backend).",
@@ -112,38 +145,12 @@
         "link": "Voir le site",
         "project": "Projet Freelance"
       },
-      "tp66": {
-        "title": "TP66",
-        "description": "Refonte du site web de la plus grande entreprise de BTP des Pyrénées-Orientales",
-        "link": "Voir le site",
-        "project": "Projet entreprise"
-      },
       "kasa": {
         "title": "Kasa",
         "description": "Kasa est mon premier projet ReactJS visant à présenter différents appartements",
         "link": "Voir le site",
         "github": "Voir Github",
         "project": "Projet Openclassrooms"
-      },
-      "radioanalyzer": {
-        "title": "Radio Analyzer",
-        "description": "Développement de différents outils internes pour la plateforme SaaS Radio Analyzer, ajout de fonctionnalités majeures et mineures, améliorations UX/UI, et corrections de bugs",
-        "link": "Voir le site",
-        "github": "Voir Github",
-        "project": "Projet d'entreprise"
-      },
-      "lotostats": {
-        "title": "Lotostats",
-        "description": "Développement d'une plateforme dédiée aux statistiques de la loterie française. Le site propose des analyses de données, des statistiques historiques et des outils de prédiction personnalisés.",
-        "link": "Voir le site",
-        "project": "Projet Personnel (en dev)"
-      },
-      "vehiclesApi": {
-        "title": "Vehicles API",
-        "description": "Développement d'une API RESTful pour la gestion de données de véhicules, avec des opérations CRUD complètes. Construite avec Node.js et Express, l'API inclut des tests unitaires complets avec Jest et une documentation Swagger détaillée.",
-        "link": "Voir l'API docs",
-        "github": "Voir Github",
-        "project": "Projet Personnel (en dev)"
       }
     },
     "link": "Voir le site",

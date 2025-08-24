@@ -5,10 +5,11 @@ import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { ScrollToPlugin } from "gsap/ScrollToPlugin";
-import Obandito from "../public/assets/projects/obandito.png";
+// import Obandito from "../public/assets/projects/obandito.png";
+import Lynkry from "../public/assets/projects/lynkry.png";
 import Nda from '@/public/assets/projects/NDA.png';
 import Tp66 from "../public/assets/projects/tp66.png";
-import Lotostats from "@/public/assets/projects/lotostats.png";
+import Lotostats from "@/public/assets/projects/fdjstats.png";
 import VehiclesApi from "@/public/assets/projects/vehicles-api.png";
 import { Typography } from "./ui/typography";
 import Image from "next/image";
@@ -44,23 +45,32 @@ export default function Projects() {
             img: Nda,
             title: t("projects.items.radioanalyzer.title"),
             description: t("projects.items.radioanalyzer.description"),
-            tags: ["ReactJs", "SaaS", "Figma"],
+            tags: ["ReactJs", "SaaS", "Figma", "chart.js", "strapi"],
             link: "https://radioanalyzer.com/",
             github: "",
             project: t("projects.items.radioanalyzer.project"),
         },
+        // {
+        //     img: Obandito,
+        //     title: t("projects.items.obandito.title"),
+        //     description: t("projects.items.obandito.description"),
+        //     tags: t("projects.items.obandito.tags", { returnObjects: true }) as string[],
+        //     project: t("projects.items.obandito.project"),
+        // },
         {
-            img: Obandito,
-            title: t("projects.items.obandito.title"),
-            description: t("projects.items.obandito.description"),
-            tags: t("projects.items.obandito.tags", { returnObjects: true }) as string[],
-            project: t("projects.items.obandito.project"),
+            img: Lynkry,
+            title: t("projects.items.lynkry.title"),
+            description: t("projects.items.lynkry.description"),
+            tags: ["Nextjs", "SaaS", "Stripe", "tailwindcss"],
+            link: "https://lynkry.com/",
+            github: "",
+            project: t("projects.items.lynkry.project"),
         },
         {
             img: Tp66,
             title: t("projects.items.tp66.title"),
             description: t("projects.items.tp66.description"),
-            tags: ["Wordpress", "Bootstrap"],
+            tags: ["Wordpress", "scss", "Bootstrap", "php"],
             link: "https://www.travaux-publics-66.fr/",
             project: t("projects.items.tp66.project"),
         },
@@ -69,7 +79,7 @@ export default function Projects() {
             title: t("projects.items.lotostats.title"),
             description: t("projects.items.lotostats.description"),
             tags: ["NextJS", "TypeScript", "NeonDB", "Tailwind CSS"],
-            link: "https://rosaliablake.com/",
+            link: "https://fdj-stats.fr/",
             project: t("projects.items.lotostats.project"),
         },
         {
@@ -78,7 +88,7 @@ export default function Projects() {
             description: t("projects.items.vehiclesApi.description"),
             tags: ["NodeJS", "Express", "Jest"],
             link: "https://api-vehicles-nodejs.netlify.app/api-docs",
-            github: "https://github.com/mathias-grdl/api-Vehicles-NodeJS",
+            github: "https://github.com/mathias-grdl/API-NodeJS-Vehicule",
             project: t("projects.items.vehiclesApi.project"),
         },
     ];

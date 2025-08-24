@@ -93,6 +93,39 @@
   },
   "projects": {
     "items": {
+      "radioanalyzer": {
+        "title": "Radio Analyzer",
+        "description": "Development of various internal tools for Radio Analyzer SaaS platform, addition of major and minor features, UX/UI improvements, and bug fixes",
+        "link": "View site",
+        "github": "View Github",
+        "project": "Company Project"
+      },
+      "lynkry": {
+        "title": "Lynkry",
+        "description": "A SaaS platform for link management and analytics, built with Next.js and integrated with Stripe for payments. Features modern UI with Tailwind CSS and responsive design.",
+        "link": "View site",
+        "github": "View Github",
+        "project": "Personal Project"
+      },
+      "tp66": {
+        "title": "TP66",
+        "description": "Redesign of the website for the largest construction company in the Eastern Pyrenees",
+        "link": "View site",
+        "project": "Company Project"
+      },
+      "lotostats": {
+        "title": "Lotostats",
+        "description": "Development of a platform dedicated to French lottery statistics. The site offers data analysis, historical statistics, and customized prediction tools.",
+        "link": "View site",
+        "project": "Personal Project (in dev)"
+      },
+      "vehiclesApi": {
+        "title": "Vehicles API",
+        "description": "Development of a RESTful API for managing vehicle data, featuring complete CRUD operations. Built with Node.js and Express, the API includes comprehensive unit testing with Jest and detailed Swagger documentation.",
+        "link": "View API docs",
+        "github": "View Github",
+        "project": "Personal Project (in dev)"
+      },
       "obandito": {
         "title": "O'bandito",
         "description": "O'bandito is a web platform connecting musicians with event organizers, developed over 4 weeks as part of a professional certification project. Built collaboratively with a team of 3 developers (2 frontend, 1 backend).",
@@ -116,38 +149,12 @@
         "link": "View site",
         "project": "Freelance Project"
       },
-      "lotostats": {
-        "title": "Lotostats",
-        "description": "Development of a platform dedicated to French lottery statistics. The site offers data analysis, historical statistics, and customized prediction tools.",
-        "link": "View site",
-        "project": "Personal Project (in dev)"
-      },
-      "tp66": {
-        "title": "TP66",
-        "description": "Redesign of the website for the largest construction company in the Eastern Pyrenees",
-        "link": "View site",
-        "project": "Company Project"
-      },
       "kasa": {
         "title": "Kasa",
         "description": "Kasa is my first ReactJS project aimed at showcasing different apartments",
         "link": "View site",
         "github": "View Github",
         "project": "Openclassrooms Project"
-      },
-      "radioanalyzer": {
-        "title": "Radio Analyzer",
-        "description": "Development of various internal tools for Radio Analyzer SaaS platform, addition of major and minor features, UX/UI improvements, and bug fixes",
-        "link": "View site",
-        "github": "View Github",
-        "project": "Company Project"
-      },
-      "vehiclesApi": {
-        "title": "Vehicles API",
-        "description": "Development of a RESTful API for managing vehicle data, featuring complete CRUD operations. Built with Node.js and Express, the API includes comprehensive unit testing with Jest and detailed Swagger documentation.",
-        "link": "View API docs",
-        "github": "View Github",
-        "project": "Personal Project (in dev)"
       }
     },
     "link": "View site",
